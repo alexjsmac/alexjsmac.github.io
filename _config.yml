@@ -27,8 +27,8 @@ kramdown:
 # Site owner
 owner:
   name: Alex MacLean
-  avatar: bio-photo.jpg
-  bio: "A musician and developer from Northern Ontario."
+  avatar: profile_pic.png
+  bio: "A musician and software developer from Northern Ontario."
   email:
   disqus-shortname:
   twitter: #XanderJohnScott
