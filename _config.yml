@@ -26,12 +26,12 @@ kramdown:
 
 # Site owner
 owner:
-  name: Your Name
+  name: Alex MacLean
   avatar: bio-photo.jpg
-  bio: "Describe your self."
+  bio: "A musician and developer from Northern Ontario."
   email:
   disqus-shortname:
-  twitter: #username
+  twitter: #XanderJohnScott
   facebook: #username
   google:
     plus: #username
@@ -40,11 +40,11 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #username
+  github: #amaclean199
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: #username
   xing: #username
-  instagram: #username
+  instagram: #XanderJohnScott
   lastfm: #username
   tumblr: #username
   pinterest: #username
