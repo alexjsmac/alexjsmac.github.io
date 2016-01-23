@@ -1,21 +1,12 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, responsive]
+title: About Alex MacLean
+tags: [about, Alex, MacLean, bio, experience]
 modified: 2014-08-08T20:53:07.573882-04:00
-comments: true
+comments: false
+share: false
 ---
 
-Minimal Mistakes is responsive Jekyll theme with large featured images and solid typography. As the name implies the styling is fairly minimal to make it easier for you to build on top of.
+Starting off in Thunder Bay, Ontario I grew up with a keen passion for all things related to music and technology. As the years passed I found myself not only playing in bands but also recording them. Then after high school I moved to southern Ontario and found myself becoming more and more interested in the actual software applications that are involved in the music industry. I continue to pursue these areas of interest with various projects and people. 
 
-## Minimal Mistakes is all about:
-
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.
-* Minimal embellishments -- content first.
-* Optional large feature images for posts and pages.
-* Simple and clear permalink structure.
-* [Custom 404 page](http://mmistakes.github.io/minimal-mistakes/404.html) to get you started.
-* Support for Disqus Comments
-
-<a markdown="0" href="{{ site.url }}/theme-setup" class="btn">Install Minimal Mistakes Theme</a>
+For music recordings check out my [SoundCloud](https://soundcloud.com/xanderjohnscott) page and for programming projects head on over to [GitHub](https://github.com/amaclean199).
