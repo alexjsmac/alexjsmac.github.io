@@ -2,7 +2,7 @@
 
 title:            Alex MacLean
 locale:           en_US
-url:
+url:              http://amaclean199.github.io/
 
 
 # Jekyll configuration
@@ -45,7 +45,7 @@ owner:
   bio: "A musician and software developer from Northern Ontario."
   email:
   disqus-shortname:
-  twitter: #XanderJohnScott
+  twitter: XanderJohnScott
   facebook: #username
   google:
     plus: #username
@@ -54,11 +54,11 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #amaclean199
+  github: amaclean199
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: #username
   xing: #username
-  instagram: #XanderJohnScott
+  instagram: XanderJohnScott
   lastfm: #username
   tumblr: #username
   pinterest: #username
