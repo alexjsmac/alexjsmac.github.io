@@ -42,9 +42,9 @@ titlecase: true
 owner:
   name: Alex MacLean
   avatar: profile_pic.png
-  bio: "A musician and software developer from Northern Ontario."
+  bio: "A musician, software developer, and audio engineer from Northern Ontario."
   email: #maclean199<at>gmail.com
-  disqus-shortname:
+  disqus-shortname: "musicaltechnology"
   twitter: XanderJohnScott
   facebook: #username
   google:
