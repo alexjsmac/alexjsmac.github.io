@@ -17,10 +17,14 @@ An ongoing list of some of my favourite things.
 * [Zero To One](http://zerotoonebook.com/) - Inspiring instruction from Peter Thiel
 * [The Icarus Deception](http://www.amazon.com/The-Icarus-Deception-High-Will/dp/1591846072) - Seth Godin explains how to un-limit ourselves
 * [The Temple of the Golden Pavilion](http://www.amazon.com/Temple-Golden-Pavilion-Yukio-Mishima/dp/0679752706) - A philosophical novel about the obsession of love
+* [Zen and the Art of Motorcycle Maintenance](http://www.amazon.ca/Zen-Art-Motorcycle-Maintenance-Inquiry/dp/0060589469) - A powerful, moving, and penetrating examination of how we live
 
 ### Blogs
 * [Music Machinery](http://musicmachinery.com/) - Developments in online music discovery and recommendation
-* [The 4-Hour Workweek](http://fourhourworkweek.com/blog/) - If you liked the book then this is where to go next
 * [Hacker News](https://thehackernews.com/) - All the important updates for tech people
 * [Derek Sivers](https://sivers.org/blog) - Thoughts from the founder of CD Baby
-* [Smart Passive Income](http://www.smartpassiveincome.com/blog/) - Pat Flyn and friends explain how to generate income continually
+
+### Podcasts
+* [Startup](https://gimletmedia.com/show/startup/) -  Each season follows a story of starting a business
+* [The Tim Ferris Show](http://fourhourworkweek.com/podcast/) Each episode, Tim deconstructs world-class performers from eclectic areas to extract the tactics and tools listeners can use
+* [Smart Passive Income](http://www.smartpassiveincome.com/category/podcast/) - Pat Flyn reveals all of his online business and blogging strategies, income sources and killer marketing tips

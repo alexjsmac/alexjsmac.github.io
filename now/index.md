@@ -6,16 +6,16 @@ comments: false
 share: false
 ---
 
-Last updated 23/01/2016
+Last updated 05/03/2016 (dd/mm/yyyy)
 
 * Living in Ottawa, ON while I complete an internship at Agriculture and Agri-Food Canada thtat involves working on a cloud computing and data grid project
 
 * Writing music for my solo project, [Xander John Scott](http://xanderjohnscott.com)
 
-* Volunteering regularly at [Centrepointe Theatre](http://www.centrepointetheatre.com/) and with [Ecology Ottawa](http://ecologyottawa.ca/)
+* Helping out with various tasks at [Possible Worlds](http://www.possibleworldsshop.com/)
 
-* Working on this blog ;)
+* Volunteering regularly at [Centrepointe Theatre](http://www.centrepointetheatre.com/) and with [Ecology Ottawa](http://ecologyottawa.ca/)
 
 * Beginning to hack away with an Arduino Uno
 
-* Finishing up a website for [Western University's Actuarial and Statistical Undergradute Association](http://www.westernasua.ca/)
+* As much snowboarding as possible while winter is here
