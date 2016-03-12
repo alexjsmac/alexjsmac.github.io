@@ -6,7 +6,7 @@ comments: false
 share: false
 ---
 
-Last updated 05/03/2016 (dd/mm/yyyy)
+Last updated: March 12, 2016
 
 * Living in Ottawa, ON while I complete an internship at Agriculture and Agri-Food Canada thtat involves working on a cloud computing and data grid project
 
