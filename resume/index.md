@@ -9,9 +9,6 @@ comments: false
 share: false
 ---
 
-Alex MacLean
-============
-
 Education
 ---------
 
