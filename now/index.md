@@ -6,16 +6,10 @@ comments: false
 share: false
 ---
 
-Last updated: March 12, 2016
+Last updated: November 21, 2016
 
-* Living in Ottawa, ON while I complete an internship at Agriculture and Agri-Food Canada thtat involves working on a cloud computing and data grid project
+* Living in London, ON while I finish up my undergraduate studies in Computer Science at Western University
 
-* Writing music for my solo project, [Xander John Scott](http://xanderjohnscott.com)
+* Recording bands and making promos for [Radio Western](https://chrwradio.ca/) as one of their production coordinators
 
-* Helping out with various tasks at [Possible Worlds](http://www.possibleworldsshop.com/)
-
-* Volunteering regularly at [Centrepointe Theatre](http://www.centrepointetheatre.com/) and with [Ecology Ottawa](http://ecologyottawa.ca/)
-
-* Beginning to hack away with an Arduino Uno
-
-* As much snowboarding as possible while winter is here
+* Looking for a job/masters program in Toronto for after graduation
