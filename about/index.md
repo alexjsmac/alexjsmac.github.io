@@ -6,7 +6,7 @@ comments: false
 share: false
 ---
 
-Starting off in Thunder Bay, Ontario I grew up with a keen passion for all things related to music and technology. Initally an aspiring musician, as the years passed I found myself not only playing in bands but also recording them. Then after high school I moved to southern Ontario and began becoming more and more interested in the actual software applications and hardware that are a part of audio. 
+Starting off in Thunder Bay, Ontario I grew up with a keen passion for all things related to music and technology. Initally an aspiring musician, as the years passed I found myself not only playing in bands but also recording them. Then after high school I moved to southern Ontario and began becoming more and more interested in the actual software applications and hardware that are a part of audio production. 
 
 As I travel down the path of finding my perfect niche I continue to pursue these areas of interest with various projects and people.
 
