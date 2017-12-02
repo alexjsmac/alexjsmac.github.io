@@ -18,4 +18,4 @@ Last updated: December 2nd, 2017
 
 * Trying to find more stage hand/audio tech gigs around Hamilton (know of any?)
 
-* Learning to make more music with Ableton and experiment with Live for Max
+* Studying to write the AWS SysOps Associate exam

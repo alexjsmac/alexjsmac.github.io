@@ -1,9 +1,7 @@
 ---
 layout: page
-title:
 date: 2016-11-22T10:12:34-05:00
 modified: 2016-11-22T11:11:34-05:00
-excerpt: Alex MacLean's Resume
 tags: [resume, alex, maclean]
 comments: false
 share: false
@@ -14,7 +12,7 @@ Education
 
 2012-2017 (expected)
 :   **BSc Honors, Computer Science**; Western University (London, ON)
-	
+
 	*Minor: Software Engineering*
 
 2010-2012
@@ -59,12 +57,12 @@ Technical Projects
 * With Javascript I created new blocks for making music and sounds with
 
 **Leap Maestro** - [https://github.com/amaclean199/Leap-Maestro](https://github.com/amaclean199/Leap-Maestro)
-	
+
 * A Theremin-like synthesizer instrument made for use with a Leap Motion device
 * Improved on the Theremin by using scale-grids and more textured synth sounds
 
 **Teaching Assistant Web Portal** - [https://github.com/amaclean199/TA-Prof-Website](https://github.com/amaclean199/TA-Prof-Website)
-	
+
 * Created a relational database with MySQL and attached a web interface using HTML, CSS, and PHP
 * Developed and deployed on an AWS instance provided by Western University
 
