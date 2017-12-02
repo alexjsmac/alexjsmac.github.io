@@ -6,7 +6,7 @@ modified: 2017-12-01
 tags: [AI, audio, soundscape, freesound, rekognition, resonance audio, flask, react, codestar]
 comments: true
 ---
-So at the end of October I came across a hackathon that a company called Product Hunt was hosting throughout November. [@_greg_smith](https://twitter.com/_greg_smith) and I have always talked about doing a project together and this seemed like the perfect incentive to get us started on something.
+So at the end of October I came across a hackathon that a company called Product Hunt was hosting throughout November. [Greg Smith](http://gregalexsmith.com/) and I have always talked about doing a project together and this seemed like the perfect incentive to get us started on something.
 
 Now at the end of the hackathon, we are very pleased to present... a Soundscape Generator!
 
