@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Soundscape Generator
 excerpt: "An app that easily create soundscapes for images."
 modified: 2017-12-01

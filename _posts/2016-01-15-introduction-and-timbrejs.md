@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Introduction and Timbre.js
 excerpt: "An introduction to the blog and a tutorial on Timbre.js."
 modified: 2016-02-13
@@ -166,7 +165,7 @@ Alternatively, uses can enter in MML directly to a different block:
 
 ### Conclusion
 
-The code that used Timbre.js resides in [runtime.js](https://github.com/waterbearlang/waterbear/blob/master/js/runtime.js#L999) and the HTML for the sound blocks is in [playground.html](https://github.com/waterbearlang/waterbear/blob/master/playground.html#L225). There are even more sound blocks than discussed here so I urge you to go and explore the rest on your own. 
+The code that used Timbre.js resides in [runtime.js](https://github.com/waterbearlang/waterbear/blob/master/js/runtime.js#L999) and the HTML for the sound blocks is in [playground.html](https://github.com/waterbearlang/waterbear/blob/master/playground.html#L225). There are even more sound blocks than discussed here so I urge you to go and explore the rest on your own.
 
 I found this project to be a great experience with taking an audio library and implementing it in an interesting way. Visual programming languages are meant to teach people to think like coders so a lot of consideration was put into making all options visible and understandable in order for users to quickly grasp what's available to them.
 

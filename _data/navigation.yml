@@ -1,17 +1,13 @@
-# Site navigation links
-
 main:
-  - title: About
+  - title: "About"
     url: /about/
-
-  - title: Musical Technology
-    url: /musicaltechnology/
-
-  - title: Resources
-    url: /resources/
-
-  - title: Now
+  - title: "Now"
     url: /now/
-
-  - title: Contact
+  - title: "Resources"
+    url: /resources/
+  - title: "Blog"
+    url: /blog/
+  - title: "Portfolio"
+    url: /portfolio/
+  - title: "Contact"
     url: /contact/
