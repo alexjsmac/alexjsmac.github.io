@@ -6,17 +6,22 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: /assets/images/home-banner.jpg
-excerpt: "Bacon ipsum dolor sit amet salami ham hock ham, hamburger corned beef short ribs kielbasa biltong t-bone drumstick tri-tip tail sirloin pork chop."
+excerpt: "Musician and software developer based in Hamilton, ON"
 feature_row:
-  - alt: "placeholder image 1"
-    title: "Placeholder 1"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-  - alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-  - alt: "placeholder image 2"
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+  - image_path: assets/images/guitar.jpg
+    alt: "Bands"
+    title: "Bands"
+    excerpt: "I play in [Xander John Scott](https://xanderjohnscott.com/) and [Deepsea Challenger](https://www.facebook.com/deepseachallengerband/)"
+  - image_path: assets/images/vr.jpg
+    alt: "New Media"
+    title: "New Media"
+    excerpt: "Have a look at my [portfolio]()"
+  - image_path: assets/images/robots.jpg
+    alt: "Machine Learning"
+    title: "Machine Learning"
+    excerpt: "Such as this [Soundscape Generator](https://www.alexmaclean.ca/2017/12/01/soundscape-generator.html)"
 ---
+
+# Areas of Interest
 
 {% include feature_row %}

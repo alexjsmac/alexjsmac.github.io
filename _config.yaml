@@ -109,8 +109,8 @@ analytics:
 author:
   name             : "Alex MacLean"
   avatar           : "/assets/images/profile_pic.jpg"
-  bio              : "A musician, software developer, and audio engineer from Northern Ontario."
-  location         : "Hamilton, ON"
+  bio              : ""
+  location         : # "Hamilton, ON"
   email            : #
   links:
     - label: "Email"
