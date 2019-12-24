@@ -2,7 +2,6 @@
 permalink: /now/
 layout: single
 title: What I'm Doing Now
-tags: [now, Alex, MacLean, experience, music, technology]
 comments: false
 share: false
 ---

@@ -2,7 +2,6 @@
 permalink: /contact/
 layout: single
 title: Contact
-tags: [contact, Alex, MacLean]
 comments: false
 share: false
 ---

@@ -2,7 +2,6 @@
 permalink: /resources/
 layout: collection
 title: Resources
-tags: [resources, Alex, MacLean, music, technology]
 comments: false
 share: false
 ---

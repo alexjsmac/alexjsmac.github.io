@@ -2,7 +2,6 @@
 permalink: /about/
 layout: single
 title: About Alex
-tags: [about, Alex, MacLean, bio, experience]
 comments: false
 share: false
 ---
