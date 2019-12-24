@@ -9,7 +9,7 @@ So at the end of October I came across a hackathon that a company called Product
 
 Now at the end of the hackathon, we are very pleased to present... a Soundscape Generator!
 
-![Soundscape Generator](../images/soundscape-generator.png)
+![Soundscape Generator](/images/soundscape-generator.png)
 
 ## The Idea
 
@@ -68,13 +68,13 @@ function getSoundSearchResults(keyword) {
 
 After retrieving the audio clips they could then each be streamed from Freesound either one at a time or all together. Don't like one of the clips? That's okay just hit the shuffle button and another result will be fetched!
 
-![Result](../images/result.png)
+![Result](/images/result.png)
 
 ### Room Settings
 
 The last goal we had was to add an appropriate amount of effects to match the types of environments where pictures were taken. Google's [Resonance Audio](https://aws.amazon.com/rekognition/) just happened to fall into our laps thanks to a post on [Hacker News](https://news.ycombinator.com/) and boy we're glad it did! It provides the ability to add reverb, as well as gain control and panning for the audio clips. We do our best to guess the types of room materials in the pictures from the features returned by Rekognition but there is definitely room for improvement here.
 
-![Room Settings](../images/environment.png)
+![Room Settings](/images/environment.png)
 
 ## What's Next
 

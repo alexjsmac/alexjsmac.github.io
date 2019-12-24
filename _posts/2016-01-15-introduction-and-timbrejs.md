@@ -9,7 +9,7 @@ Hello everyone and welcome to my brand new blog! This is a place where I'll be s
 
 I would like to begin this new adventure with a post about a Javascript audio library and an open-source project I became involved with back in September. The project is called [Waterbear](http://waterbearlang.com/) and it is a visual programming language with a great mascot:
 
-![Waterbear Mascot](../images/mascot-steampunk.jpg)
+![Waterbear Mascot](/images/mascot-steampunk.jpg)
 
 As one of the projects included in an interesting opportunity called [UCOSP](http://ucosp.ca/), as well as [some others](https://github.com/waterbearlang/waterbear/wiki/Contributors-and-Acknowledgements), many people have been involved with it throughout several years. It has already been through multiple iterations and continues to grow in all sorts of directions. The benefit of this being that each participant is welcome to contribute to it in any way he or she can imagine.
 
@@ -53,7 +53,7 @@ In this example, several sine waves are being combined inside of a `"perc"` Timb
 
 The block that was created to define synths within Waterbear includes options for the waveform, attack time, and release time. This provides a reasonable amount of sound-shaping for people to get started with:
 
-![Synth block](../images/synth_def.png)
+![Synth block](/images/synth_def.png)
 
 With this block a synth is being defined by the following:
 
@@ -95,7 +95,7 @@ freq.bang();
 
 Several sound effects were created in this way and a block was made with a drop-down menu to choose an effect from:
 
-![Sound effect block](../images/sound_effect_block.png)
+![Sound effect block](/images/sound_effect_block.png)
 
 ### Building songs from notes
 
@@ -103,7 +103,7 @@ Another big feature request was to be able to define notes with specific frequen
 
 First, a synth must be defined, then optionally set the tempo (120bpm by default), and then notes can be added. When it is time to play the melody within the program, a play block must be dropped into Waterbear in the desired location:
 
-![Sound notes example](../images/sound_notes.png)
+![Sound notes example](/images/sound_notes.png)
 
 In order to queue up notes for playback the information collected from the blocks has to first be converted into [Music Markup Language](http://www.musicmarkup.info/):
 
@@ -161,7 +161,7 @@ T("mml", {mml:song}, sound).on("ended", function() {
 
 Alternatively, uses can enter in MML directly to a different block:
 
-![MML block example](../images/mml_block_example.png)
+![MML block example](/images/mml_block_example.png)
 
 ### Conclusion
 
