@@ -2,20 +2,16 @@
 permalink: /now/
 layout: single
 title: What I'm Doing Now
-comments: false
-share: false
 ---
 
-Last updated: December 2nd, 2017
+Last updated: January 6th, 2019
 
-* Living in Hamilton (The Hammer) Ontario
+* Working towards an MA in Communication and New Media at McMaster University
 
-* Working as a DevOps and Cloud Engineer at Evertz Microsystems
+* Playing guitar and singing in a progressive rock band called [Deepsea Challenger](https://www.facebook.com/deepseachallengerband/)
 
-* Side projects such as this [Soundscape Generator](http://ec2-34-231-21-21.compute-1.amazonaws.com/)
+* Playing the computer in McMaster's [Cybernetic Orchestra](https://www.facebook.com/CyberneticOrchestra/)
 
-* Playing in a Strokes Tribute Band
+* Finishing up the [Fast AI course](https://course.fast.ai/)
 
-* Trying to find more stage hand/audio tech gigs around Hamilton (know of any?)
-
-* Studying to write the AWS SysOps Associate exam
+* Learning Haskell to help develop a collaborative live coding environment called [Estuary](https://estuary.mcmaster.ca/)

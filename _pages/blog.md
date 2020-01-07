@@ -1,6 +1,8 @@
 ---
 permalink: /blog/
 layout: posts
-title: Musical Technology
-excerpt: "A blog about all the ways music and technology interact."
+title: Blog
+author_profile: False
 ---
+
+Occasionally I write about things related to audio programming.
