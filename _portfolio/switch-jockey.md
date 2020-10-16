@@ -8,7 +8,7 @@ header:
   teaser: /assets/images/switch-jockey.png
 sidebar:
   - title: "Materials"
-    image: /assets/images/switch-Jockey.png
+    image: /assets/images/switch-jockey.png
     image_alt: "materials"
     text: "Three.js, TensorFlow, WebGL, Meyda"
 ---
