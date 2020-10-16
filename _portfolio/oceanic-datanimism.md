@@ -1,5 +1,5 @@
 ---
-title: "Oceanic Datanimism"
+title: "Oceanic \"Datanimism\""
 excerpt: "Data sonification web art"
 header:
   video:
