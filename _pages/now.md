@@ -2,6 +2,7 @@
 permalink: /now/
 layout: single
 title: What I'm Doing Now
+author_profile: False
 ---
 
 Last updated: October 16th, 2020
