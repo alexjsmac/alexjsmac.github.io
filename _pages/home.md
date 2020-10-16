@@ -12,7 +12,7 @@ feature_row:
   - image_path: assets/images/guitar.jpg
     alt: "Music"
     title: "Music"
-    excerpt: "I play in [Xander John Scott](https://xanderjohnscott.com/) and [Deepsea Challenger](https://www.facebook.com/deepseachallengerband/)"
+    excerpt: "I play in [Xander John Scott](https://xanderjohnscott.bandcamp.com/) and [Deepsea Challenger](https://www.facebook.com/deepseachallengerband/)"
   - image_path: assets/images/vr.jpg
     alt: "New Media"
     title: "New Media"

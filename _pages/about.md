@@ -4,10 +4,4 @@ layout: single
 title: About Me
 ---
 
-Originally I'm from Thunder Bay, ON and graduated from Fanshawe College's Music Industry Arts program before getting an HBSc in Computer Science from Western University.
-
-The intersection of sound and technology is really what I'm about. From there, things stem out into sub-genres such as machine learning and ecology.
-
-I also like to run and enjoy the odd video game...
-
-*"What we spend our time on is probably the most important decision we make." - Ray Kurzweil*
+Alex is a recent graduate of McMaster University's MA program in Communication and New Media and is now working as an Applied Machine Learning Engineer in the broadcast industry. He is originally from Northern Ontario and now resides in Hamilton, ON. His passion for music and technology guides his artistic practice investigating applications of machine learning in the arts. He has earned both a diploma in Music Industry Arts from Fanshawe College and an HBSc in Computer Science from Western University. So far he has presented works and performed at international conferences such as ICLC, NIME, and the Network Music Festival. Locally, Alex is also a member of a progressive rock band called Deepsea Challenger and McMaster's Cybernetic Orchestra, a live-coding laptop ensemble.
