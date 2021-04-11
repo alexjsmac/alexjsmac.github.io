@@ -5,11 +5,9 @@ title: What I'm Doing Now
 author_profile: False
 ---
 
-Last updated: October 16th, 2020
+Last updated: April 11th, 2021
 
-* Recently finished an MA in Communication and New Media at McMaster University
-
-* Playing guitar and vocal chords in [Deepsea Challenger](https://www.facebook.com/deepseachallengerband/)
+* Playing guitar and vocal cords in [Deepsea Challenger](https://www.facebook.com/deepseachallengerband/)
 
 * Playing the computer in McMaster's [Cybernetic Orchestra](https://www.facebook.com/CyberneticOrchestra/)
 
