@@ -22,3 +22,5 @@ The global mean sea level rise from 1880 to 2020 was sonified with the data from
 A HUGE thanks to the Canada Arts Council for supporting this creative research project.
 
 Plug in a VR headset to experience this piece as it's meant to be by checking out the live version [here](https://www.alexmaclean.ca/oceanic-datanimism-vr/). (But you can also view it on Chrome without a headset)
+
+And the code for this project can be found in this GitHub [repo](https://github.com/amaclean199/oceanic-datanimism-vr).
