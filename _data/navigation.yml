@@ -1,12 +1,14 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Now"
-    url: /now/
-  - title: "Resources"
-    url: /resources/
+  # - title: "Now"
+  #   url: /now/
+  # - title: "Resources"
+  #   url: /resources/
   - title: "Blog"
     url: /blog/
+  - title: "C.V."
+    url: /cv/
   - title: "Portfolio"
     url: /portfolio/
   - title: "Contact"
