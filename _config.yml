@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "neon" # "air", "aqua", "contrast", "dark", "dirt", "
 locale                   : "en-US"
 title                    : "Alex MacLean"
 title_separator          : "|"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "Subtitle"
 name                     : "Alex MacLean"
 description              : # ""
 url                      : "https://www.alexmaclean.ca"
@@ -124,7 +124,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/amaclean199"
+      url: "https://github.com/alexjsmac"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/alexjsmac"
@@ -146,7 +146,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/amaclean199"
+      url: "https://github.com/alexjsmac"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
