@@ -5,10 +5,10 @@ header:
   video:
     id: 809337840
     provider: vimeo
-  teaser: /assets/images/modular-grove.png
+  teaser: /assets/images/modular-grove.jpg
 sidebar:
   - title: "Materials"
-    image: /assets/images/modular-grove.png
+    image: /assets/images/modular-grove.jpg
     image_alt: "materials"
     text: "Pure Data, Godot, Multichannel audio, Modular Synthesis, Virtual Reality"
 ---
