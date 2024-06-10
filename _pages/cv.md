@@ -4,4 +4,4 @@ layout: single
 title: C.V.
 ---
 
-See what I've been up to academically [here](/assets/cv.pdf).
+See the full story [here](/assets/cv.pdf).

@@ -7,7 +7,7 @@ header:
   overlay_filter: "0.5"
   overlay_image: /assets/images/home-banner.jpg
 title: "Alex MacLean"
-excerpt: "Artist and software developer based in Hamilton, ON"
+excerpt: "Artist and software developer based in London, ON"
 feature_row:
   - image_path: assets/images/guitar.jpg
     alt: "Music"

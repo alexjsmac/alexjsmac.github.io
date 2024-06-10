@@ -4,12 +4,10 @@ layout: single
 title: About
 ---
 
-Alex is a recent graduate of McMaster University's MA program in Communication and New Media and is now working as an Applied Machine Learning Engineer in the broadcast industry.
+Alex MacLean (aka Sunntack) stands at the crossroads of art and technology. A new media artist, software developer, and live AV performer, he ventures into the unexplored territories of experimental electronic music, shaping auditory landscapes that push the conventional boundaries.
 
-Originally from Thunder Bay, ON and now residing in Hamilton, ON, his passion for music and technology guides his artistic practice investigating applications of machine learning in the arts.
+His performances are a fusion of audio-reactive video projections, an immersive marriage of sound and visuals. With a deep-seated curiosity for human ecology, Alex's work revolves around exploring related themes through the lens of the audiovisual.
 
-He has also earned both a diploma in Music Industry Arts from Fanshawe College and an HBSc in Computer Science from Western University.
+Alex's contributions have graced renowned stages at international conferences and festivals such as ICLC, NIME, and the Network Music Festival. Notably, his creative endeavors were acknowledged with the 2022 City of Hamilton Arts Awards Shirley Elford Emerging Artist Commission Prize, highlighting his innovative approach and impactful presence in the artistic sphere.
 
-Some of his works and performances have been included at international conferences and festivals such as ICLC (2020), NIME (2020), and the Network Music Festival (2020).
-
-Locally, Alex is a member of the Hamilton Arts Council and McMaster's Cybernetic Orchestra, a live-coding laptop ensemble.
+Through Alex's hands, technology becomes a tool for expression, and sound becomes a conduit for storytelling, crafting experiences that engage and resonate with audiences, offering glimpses into the uncharted territories of art and innovation.

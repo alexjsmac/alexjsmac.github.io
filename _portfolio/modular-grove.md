@@ -1,6 +1,6 @@
 ---
 title: "Modular Grove"
-excerpt: "A VR Forest Exploration Through Sound and Space "
+excerpt: "A VR forest exploration through sound and space "
 header:
   video:
     id: 809337840

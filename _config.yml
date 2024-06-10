@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "neon" # "air", "aqua", "contrast", "dark", "dirt", "
 locale                   : "en-US"
 title                    : "Alex MacLean"
 title_separator          : "|"
-subtitle                 : "Subtitle"
+subtitle                 : "Immersive Media Artist"
 name                     : "Alex MacLean"
 description              : # ""
 url                      : "https://www.alexmaclean.ca"
@@ -113,7 +113,7 @@ analytics:
 # Site Author
 author:
   name             : "Alex MacLean"
-  avatar           : "/assets/images/profile_pic.jpg"
+  avatar           : "/assets/images/sunntack-headshot.png"
   bio              : ""
   location         : # "Hamilton, ON"
   email            : #

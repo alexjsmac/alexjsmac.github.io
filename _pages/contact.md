@@ -4,4 +4,4 @@ layout: single
 title: Contact
 ---
 
-If you would like to get in touch to say hello, discuss a topic from my blog, or even propose a collaboration, then please do!
+Please feel free to reach out on Instagram or LinkedIn. I'm always interested in collaborating on new projects or discussing ideas.
