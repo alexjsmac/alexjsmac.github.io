@@ -1,10 +1,6 @@
 main:
   - title: "About"
     url: /about/
-  # - title: "Now"
-  #   url: /now/
-  # - title: "Resources"
-  #   url: /resources/
   - title: "Blog"
     url: /blog/
   - title: "C.V."
