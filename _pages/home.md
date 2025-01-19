@@ -24,6 +24,7 @@ feature_row:
 ---
 
 Co-Founder and Technical Director of [BluHeron Interactive](https://bluheroninteractive.com)
+{: .text-center}
 
 Blue Noise was presented in London, ON on June 1st and 2nd, 2024 as part of [Ocean Week Canada](https://oceanweekcan.ca/).
 {: .text-center}
