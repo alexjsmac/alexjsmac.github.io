@@ -23,6 +23,8 @@ feature_row:
     excerpt: " [Contact me](https://www.alexmaclean.ca/contact) for support as a technical artist or software developer"
 ---
 
+Co-Founder and Technical Director of [BluHeron Interactive](https://bluheroninteractive.com)
+
 Blue Noise was presented in London, ON on June 1st and 2nd, 2024 as part of [Ocean Week Canada](https://oceanweekcan.ca/).
 {: .text-center}
 
