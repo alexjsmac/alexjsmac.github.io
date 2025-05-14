@@ -7,12 +7,12 @@ header:
   overlay_filter: "0.5"
   overlay_image: /assets/images/outfalls.png
 title: "Alex MacLean"
-excerpt: "Immersive media artist and software developer based in London, ON"
+excerpt: "Immersive media artist, experimental electronic musician, and creative technologist based in London, ON"
 feature_row:
   - image_path: assets/images/bev-deconstructed.png
     alt: "Music"
     title: "Music"
-    excerpt: "Now performing and recording as as [Sunntack](https://linktr.ee/alexjsmac)"
+    excerpt: "Now performing and recording as [Sunntack](https://linktr.ee/alexjsmac)"
   - image_path: assets/images/blue-noise.png
     alt: "Artwork"
     title: "Artwork"
