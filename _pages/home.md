@@ -29,6 +29,11 @@ Co-Founder and Technical Director of [BluHeron Interactive](https://bluheroninte
 # Featured Projects
 {: .text-center}
 
+Green Space was developed as an exploration into the creative possibilities of projection mapping.
+{: .text-center}
+
+{% include video id="1104975768" provider="vimeo" %}
+
 Blue Noise was presented in London, Ontario on June 1st and 2nd, 2024 as part of [Ocean Week Canada](https://oceanweekcan.ca/).
 {: .text-center}
 
