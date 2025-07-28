@@ -1,11 +1,24 @@
 # Changelog
 
+## Unreleased
+
+### Enhancements
+
+- Hide page__footer-follow if there are no links nor atom feed. (#5279)
+- Add HTML escaping for some titles, labels and metada that was missing. (#5276)
+- Add optional `footer.since` for copyright time range. (#5275)
+
+### Bug Fixes
+
+- Add `escape_once` to gallery title and alt text.
+
 ## [4.27.1](https://github.com/mmistakes/minimal-mistakes/releases/tag/4.27.1)
 
 ### Enhancements
 
 - Add a "Share on Bluesky" button (#5179)
 - Add preset variables for modern font stack (#5033)
+- Update X share button to match brand color (#5245)
 
 ### Bug Fixes
 
