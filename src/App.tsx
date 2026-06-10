@@ -3,6 +3,7 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothScroll } from '@/lib/SmoothScroll'
+import { SceneRoot } from '@/scene/SceneRoot'
 import { Routes } from '@/routes'
 import { useAppStore } from '@/store/app'
 
@@ -18,6 +19,7 @@ export default function App() {
     <>
       <SkipLink />
       <SmoothScroll />
+      <SceneRoot />
       <div className="site">
         <Header />
         <main id="main">
