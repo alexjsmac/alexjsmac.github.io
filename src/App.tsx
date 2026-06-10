@@ -3,6 +3,7 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothScroll } from '@/lib/SmoothScroll'
+import { Routes } from '@/routes'
 import { useAppStore } from '@/store/app'
 
 export default function App() {
@@ -20,16 +21,7 @@ export default function App() {
       <div className="site">
         <Header />
         <main id="main">
-          {/* Placeholder until routes land */}
-          <section style={{ minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
-            <div className="container">
-              <p className="label-mono">Immersive Media Artist</p>
-              <h1 className="display-hero">
-                Alex <em className="display-italic">MacLean</em>
-              </h1>
-            </div>
-          </section>
-          <section style={{ minHeight: '120vh' }} />
+          <Routes />
         </main>
         <Footer />
       </div>

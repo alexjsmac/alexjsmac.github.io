@@ -1,0 +1,168 @@
+/* Surface — full-viewport hero */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: 6rem;
+}
+
+.roles {
+  margin-bottom: 1.2rem;
+  color: var(--bio-cyan);
+}
+
+.name {
+  margin-left: -0.05em;
+}
+
+.location {
+  margin-top: 1.6rem;
+}
+
+.descend {
+  position: absolute;
+  bottom: 2rem;
+  left: var(--gutter);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--ink-35);
+}
+
+.descendLine {
+  display: inline-block;
+  width: 1px;
+  height: 3.2rem;
+  background: linear-gradient(to bottom, var(--ink-35), transparent);
+  animation: descend-pulse 2.6s var(--ease-inout) infinite;
+  transform-origin: top;
+}
+
+@keyframes descend-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .descendLine {
+    animation: none;
+  }
+}
+
+/* Statement */
+.statement {
+  padding-block: var(--section);
+}
+
+.statementText {
+  color: var(--ink);
+}
+
+.statementLink {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--ink-60);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.statementLink:hover {
+  color: var(--bio-cyan);
+}
+
+/* Selected works */
+.works {
+  padding-block: var(--section);
+}
+
+.worksHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+}
+
+.allLink {
+  color: var(--ink-60);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.allLink:hover {
+  color: var(--bio-cyan);
+}
+
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr));
+  gap: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 4rem);
+}
+
+/* Stagger the two-column rhythm on wide screens */
+@media (min-width: 1000px) {
+  .worksGrid > :nth-child(even) {
+    transform: translateY(clamp(2rem, 6vh, 5rem));
+  }
+  .works {
+    padding-bottom: calc(var(--section) + 5rem);
+  }
+}
+
+/* Music */
+.music {
+  padding-block: var(--section);
+}
+
+.musicTitle {
+  margin-top: 0.8rem;
+}
+
+.musicText {
+  margin-top: 1.4rem;
+  color: var(--ink-60);
+}
+
+.musicVideo {
+  margin-top: 3rem;
+  max-width: 960px;
+}
+
+.musicVideoLink {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--ink-60);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.musicVideoLink:hover {
+  color: var(--bio-cyan);
+}
+
+.musicLinks {
+  list-style: none;
+  padding: 0;
+  margin-top: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.musicLink {
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.3rem;
+  transition: color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.musicLink:hover {
+  color: var(--bio-cyan);
+  border-color: var(--bio-cyan);
+}

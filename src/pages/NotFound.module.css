@@ -1,0 +1,31 @@
+.page {
+  padding-top: clamp(8rem, 26vh, 15rem);
+  min-height: 75svh;
+}
+
+.title {
+  margin-top: 0.6rem;
+}
+
+.note {
+  margin-top: 1.6rem;
+  color: var(--ink-60);
+}
+
+.surface {
+  display: inline-block;
+  margin-top: 3rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  transition: color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.surface:hover {
+  color: var(--abyss);
+  background: var(--bio-cyan);
+  border-color: var(--bio-cyan);
+}
