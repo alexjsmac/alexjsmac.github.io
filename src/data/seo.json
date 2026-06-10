@@ -1,0 +1,18 @@
+{
+  "/": {
+    "title": "Alex MacLean — Immersive Media Artist",
+    "description": "Alex MacLean is an immersive media artist, experimental electronic musician (Sunntack), and creative technologist based in London, Ontario."
+  },
+  "/work": {
+    "title": "Work — Alex MacLean",
+    "description": "Selected works by Alex MacLean: interactive installations, projection mapping, VR sound art, data sonification, and live audiovisual performance."
+  },
+  "/about": {
+    "title": "About — Alex MacLean",
+    "description": "Alex MacLean (aka Sunntack) is a new media artist, software developer, and live AV performer working at the crossroads of art and technology."
+  },
+  "/contact": {
+    "title": "Contact — Alex MacLean",
+    "description": "Get in touch with Alex MacLean to collaborate on immersive media, sound art, and creative technology projects."
+  }
+}

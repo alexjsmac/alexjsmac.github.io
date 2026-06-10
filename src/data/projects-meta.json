@@ -1,0 +1,260 @@
+[
+  {
+    "slug": "terminal-taxonomy",
+    "title": "Terminal Taxonomy",
+    "year": 2026,
+    "excerpt": "A live audiovisual meditation on the erosion of language and life in the age of algorithmic mediation",
+    "medium": "Live A/V performance",
+    "materials": [
+      "TouchDesigner",
+      "TDBitwig",
+      "Bitwig Studio",
+      "Eurorack modular",
+      "Elektron Digitone II",
+      "Elektron Digitakt",
+      "Torso S-4",
+      "LED bars / Art-Net"
+    ],
+    "video": { "provider": "youtube", "id": "gVczY7dNSvo" },
+    "featured": true,
+    "heroAlt": "Sunntack performing Terminal Taxonomy live — a glowing generative bio-sphere projected above a modular synth rig"
+  },
+  {
+    "slug": "concrete-canopy",
+    "title": "Concrete Canopy",
+    "year": 2025,
+    "excerpt": "An interactive projection mapping installation for Nuit Blanche London 2025",
+    "medium": "Outdoor interactive projection",
+    "materials": [
+      "TouchDesigner",
+      "Projection mapping",
+      "Custom web application",
+      "Generative audio"
+    ],
+    "video": { "provider": "youtube", "id": "4ILKOoMnx8w" },
+    "funders": ["Ontario Arts Council", "Government of Ontario"],
+    "featured": true,
+    "heroAlt": "Concrete Canopy projection mapped across the historic Kingsmill's Department Store façade at night"
+  },
+  {
+    "slug": "green-space",
+    "title": "Green Space",
+    "year": 2025,
+    "excerpt": "A projection mapping piece exploring the creative possibilities of manipulating a tree structure in space",
+    "medium": "Projection mapping",
+    "materials": [
+      "Microsoft Kinect",
+      "TouchDesigner",
+      "Bitwig Studio",
+      "Generative design"
+    ],
+    "video": { "provider": "vimeo", "id": "1104975768" },
+    "funders": ["Ontario Arts Council"],
+    "featured": true,
+    "heroAlt": "A tree structure wrapped in generative projection-mapped light"
+  },
+  {
+    "slug": "harp-chair",
+    "title": "Digital Harp Chair",
+    "year": 2025,
+    "excerpt": "An interactive installation that transforms a piece of furniture into an expressive musical instrument",
+    "medium": "Interactive sound sculpture",
+    "materials": [
+      "Bela microcontroller",
+      "Aluminum bars",
+      "Capacitive touch sensors",
+      "Speaker system",
+      "Custom C++"
+    ],
+    "video": { "provider": "vimeo", "id": "1104978611" },
+    "featured": true,
+    "heroAlt": "The Digital Harp Chair, with harp-shaped armrests strung with touch-sensitive aluminum bars"
+  },
+  {
+    "slug": "blue-noise",
+    "title": "Blue Noise",
+    "year": 2024,
+    "excerpt": "An immersive, interactive installation about noise pollution in the ocean",
+    "medium": "Interactive A/V installation",
+    "materials": [
+      "TouchDesigner",
+      "MediaPipe",
+      "Bitwig Studio",
+      "Lexica",
+      "RunwayML",
+      "Generative design"
+    ],
+    "video": { "provider": "vimeo", "id": "955939854" },
+    "funders": ["Ocean Week Canada"],
+    "featured": true,
+    "heroAlt": "Projected underwater visuals from Blue Noise in a darkened gallery space"
+  },
+  {
+    "slug": "outfalls",
+    "title": "Outfalls",
+    "year": 2024,
+    "excerpt": "An experimental electronic composition with AI-manipulated photography and live coding performance",
+    "medium": "A/V composition · live coding",
+    "materials": [
+      "RunwayML",
+      "Estuary",
+      "Punctual",
+      "Photography",
+      "Live coding",
+      "Bitwig Studio"
+    ],
+    "video": { "provider": "vimeo", "id": "917339410" },
+    "heroAlt": "AI-manipulated photography of water infrastructure from Outfalls"
+  },
+  {
+    "slug": "modular-grove",
+    "title": "Modular Grove",
+    "year": 2023,
+    "excerpt": "A VR forest exploration through sound and space",
+    "medium": "VR sound installation",
+    "materials": [
+      "Pure Data",
+      "Godot",
+      "Multichannel audio",
+      "Modular synthesis",
+      "Virtual reality"
+    ],
+    "video": { "provider": "vimeo", "id": "809337840" },
+    "funders": ["Canada Council for the Arts"],
+    "featured": false,
+    "heroAlt": "A dense virtual forest from Modular Grove, seen in VR"
+  },
+  {
+    "slug": "planktonic-space",
+    "title": "Planktonic Space",
+    "year": 2022,
+    "excerpt": "Interactive quad-channel sound installation on the delicate balance of phytoplankton ecosystems",
+    "medium": "Quad-channel sound installation",
+    "materials": ["Pure Data", "Processing", "Multichannel audio"],
+    "video": { "provider": "vimeo", "id": "765287114" },
+    "funders": ["Canada Council for the Arts"],
+    "featured": true,
+    "heroAlt": "Glowing generative plankton visuals from Planktonic Space"
+  },
+  {
+    "slug": "oceanic-datanimism-vr",
+    "title": "Oceanic “Datanimism” VR",
+    "year": 2021,
+    "excerpt": "Data sonification web art in virtual reality",
+    "medium": "WebVR data sonification",
+    "materials": [
+      "A-Frame",
+      "Sea level data",
+      "Tone.js",
+      "Freesound samples"
+    ],
+    "video": { "provider": "vimeo", "id": "671525447" },
+    "links": [
+      {
+        "label": "Live piece",
+        "href": "https://www.alexmaclean.ca/oceanic-datanimism-vr/"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/alexjsmac/oceanic-datanimism-vr"
+      }
+    ],
+    "funders": ["Canada Council for the Arts"],
+    "heroAlt": "A low-poly VR ocean scene from Oceanic Datanimism VR"
+  },
+  {
+    "slug": "bev-deconstructed",
+    "title": "Bev Deconstructed",
+    "year": 2021,
+    "excerpt": "An interactive audio visualizer and original music composition",
+    "medium": "Interactive audio visualizer",
+    "materials": ["Tidal Cycles", "Pro Tools", "Three.js"],
+    "video": { "provider": "vimeo", "id": "671543979" },
+    "links": [
+      {
+        "label": "Live piece",
+        "href": "https://www.alexmaclean.ca/tidal-hybrid-interactive-visualizer/"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/alexjsmac/tidal-hybrid-interactive-visualizer"
+      }
+    ],
+    "heroAlt": "Audio-reactive Three.js visuals from Bev Deconstructed"
+  },
+  {
+    "slug": "robotic-noise",
+    "title": "Robotic Noise",
+    "year": 2021,
+    "excerpt": "Servo motors play a noise box through Pure Data",
+    "medium": "Sound robotics",
+    "materials": [
+      "Teensy LC",
+      "Pure Data",
+      "Servos",
+      "Sensors",
+      "Noise box",
+      "Guitar FX"
+    ],
+    "video": { "provider": "vimeo", "id": "535507639" },
+    "heroAlt": "Servo motors mounted on a wooden noise box beside guitar effects pedals"
+  },
+  {
+    "slug": "switch-jockey",
+    "title": "Switch Jockey",
+    "year": 2020,
+    "excerpt": "An intelligent, automated video switcher for WebGL shaders",
+    "medium": "Machine-listening visualizer",
+    "materials": ["Three.js", "TensorFlow", "WebGL", "Meyda"],
+    "video": { "provider": "vimeo", "id": "443424961" },
+    "links": [
+      {
+        "label": "Live piece",
+        "href": "https://www.alexmaclean.ca/switch-jockey/"
+      }
+    ],
+    "heroAlt": "An audio-reactive WebGL shader frame from Switch Jockey"
+  },
+  {
+    "slug": "oceanic-datanimism",
+    "title": "Oceanic “Datanimism”",
+    "year": 2020,
+    "excerpt": "Data sonification web art giving rising sea levels a voice",
+    "medium": "Web data sonification",
+    "materials": [
+      "Three.js",
+      "Sea level data",
+      "Pro Tools",
+      "Freesound samples"
+    ],
+    "video": { "provider": "vimeo", "id": "468983242" },
+    "links": [
+      {
+        "label": "Live piece",
+        "href": "https://www.alexmaclean.ca/datanimism/"
+      }
+    ],
+    "heroAlt": "Generative rain and waveform visualization from Oceanic Datanimism"
+  },
+  {
+    "slug": "immersive-dreams",
+    "title": "Immersive Dreams",
+    "year": 2020,
+    "excerpt": "An interactive virtual reality sound installation shared between headset and room",
+    "medium": "VR sound installation",
+    "materials": ["Oculus Rift", "Unity", "SuperCollider"],
+    "video": { "provider": "vimeo", "id": "385393860" },
+    "heroAlt": "A performer in a VR headset surrounded by projection walls in Immersive Dreams"
+  },
+  {
+    "slug": "scrap-focus",
+    "title": "Scrap Focus",
+    "year": 2019,
+    "excerpt": "Six-channel sound installation on industrial noise intruding into residential life",
+    "medium": "6-channel sound installation",
+    "materials": ["Arduino", "SuperCollider", "Mixed media"],
+    "video": { "provider": "vimeo", "id": "383609337" },
+    "galleryCaption": "Photos from McMaster University's “Sensorium of Things” student exhibition, December 9–11, 2019",
+    "heroAlt": "Mixed-media sound installation Scrap Focus with suspended material over a sensor"
+  }
+]
