@@ -17,13 +17,13 @@ export default function Home() {
       {/* Surface */}
       <section className={styles.hero}>
         <div className="container">
-          <p className={`${styles.roles} label-mono`}>
+          <p className={`${styles.roles} label-mono`} data-reveal>
             {profile.roles.join(' / ')}
           </p>
           <h1 className={`${styles.name} display-hero`}>
             Alex <em className="display-italic">MacLean</em>
           </h1>
-          <p className={`${styles.location} label-mono`}>
+          <p className={`${styles.location} label-mono`} data-reveal>
             {profile.location} · “{profile.alias}”
           </p>
         </div>

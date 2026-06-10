@@ -74,11 +74,6 @@
   color: var(--bio-cyan);
 }
 
-.soundSlot {
-  display: flex;
-  align-items: center;
-}
-
 @media (max-width: 600px) {
   .navIndex {
     display: none;

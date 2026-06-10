@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'wouter'
+import { Magnetic } from '@/components/ui/MagneticLink'
 import { SoundToggle } from './SoundToggle'
 import styles from './Header.module.css'
 
@@ -27,8 +28,10 @@ export function Header() {
                 location.startsWith(item.href) ? 'page' : undefined
               }
             >
-              <span className={styles.navIndex}>0{i + 1}</span>
-              {item.label}
+              <Magnetic>
+                <span className={styles.navIndex}>0{i + 1}</span>{' '}
+                {item.label}
+              </Magnetic>
             </Link>
           ))}
           <SoundToggle />

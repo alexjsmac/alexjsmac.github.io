@@ -129,3 +129,15 @@ canvas {
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
+
+/* Custom cursor active (fine pointers, set by Cursor.tsx) */
+html.custom-cursor,
+html.custom-cursor a,
+html.custom-cursor button {
+  cursor: none;
+}
+
+/* SplitText line masks (PageTransition) */
+.reveal-line {
+  will-change: transform;
+}

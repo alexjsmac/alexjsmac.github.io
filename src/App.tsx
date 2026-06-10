@@ -3,6 +3,10 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { IntroGate } from '@/components/layout/IntroGate'
+import { PageTransition } from '@/components/layout/PageTransition'
+import { Cursor } from '@/components/layout/Cursor'
+import { DepthGauge } from '@/components/layout/DepthGauge'
+import { HoverPreview } from '@/components/ui/HoverPreview'
 import { SmoothScroll } from '@/lib/SmoothScroll'
 import { SceneRoot } from '@/scene/SceneRoot'
 import { Routes } from '@/routes'
@@ -28,6 +32,10 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      <DepthGauge />
+      <HoverPreview />
+      <PageTransition />
+      <Cursor />
       <IntroGate />
     </>
   )

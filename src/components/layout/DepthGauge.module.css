@@ -1,0 +1,42 @@
+.gauge {
+  position: fixed;
+  right: 1.4rem;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  pointer-events: none;
+}
+
+.track {
+  width: 1px;
+  height: clamp(90px, 18vh, 170px);
+  background: var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--bio-cyan);
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+.value {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-35);
+  writing-mode: vertical-rl;
+}
+
+@media (max-width: 860px) {
+  .gauge {
+    display: none;
+  }
+}
