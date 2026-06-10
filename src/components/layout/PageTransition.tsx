@@ -17,7 +17,7 @@ export function PageTransition() {
   const [location, navigate] = useLocation()
   const reduced = useReducedMotion()
   const transitioning = useRef(false)
-  const firstRun = useRef(true)
+  const prevLocation = useRef<string | null>(null)
 
   // Exit: intercept internal navigation clicks
   useEffect(() => {
@@ -56,16 +56,19 @@ export function PageTransition() {
     const main = document.getElementById('main')
     const h1 = main?.querySelector('h1')
 
-    // Focus for screen readers / keyboard users (skip initial load)
-    if (!firstRun.current && h1) {
+    // Focus for screen readers / keyboard users — only on real route
+    // changes (location-compare survives StrictMode effect replays).
+    // Deferred: the enter animation starts the page at visibility:hidden,
+    // and focus is a no-op inside a hidden subtree.
+    const isNavigation =
+      prevLocation.current !== null && prevLocation.current !== location
+    prevLocation.current = location
+    if (isNavigation && h1) {
       h1.setAttribute('tabindex', '-1')
-      h1.focus({ preventScroll: true })
+      setTimeout(() => h1.focus({ preventScroll: true }), 120)
     }
 
-    if (reduced) {
-      firstRun.current = false
-      return
-    }
+    if (reduced) return
     if (!main) return
 
     const ctx = gsap.context(() => {
@@ -93,21 +96,23 @@ export function PageTransition() {
         })
       }
 
-      gsap.fromTo(
-        main.querySelectorAll('[data-reveal]'),
-        { autoAlpha: 0, y: 18 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.07,
-          delay: 0.15,
-          ease: 'power2.out',
-        },
-      )
+      const reveals = main.querySelectorAll('[data-reveal]')
+      if (reveals.length > 0) {
+        gsap.fromTo(
+          reveals,
+          { autoAlpha: 0, y: 18 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.07,
+            delay: 0.15,
+            ease: 'power2.out',
+          },
+        )
+      }
     })
 
-    firstRun.current = false
     return () => ctx.revert()
   }, [location, reduced])
 

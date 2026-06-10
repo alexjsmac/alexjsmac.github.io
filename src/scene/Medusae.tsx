@@ -86,7 +86,7 @@ function Jelly({ spec }: { spec: JellySpec }) {
       new THREE.SphereGeometry(1, 28, 18, 0, Math.PI * 2, 0, Math.PI * 0.52),
     [],
   )
-  const tentacleGeometry = useMemo(buildTentacles, [])
+  const tentacleGeometry = useMemo(() => buildTentacles(), [])
 
   const bellMaterial = useMemo(
     () =>

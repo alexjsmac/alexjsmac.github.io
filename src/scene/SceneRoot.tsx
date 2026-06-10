@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Component, useEffect, type ReactNode } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
 import { frameBus } from '@/lib/frameBus'
@@ -11,6 +11,23 @@ import { Plankton } from './Plankton'
 import { Bioluminescence } from './Bioluminescence'
 import { Medusae } from './Medusae'
 import { Effects } from './Effects'
+
+/** If the scene ever hard-crashes, fall back to the CSS depth gradient. */
+class SceneBoundary extends Component<
+  { children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false }
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+  componentDidCatch() {
+    document.body.classList.add('no-scene')
+  }
+  render() {
+    return this.state.failed ? null : this.props.children
+  }
+}
 
 function PointerTracker() {
   useEffect(() => {
@@ -35,33 +52,35 @@ export function SceneRoot() {
   const profile = qualityProfile(quality)
 
   return (
-    <div className="scene-canvas" aria-hidden="true">
-      <PointerTracker />
-      <Canvas
-        dpr={[1, profile.dprMax]}
-        camera={{ fov: 50, near: 0.1, far: 120, position: [0, 0, 9] }}
-        gl={{
-          antialias: false,
-          powerPreference: 'high-performance',
-          stencil: false,
-          depth: true,
-        }}
-      >
-        <PerformanceMonitor
-          onDecline={quality !== 'low' ? degradeQuality : undefined}
-          flipflops={2}
+    <SceneBoundary>
+      <div className="scene-canvas" aria-hidden="true">
+        <PointerTracker />
+        <Canvas
+          dpr={[1, profile.dprMax]}
+          camera={{ fov: 50, near: 0.1, far: 120, position: [0, 0, 9] }}
+          gl={{
+            antialias: false,
+            powerPreference: 'high-performance',
+            stencil: false,
+            depth: true,
+          }}
         >
-          <Background />
-          <Plankton />
-          <Bioluminescence />
-          <Medusae />
-          <CameraRig />
-          <MoodController />
-          {/* Always mounted: the composer owns the final linear→sRGB encode,
-              so scene colors are authored in linear space. */}
-          <Effects />
-        </PerformanceMonitor>
-      </Canvas>
-    </div>
+          <PerformanceMonitor
+            onDecline={quality !== 'low' ? degradeQuality : undefined}
+            flipflops={2}
+          >
+            <Background />
+            <Plankton />
+            <Bioluminescence />
+            <Medusae />
+            <CameraRig />
+            <MoodController />
+            {/* Always mounted: the composer owns the final linear→sRGB
+                encode, so scene colors are authored in linear space. */}
+            <Effects />
+          </PerformanceMonitor>
+        </Canvas>
+      </div>
+    </SceneBoundary>
   )
 }
