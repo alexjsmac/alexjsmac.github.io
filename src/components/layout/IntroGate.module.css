@@ -1,0 +1,82 @@
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    ellipse at 50% 120%,
+    rgba(13, 59, 94, 0.35),
+    rgba(2, 6, 16, 0.96) 70%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: gate-in 600ms var(--ease-out);
+}
+
+@keyframes gate-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.inner {
+  text-align: center;
+  padding: var(--gutter);
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.title {
+  text-wrap: balance;
+}
+
+.note {
+  color: var(--ink-60);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.button {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.9rem 1.7rem;
+  transition: color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.button:hover {
+  border-color: var(--bio-cyan);
+  color: var(--bio-cyan);
+}
+
+.primary {
+  background: var(--bio-cyan);
+  border-color: var(--bio-cyan);
+  color: var(--abyss);
+}
+
+.primary:hover {
+  background: transparent;
+  color: var(--bio-cyan);
+}
+
+.esc {
+  margin-top: 0.6rem;
+  color: var(--ink-35);
+}

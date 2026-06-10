@@ -3,6 +3,8 @@ import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
 import { frameBus } from '@/lib/frameBus'
 import { useAppStore } from '@/store/app'
+import { sampleAudio } from '@/audio/analysis'
+import { audioEngine } from '@/audio/engine'
 import { sharedUniforms } from './uniforms'
 import { moodOf, rampColor } from './moods'
 
@@ -48,7 +50,10 @@ export function MoodController() {
       d,
     )
 
-    // Audio bands are pre-smoothed by the analyser; copy straight through
+    // Pull FFT bands onto the bus, then into the shared uniforms; the
+    // soundscape itself darkens with the descent.
+    sampleAudio()
+    audioEngine.setDepth(u.uDepth.value)
     u.uAudioLow.value = frameBus.audio.low
     u.uAudioMid.value = frameBus.audio.mid
     u.uAudioHigh.value = frameBus.audio.high

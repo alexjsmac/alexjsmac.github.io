@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { IntroGate } from '@/components/layout/IntroGate'
 import { SmoothScroll } from '@/lib/SmoothScroll'
 import { SceneRoot } from '@/scene/SceneRoot'
 import { Routes } from '@/routes'
@@ -27,6 +28,7 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      <IntroGate />
     </>
   )
 }

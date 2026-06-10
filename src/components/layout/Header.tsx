@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'wouter'
+import { SoundToggle } from './SoundToggle'
 import styles from './Header.module.css'
 
 const NAV = [
@@ -30,7 +31,7 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <div id="sound-toggle-slot" className={styles.soundSlot} />
+          <SoundToggle />
         </nav>
       </div>
     </header>
