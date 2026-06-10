@@ -6,6 +6,9 @@ import { qualityProfile } from '@/lib/quality'
 import { Background } from './Background'
 import { CameraRig } from './CameraRig'
 import { MoodController } from './MoodController'
+import { Plankton } from './Plankton'
+import { Bioluminescence } from './Bioluminescence'
+import { Medusae } from './Medusae'
 import { Effects } from './Effects'
 
 function PointerTracker() {
@@ -43,6 +46,9 @@ export function SceneRoot() {
         }}
       >
         <Background />
+        <Plankton />
+        <Bioluminescence />
+        <Medusae />
         <CameraRig />
         <MoodController />
         {/* Always mounted: the composer owns the final linear→sRGB encode,
