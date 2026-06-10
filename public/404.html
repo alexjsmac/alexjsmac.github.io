@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex MacLean</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      html {
+        background: #020610;
+      }
+    </style>
+    <script>
+      // Legacy Jekyll URLs → new homes; anything else bounces through the
+      // SPA-redirect pattern (index.html restores the path before mount).
+      ;(function () {
+        var path = location.pathname.replace(/\/+$/, '') || '/'
+        var legacy = {
+          '/portfolio/tidal-hybrid-interactive-visualizer':
+            '/work/bev-deconstructed',
+        }
+        var target
+        if (legacy[path]) target = legacy[path]
+        else if (path === '/portfolio') target = '/work'
+        else if (path.indexOf('/portfolio/') === 0)
+          target = '/work/' + path.slice('/portfolio/'.length)
+        else if (path === '/blog' || path.indexOf('/blog/') === 0)
+          target = '/'
+        else if (path === '/cv') target = '/cv.pdf'
+
+        if (target) {
+          location.replace(target)
+          return
+        }
+        sessionStorage.setItem(
+          'spa-redirect',
+          location.pathname + location.search + location.hash,
+        )
+        location.replace('/')
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>

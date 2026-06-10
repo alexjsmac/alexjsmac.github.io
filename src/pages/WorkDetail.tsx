@@ -21,7 +21,7 @@ export default function WorkDetail({ slug }: { slug: string }) {
         path={`/work/${project.slug}`}
         title={`${project.title} — Alex MacLean`}
         description={project.excerpt}
-        image={project.hero.src}
+        image={`/og/${project.slug}.jpg`}
       />
       <article className={styles.page}>
         <div className="container">
