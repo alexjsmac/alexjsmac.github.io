@@ -1,0 +1,192 @@
+{
+  "work": {
+    "terminal-taxonomy": {
+      "hero": {
+        "width": 1280,
+        "height": 720
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      }
+    },
+    "concrete-canopy": {
+      "hero": {
+        "width": 1280,
+        "height": 720
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      }
+    },
+    "green-space": {
+      "hero": {
+        "width": 1600,
+        "height": 908
+      },
+      "thumb": {
+        "width": 800,
+        "height": 454
+      }
+    },
+    "harp-chair": {
+      "hero": {
+        "width": 1200,
+        "height": 1600
+      },
+      "thumb": {
+        "width": 600,
+        "height": 800
+      }
+    },
+    "blue-noise": {
+      "hero": {
+        "width": 1600,
+        "height": 901
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      }
+    },
+    "outfalls": {
+      "hero": {
+        "width": 1512,
+        "height": 944
+      },
+      "thumb": {
+        "width": 800,
+        "height": 499
+      }
+    },
+    "modular-grove": {
+      "hero": {
+        "width": 1600,
+        "height": 900
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      }
+    },
+    "planktonic-space": {
+      "hero": {
+        "width": 1600,
+        "height": 1065
+      },
+      "thumb": {
+        "width": 800,
+        "height": 533
+      }
+    },
+    "oceanic-datanimism-vr": {
+      "hero": {
+        "width": 1600,
+        "height": 900
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      }
+    },
+    "bev-deconstructed": {
+      "hero": {
+        "width": 1600,
+        "height": 900
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      }
+    },
+    "robotic-noise": {
+      "hero": {
+        "width": 1600,
+        "height": 1200
+      },
+      "thumb": {
+        "width": 800,
+        "height": 600
+      },
+      "gallery": [
+        {
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    "oceanic-datanimism": {
+      "hero": {
+        "width": 1600,
+        "height": 761
+      },
+      "thumb": {
+        "width": 800,
+        "height": 381
+      }
+    },
+    "switch-jockey": {
+      "hero": {
+        "width": 1600,
+        "height": 694
+      },
+      "thumb": {
+        "width": 800,
+        "height": 347
+      }
+    },
+    "immersive-dreams": {
+      "hero": {
+        "width": 1576,
+        "height": 1096
+      },
+      "thumb": {
+        "width": 800,
+        "height": 556
+      }
+    },
+    "scrap-focus": {
+      "hero": {
+        "width": 1600,
+        "height": 1067
+      },
+      "thumb": {
+        "width": 800,
+        "height": 533
+      },
+      "gallery": [
+        {
+          "width": 1600,
+          "height": 1067
+        },
+        {
+          "width": 1600,
+          "height": 1067
+        },
+        {
+          "width": 1600,
+          "height": 1067
+        }
+      ]
+    }
+  },
+  "about": {
+    "headshot": {
+      "width": 800,
+      "height": 797
+    }
+  }
+}
