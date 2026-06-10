@@ -1,0 +1,18 @@
+.skip {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--abyss);
+  color: var(--bio-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--bio-cyan);
+  border-radius: 3px;
+  transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+  transform: none;
+}

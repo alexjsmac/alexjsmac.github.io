@@ -1,0 +1,68 @@
+.footer {
+  border-top: 1px solid var(--line);
+  margin-top: var(--section);
+}
+
+.inner {
+  padding-block: clamp(2.5rem, 6vh, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+
+.invite {
+  color: var(--ink);
+}
+
+.inviteLink {
+  color: var(--bio-cyan);
+}
+
+.inviteLink:hover {
+  color: var(--ink);
+}
+
+.socials {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.socialLink {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-60);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.socialLink:hover {
+  color: var(--bio-cyan);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem 3rem;
+}
+
+.bluheron {
+  color: var(--ink);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.bluheron:hover {
+  color: var(--bio-cyan);
+}

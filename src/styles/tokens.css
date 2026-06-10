@@ -1,0 +1,41 @@
+:root {
+  /* Depth ramp — keep in sync with the shader stops in scene/moods.ts */
+  --depth-0: #0d3b5e; /* surface */
+  --depth-1: #0a2c49; /* photic */
+  --depth-2: #061b30; /* mid */
+  --depth-3: #03101e; /* deep */
+  --abyss: #020610; /* page background */
+
+  --ink: #eaf4f4;
+  --ink-60: rgba(234, 244, 244, 0.62);
+  --ink-35: rgba(234, 244, 244, 0.35);
+  --line: rgba(234, 244, 244, 0.14);
+
+  --bio-cyan: #5ef0c8;
+  --bio-blue: #69b7ff;
+  --bio-violet: #9d8cff;
+
+  --font-display: 'Fraunces Variable', 'Georgia', serif;
+  --font-body: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'Menlo', monospace;
+
+  /* Fluid type scale */
+  --step--1: clamp(0.82rem, 0.79rem + 0.16vw, 0.94rem);
+  --step-0: clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.16rem + 0.45vw, 1.55rem);
+  --step-2: clamp(1.56rem, 1.4rem + 0.8vw, 2.1rem);
+  --step-3: clamp(1.95rem, 1.69rem + 1.3vw, 2.8rem);
+  --step-4: clamp(2.44rem, 2rem + 2.2vw, 3.9rem);
+  --step-hero: clamp(3.2rem, 10.5vw, 9.5rem);
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --section: clamp(6rem, 16vh, 11rem);
+  --content-max: 1480px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 200ms;
+  --dur: 400ms;
+}
