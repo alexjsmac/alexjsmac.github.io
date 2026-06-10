@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
+import { PerformanceMonitor } from '@react-three/drei'
 import { frameBus } from '@/lib/frameBus'
 import { useAppStore } from '@/store/app'
 import { qualityProfile } from '@/lib/quality'
@@ -29,6 +30,7 @@ function PointerTracker() {
  */
 export function SceneRoot() {
   const quality = useAppStore((s) => s.quality)
+  const degradeQuality = useAppStore((s) => s.degradeQuality)
   if (quality === 'static') return null
   const profile = qualityProfile(quality)
 
@@ -45,15 +47,20 @@ export function SceneRoot() {
           depth: true,
         }}
       >
-        <Background />
-        <Plankton />
-        <Bioluminescence />
-        <Medusae />
-        <CameraRig />
-        <MoodController />
-        {/* Always mounted: the composer owns the final linear→sRGB encode,
-            so scene colors are authored in linear space. */}
-        <Effects />
+        <PerformanceMonitor
+          onDecline={quality !== 'low' ? degradeQuality : undefined}
+          flipflops={2}
+        >
+          <Background />
+          <Plankton />
+          <Bioluminescence />
+          <Medusae />
+          <CameraRig />
+          <MoodController />
+          {/* Always mounted: the composer owns the final linear→sRGB encode,
+              so scene colors are authored in linear space. */}
+          <Effects />
+        </PerformanceMonitor>
       </Canvas>
     </div>
   )
