@@ -1,0 +1,97 @@
+.form {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.8rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.field label {
+  color: var(--bio-cyan);
+}
+
+.input {
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.55rem 0.1rem;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.input:hover {
+  border-color: var(--ink-35);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--bio-cyan);
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 7.5rem;
+  line-height: 1.6;
+}
+
+.gotcha {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.submit {
+  color: var(--abyss);
+  background: var(--bio-cyan);
+  border: 1px solid var(--bio-cyan);
+  border-radius: 999px;
+  padding: 0.9rem 1.7rem;
+  transition: background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.submit:hover:not(:disabled) {
+  background: transparent;
+  color: var(--bio-cyan);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status {
+  color: var(--ink-60);
+  font-size: var(--step--1);
+  min-height: 1.4em;
+  margin: 0;
+}

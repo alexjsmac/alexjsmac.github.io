@@ -1,5 +1,30 @@
 [
   {
+    "slug": "murmuration",
+    "title": "Murmuration",
+    "year": 2026,
+    "excerpt": "A live visual installation co-created by everyone in the room — prepared for Avant Mutek, Toronto",
+    "medium": "Live visual installation",
+    "materials": [
+      "Custom web application",
+      "TypeScript",
+      "Real-time co-creation",
+      "Firebase"
+    ],
+    "video": {
+      "provider": "file",
+      "id": "murmuration"
+    },
+    "links": [
+      {
+        "label": "Live promo",
+        "href": "https://murmuration-app.web.app/promo/"
+      }
+    ],
+    "featured": true,
+    "heroAlt": "A neon wireframe geodesic sphere from the Murmuration live visual installation"
+  },
+  {
     "slug": "terminal-taxonomy",
     "title": "Terminal Taxonomy",
     "year": 2026,

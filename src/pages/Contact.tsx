@@ -1,4 +1,5 @@
 import { Meta } from '@/components/ui/Meta'
+import { ContactForm } from '@/components/ui/ContactForm'
 import { profile } from '@/data/profile'
 import seo from '@/data/seo.json'
 import styles from './Contact.module.css'
@@ -23,6 +24,11 @@ export default function Contact() {
             developer.
           </p>
 
+          <div className={styles.formWrap}>
+            <ContactForm />
+          </div>
+
+          <p className={`${styles.elsewhere} label-mono`}>Or find me on</p>
           <ul className={styles.links} aria-label="Contact links">
             {profile.socials.map((social) => (
               <li key={social.label}>

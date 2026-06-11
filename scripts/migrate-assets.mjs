@@ -22,8 +22,13 @@ const WORK_OUT = path.join(ROOT, 'src/assets/work')
 const HERO_WIDTH = 1600
 const THUMB_WIDTH = 800
 
-/** slug → image sources (relative to old assets/images, or youtube:<id>) */
+/**
+ * slug → image sources. Values are relative to the old site's
+ * assets/images, or `youtube:<id>` (fetch thumbnail), or `local:<path>`
+ * (relative to this repo's root).
+ */
 const PROJECTS = {
+  murmuration: { teaser: 'local:src/assets/murmuration/poster.webp' },
   'terminal-taxonomy': { teaser: 'youtube:gVczY7dNSvo' },
   'concrete-canopy': { teaser: 'youtube:4ILKOoMnx8w' },
   'green-space': { teaser: 'green-space.png' },
@@ -55,6 +60,9 @@ async function exists(p) {
 }
 
 async function sourceFor(spec) {
+  if (spec.startsWith('local:')) {
+    return path.join(ROOT, spec.slice('local:'.length))
+  }
   if (!spec.startsWith('youtube:')) return path.join(IMAGES, spec)
   const id = spec.slice('youtube:'.length)
   const cached = path.join(CACHE, `${id}.jpg`)

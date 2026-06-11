@@ -37,6 +37,28 @@
         }
       })()
     </script>
+
+    <script>
+      // Google Analytics (GA4). Replace G-XXXXXXXXXX with the measurement ID
+      // from analytics.google.com → Admin → Data Streams (the old
+      // UA-75015574-1 property was migrated to GA4 when Google retired UA).
+      // Page views are sent by the SPA router, not by this config.
+      (function () {
+        var GA_ID = 'G-XXXXXXXXXX'
+        if (GA_ID.indexOf('XXXX') !== -1) return // not configured yet
+        if (/^(localhost|127\.|0\.|192\.168\.)/.test(location.hostname)) return
+        var s = document.createElement('script')
+        s.async = true
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID
+        document.head.appendChild(s)
+        window.dataLayer = window.dataLayer || []
+        window.gtag = function () {
+          window.dataLayer.push(arguments)
+        }
+        window.gtag('js', new Date())
+        window.gtag('config', GA_ID, { send_page_view: false })
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

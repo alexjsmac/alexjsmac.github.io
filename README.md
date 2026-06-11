@@ -31,6 +31,15 @@ Useful dev query params: `?q=high|mid|low|static` forces a quality tier
 (`static` = no WebGL, CSS gradient fallback — also what
 `prefers-reduced-motion` gets).
 
+## One-time config
+
+- **Contact form:** create a form at formspree.io (pointing at the contact
+  address) and paste its ID into `contact.formspreeId` in
+  `src/data/profile.ts`. Until then the form opens the visitor's mail app.
+- **Analytics:** replace `G-XXXXXXXXXX` in `index.html` with the GA4
+  measurement ID (analytics.google.com → Admin → Data Streams; the old
+  UA-75015574-1 property was auto-migrated to GA4). Nothing loads until set.
+
 ## Architecture notes
 
 - `src/data/projects-meta.json` is the canonical project list (node-readable;

@@ -1,5 +1,15 @@
 {
   "work": {
+    "murmuration": {
+      "hero": {
+        "width": 640,
+        "height": 640
+      },
+      "thumb": {
+        "width": 640,
+        "height": 640
+      }
+    },
     "terminal-taxonomy": {
       "hero": {
         "width": 1280,

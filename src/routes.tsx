@@ -35,6 +35,12 @@ export function Routes() {
   useEffect(() => {
     scrollToTop(true)
     setMoodKey(moodFor(location))
+    // SPA page views (child Meta effects have already set document.title)
+    window.gtag?.('event', 'page_view', {
+      page_path: location,
+      page_location: window.location.href,
+      page_title: document.title,
+    })
   }, [location, setMoodKey])
 
   return (

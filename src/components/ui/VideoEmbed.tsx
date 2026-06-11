@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import type { ProjectImage, ProjectVideo } from '@/data/projects'
+import { FILE_VIDEOS, type ProjectImage, type ProjectVideo } from '@/data/projects'
 import { Picture } from './Picture'
 import styles from './VideoEmbed.module.css'
 
-const EMBED_ORIGINS: Record<ProjectVideo['provider'], string[]> = {
+const EMBED_ORIGINS: Partial<Record<ProjectVideo['provider'], string[]>> = {
   vimeo: ['https://player.vimeo.com', 'https://i.vimeocdn.com'],
   youtube: ['https://www.youtube-nocookie.com', 'https://i.ytimg.com'],
 }
@@ -16,7 +16,7 @@ function embedSrc(video: ProjectVideo): string {
 
 const preconnected = new Set<string>()
 function preconnect(provider: ProjectVideo['provider']) {
-  for (const origin of EMBED_ORIGINS[provider]) {
+  for (const origin of EMBED_ORIGINS[provider] ?? []) {
     if (preconnected.has(origin)) continue
     preconnected.add(origin)
     const link = document.createElement('link')
@@ -38,6 +38,27 @@ interface VideoEmbedProps {
  */
 export function VideoEmbed({ video, poster, title }: VideoEmbedProps) {
   const [playing, setPlaying] = useState(false)
+
+  // Self-hosted recording: a plain looping <video>, no facade needed
+  if (video.provider === 'file') {
+    const file = FILE_VIDEOS[video.id]
+    if (!file) return null
+    return (
+      <div className={styles.frame}>
+        <video
+          className={styles.fileVideo}
+          src={file.src}
+          poster={file.poster}
+          controls
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label={`${title} — recording`}
+        />
+      </div>
+    )
+  }
 
   if (playing) {
     return (

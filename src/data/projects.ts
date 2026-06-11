@@ -2,6 +2,10 @@ import type { ComponentType } from 'react'
 import meta from './projects-meta.json'
 import manifest from './image-manifest.json'
 
+import murmurationLoop from '@/assets/murmuration/loop.webm'
+import murmurationPoster from '@/assets/murmuration/poster.webp'
+
+import Murmuration from '@/content/murmuration'
 import TerminalTaxonomy from '@/content/terminal-taxonomy'
 import ConcreteCanopy from '@/content/concrete-canopy'
 import GreenSpace from '@/content/green-space'
@@ -26,8 +30,13 @@ export interface ProjectImage {
 }
 
 export interface ProjectVideo {
-  provider: 'vimeo' | 'youtube'
+  provider: 'vimeo' | 'youtube' | 'file'
   id: string
+}
+
+/** Self-hosted recordings for `provider: 'file'` videos, keyed by video id. */
+export const FILE_VIDEOS: Record<string, { src: string; poster: string }> = {
+  murmuration: { src: murmurationLoop, poster: murmurationPoster },
 }
 
 export interface ProjectLink {
@@ -54,6 +63,7 @@ export interface Project {
 }
 
 const BODIES: Record<string, ComponentType> = {
+  murmuration: Murmuration,
   'terminal-taxonomy': TerminalTaxonomy,
   'concrete-canopy': ConcreteCanopy,
   'green-space': GreenSpace,

@@ -51,5 +51,16 @@ export const profile = {
   ],
   contactNote:
     'Please feel free to reach out on Instagram or LinkedIn. I’m always interested in collaborating on new projects or discussing ideas.',
+  contact: {
+    /**
+     * Formspree form ID. Create a form at https://formspree.io pointing at
+     * the address below, then paste its ID here (e.g. 'mqkrzzyx'). Until
+     * set, the form falls back to opening the visitor's email app.
+     */
+    formspreeId: '',
+    /* Kept split so the address never appears verbatim in the bundle */
+    emailUser: 'alex',
+    emailDomain: 'bluheroninteractive.com',
+  },
   cvUrl: '/cv.pdf',
 }
