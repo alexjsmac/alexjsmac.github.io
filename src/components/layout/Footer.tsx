@@ -7,12 +7,9 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.top}>
-          <p className={`${styles.invite} display-lg`}>
-            Surfacing?{' '}
-            <Link href="/contact" className={`${styles.inviteLink} display-italic`}>
-              Let’s talk.
-            </Link>
-          </p>
+          <Link href="/" className={`${styles.wordmark} display-xl`}>
+            Alex <em className="display-italic">MacLean</em>
+          </Link>
           <ul className={styles.socials} aria-label="Social links">
             {profile.socials.map((s) => (
               <li key={s.label}>

@@ -57,27 +57,93 @@
   }
 }
 
-/* Statement */
-.statement {
+/* Practice — three currents, three rows */
+.practice {
   padding-block: var(--section);
 }
 
-.statementText {
-  color: var(--ink);
+.practiceLede {
+  margin-top: 1rem;
+  margin-bottom: clamp(2rem, 5vh, 3rem);
 }
 
-.statementLink {
-  display: inline-block;
-  margin-top: 2rem;
-  color: var(--ink-60);
+.practiceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  max-width: 880px;
+}
+
+.practiceRow {
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.practiceLink {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2.6rem 1fr auto;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding-block: clamp(1rem, 2.4vh, 1.5rem);
+  transition: padding-left 350ms var(--ease-out);
+}
+
+.practiceLink:hover {
+  padding-left: 0.7rem;
+}
+
+.practiceIndex {
+  color: var(--ink-35);
   transition: color var(--dur-fast) var(--ease-out);
 }
 
-.statementLink:hover {
+.practiceTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 440;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.practiceLink:hover .practiceTitle,
+.practiceLink:hover .practiceIndex {
   color: var(--bio-cyan);
 }
 
-/* Selected works */
+.practiceArrow {
+  color: var(--ink-35);
+  transition: color var(--dur-fast) var(--ease-out),
+    transform 350ms var(--ease-out);
+}
+
+.practiceLink:hover .practiceArrow {
+  color: var(--bio-cyan);
+  transform: translate(2px, -2px);
+}
+
+.practiceSecondary {
+  color: var(--ink-35);
+  white-space: nowrap;
+  padding-block: 0.4rem;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.practiceSecondary:hover {
+  color: var(--bio-cyan);
+}
+
+@media (max-width: 640px) {
+  .practiceSecondary {
+    display: none;
+  }
+}
+
+/* Selected works — exactly two */
 .works {
   padding-block: var(--section);
 }
@@ -105,56 +171,78 @@
   gap: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 4rem);
 }
 
-/* Stagger the two-column rhythm on wide screens */
 @media (min-width: 1000px) {
   .worksGrid > :nth-child(even) {
-    transform: translateY(clamp(2rem, 6vh, 5rem));
+    transform: translateY(clamp(1.5rem, 4vh, 3.5rem));
   }
   .works {
-    padding-bottom: calc(var(--section) + 5rem);
+    padding-bottom: calc(var(--section) + 3.5rem);
   }
 }
 
-/* Music */
-.music {
+/* Murmuration — live spotlight */
+.murmuration {
   padding-block: var(--section);
 }
 
-.musicTitle {
-  margin-top: 0.8rem;
+.murmurationCard {
+  display: grid;
+  grid-template-columns: minmax(260px, 440px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 
-.musicText {
-  margin-top: 1.4rem;
-  color: var(--ink-60);
+.murmurationCard:hover {
+  border-color: rgba(94, 240, 200, 0.45);
 }
 
-.musicVideo {
-  margin-top: 3rem;
-  max-width: 960px;
+@media (max-width: 860px) {
+  .murmurationCard {
+    grid-template-columns: 1fr;
+  }
 }
 
-.musicVideoLink {
-  display: inline-block;
-  margin-top: 1rem;
-  color: var(--ink-60);
+.murmurationMedia {
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 1;
+  background: var(--depth-3);
+}
+
+.murmurationMedia video,
+.murmurationMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.murmurationBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+
+.murmurationTitle {
   transition: color var(--dur-fast) var(--ease-out);
 }
 
-.musicVideoLink:hover {
+.murmurationCard:hover .murmurationTitle {
   color: var(--bio-cyan);
 }
 
-.musicLinks {
-  list-style: none;
-  padding: 0;
-  margin-top: 2.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+.murmurationText {
+  color: var(--ink-60);
+  max-width: 44ch;
+  line-height: 1.6;
 }
 
-.musicLink {
+.murmurationLink {
   color: var(--ink);
   border-bottom: 1px solid var(--line);
   padding-bottom: 0.3rem;
@@ -162,7 +250,7 @@
     border-color var(--dur-fast) var(--ease-out);
 }
 
-.musicLink:hover {
+.murmurationCard:hover .murmurationLink {
   color: var(--bio-cyan);
   border-color: var(--bio-cyan);
 }

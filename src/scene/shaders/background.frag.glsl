@@ -5,7 +5,7 @@ varying vec2 vUv;
 uniform float uTime;
 uniform float uDepth;
 uniform float uCaustics;
-uniform float uAudioHigh;
+uniform float uAudioWarp;
 uniform float uAspect;
 uniform vec3 uRamp[5];
 
@@ -21,12 +21,15 @@ vec3 ramp(float t) {
   return c;
 }
 
-// Interference caustics — warped sine filaments
+// Interference caustics — warped sine filaments. The soundscape bends the
+// cloud structures (slow uAudioWarp swell), never strobes them.
 float caustics(vec2 uv, float t) {
   vec2 p = uv * vec2(uAspect * 5.0, 5.0);
-  p += 0.45 * vec2(
-    snoise(vec3(uv * 2.4, t * 0.09)),
-    snoise(vec3(uv * 2.4 + 13.7, t * 0.11))
+  float warp = 0.45 + uAudioWarp * 0.6;
+  float drift = t * (0.09 + uAudioWarp * 0.04);
+  p += warp * vec2(
+    snoise(vec3(uv * (2.4 + uAudioWarp * 0.8), drift)),
+    snoise(vec3(uv * (2.4 + uAudioWarp * 0.8) + 13.7, drift * 1.2))
   );
   float a = sin(p.x * 1.6 + t * 0.55)
           + sin(p.y * 2.2 - t * 0.42)
@@ -57,7 +60,7 @@ void main() {
 
   float c = caustics(vUv, uTime) * uCaustics * light;
   c *= smoothstep(0.35, 0.95, vUv.y);
-  c *= 0.5 + 0.25 * uAudioHigh;
+  c *= 0.55;
   color += c * vec3(0.36, 0.62, 0.66);
 
   float s = shafts(vUv, uTime) * light;

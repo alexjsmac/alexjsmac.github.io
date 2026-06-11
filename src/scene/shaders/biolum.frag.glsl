@@ -13,13 +13,14 @@ float hash11(float p) {
 void main() {
   vec2 p = gl_PointCoord - 0.5;
   float r = length(p);
-  float glow = smoothstep(0.5, 0.0, r);
-  float core = smoothstep(0.18, 0.0, r);
+  // Tight, sharp speck — almost no halo
+  float glow = smoothstep(0.34, 0.04, r);
+  float core = smoothstep(0.1, 0.0, r);
 
   vec3 color = mix(uColorA, uColorB, hash11(vSeed + 2.3));
   float fade = 1.0 - vLife;
 
-  // HDR push so only these cross the bloom threshold
-  vec3 hdr = color * (1.1 + core * 2.6) * fade;
-  gl_FragColor = vec4(hdr, glow * fade * 0.9);
+  // Modest HDR push: a glint, not fairy dust
+  vec3 hdr = color * (0.9 + core * 1.6) * fade;
+  gl_FragColor = vec4(hdr, glow * fade * 0.85);
 }

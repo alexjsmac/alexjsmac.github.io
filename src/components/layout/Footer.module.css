@@ -18,16 +18,13 @@
   gap: 1.5rem 3rem;
 }
 
-.invite {
+.wordmark {
   color: var(--ink);
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-.inviteLink {
+.wordmark:hover em {
   color: var(--bio-cyan);
-}
-
-.inviteLink:hover {
-  color: var(--ink);
 }
 
 .socials {

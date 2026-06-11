@@ -14,7 +14,7 @@ export function CameraRig() {
     camera.position.y = THREE.MathUtils.damp(
       camera.position.y,
       targetY,
-      3.2,
+      4.2,
       d,
     )
     camera.rotation.x = THREE.MathUtils.damp(

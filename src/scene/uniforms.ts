@@ -14,5 +14,6 @@ export const sharedUniforms = {
   uAudioMid: { value: 0 },
   uAudioHigh: { value: 0 },
   uAudioLevel: { value: 0 },
+  uAudioWarp: { value: 0 },
   uRamp: { value: RAMP_COLORS.map((c) => new THREE.Color().copy(c)) },
 }

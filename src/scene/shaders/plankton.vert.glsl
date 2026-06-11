@@ -5,8 +5,7 @@ attribute float aPhase;
 uniform float uTime;
 uniform float uDepth;
 uniform float uParticleEnergy;
-uniform float uAudioLow;
-uniform float uAudioMid;
+uniform float uAudioWarp;
 uniform float uPixelRatio;
 uniform float uCameraY;
 
@@ -32,10 +31,11 @@ void main() {
     (hash11(aSeed + 27.7) - 0.5) * BOUNDS.z
   );
 
-  // Slow curl-field drift + audio-driven agitation
-  float drift = uTime * (0.018 + 0.02 * uAudioMid * uParticleEnergy);
+  // Slow curl-field drift; the soundscape leans on it gently via the
+  // slow warp swell (size stays steady — no jitter)
+  float drift = uTime * (0.018 + 0.012 * uAudioWarp * uParticleEnergy);
   vec3 flow = curlNoise(home * 0.08 + vec3(0.0, drift, aSeed * 0.13));
-  vec3 pos = home + flow * (2.2 + 1.4 * uAudioMid);
+  vec3 pos = home + flow * (2.2 + 0.9 * uAudioWarp);
 
   // Gentle marine-snow sink, faster when energetic
   pos.y -= uTime * (0.12 + 0.25 * uParticleEnergy * 0.3);
@@ -56,7 +56,7 @@ void main() {
   float dist = length(mvPosition.xyz);
   vFade = 1.0 - smoothstep(7.0, 26.0, dist);
 
-  float size = aSize * (0.85 + 0.4 * uAudioLow) * (0.8 + 0.4 * uParticleEnergy);
+  float size = aSize * (0.8 + 0.4 * uParticleEnergy);
   gl_PointSize = size * uPixelRatio * (95.0 / dist);
   gl_Position = projectionMatrix * mvPosition;
 }

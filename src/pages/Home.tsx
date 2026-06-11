@@ -1,14 +1,88 @@
 import { Link } from 'wouter'
 import { Meta } from '@/components/ui/Meta'
 import { ProjectCard } from '@/components/ui/ProjectCard'
-import { VideoEmbed } from '@/components/ui/VideoEmbed'
-import { featured, bySlug, projects } from '@/data/projects'
+import { useReducedMotion } from '@/lib/useReducedMotion'
+import { featured, projects } from '@/data/projects'
 import { profile } from '@/data/profile'
 import seo from '@/data/seo.json'
+import murmurationLoop from '@/assets/murmuration/loop.webm'
+import murmurationPoster from '@/assets/murmuration/poster.webp'
 import styles from './Home.module.css'
 
+interface PracticeRow {
+  index: string
+  title: string
+  href: string
+  external?: boolean
+  secondary?: { label: string; href: string }
+}
+
+const PRACTICE: PracticeRow[] = [
+  {
+    index: '01',
+    title: 'Installations & projection mapping',
+    href: '/work',
+  },
+  {
+    index: '02',
+    title: 'Live A/V performance as “Sunntack”',
+    href: 'https://linktr.ee/alexjsmac',
+    external: true,
+    secondary: {
+      label: 'SoundCloud',
+      href: 'https://soundcloud.com/xanderjohnscott',
+    },
+  },
+  {
+    index: '03',
+    title: 'Creative technology — BluHeron Interactive',
+    href: 'https://bluheroninteractive.com',
+    external: true,
+  },
+]
+
+function PracticeRowItem({ row }: { row: PracticeRow }) {
+  const inner = (
+    <>
+      <span className={`${styles.practiceIndex} label-mono`}>{row.index}</span>
+      <span className={styles.practiceTitle}>{row.title}</span>
+      <span className={`${styles.practiceArrow} label-mono`} aria-hidden="true">
+        {row.external ? '↗' : '→'}
+      </span>
+    </>
+  )
+  return (
+    <li className={styles.practiceRow}>
+      {row.external ? (
+        <a
+          href={row.href}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.practiceLink}
+        >
+          {inner}
+        </a>
+      ) : (
+        <Link href={row.href} className={styles.practiceLink}>
+          {inner}
+        </Link>
+      )}
+      {row.secondary && (
+        <a
+          href={row.secondary.href}
+          target="_blank"
+          rel="noreferrer"
+          className={`${styles.practiceSecondary} label-mono`}
+        >
+          {row.secondary.label} ↗
+        </a>
+      )}
+    </li>
+  )
+}
+
 export default function Home() {
-  const terminalTaxonomy = bySlug['terminal-taxonomy']
+  const reduced = useReducedMotion()
 
   return (
     <>
@@ -33,18 +107,21 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Statement */}
-      <section className={styles.statement}>
+      {/* Practice */}
+      <section className={styles.practice} aria-labelledby="practice-heading">
         <div className="container">
-          <p className={`${styles.statementText} display-lg measure`}>
-            Sound becomes a conduit for storytelling — installations,
-            performances, and instruments that listen back. Work at the
-            crossroads of <em className="display-italic">art</em> and{' '}
-            <em className="display-italic">technology</em>.
+          <h2 id="practice-heading" className="label-mono">
+            The practice
+          </h2>
+          <p className={`${styles.practiceLede} display-lg measure`}>
+            Sound, light, and code —{' '}
+            <em className="display-italic">experiences that listen back.</em>
           </p>
-          <Link href="/about" className={`${styles.statementLink} label-mono`}>
-            More about Alex →
-          </Link>
+          <ul className={styles.practiceList}>
+            {PRACTICE.map((row) => (
+              <PracticeRowItem key={row.index} row={row} />
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -67,55 +144,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Music / Sunntack */}
-      <section className={styles.music} aria-labelledby="music-heading">
+      {/* Murmuration — live now */}
+      <section
+        className={styles.murmuration}
+        aria-labelledby="murmuration-heading"
+      >
         <div className="container">
-          <p className="label-mono">Music</p>
-          <h2 id="music-heading" className={`${styles.musicTitle} display-xl`}>
-            Performing as{' '}
-            <em className="display-italic">{profile.alias}</em>
-          </h2>
-          <p className={`${styles.musicText} measure`}>
-            Live audiovisual sets where modular synthesis, custom vocal
-            processing, and generative visuals share one nervous system.
-          </p>
-          {terminalTaxonomy && (
-            <div className={styles.musicVideo}>
-              <VideoEmbed
-                video={terminalTaxonomy.video}
-                poster={terminalTaxonomy.hero}
-                title={terminalTaxonomy.title}
-              />
-              <Link
-                href={`/work/${terminalTaxonomy.slug}`}
-                className={`${styles.musicVideoLink} label-mono`}
+          <a
+            href="https://murmuration-app.web.app/promo/"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.murmurationCard}
+            data-cursor="view"
+          >
+            <span className={styles.murmurationMedia}>
+              {reduced ? (
+                <img
+                  src={murmurationPoster}
+                  width={640}
+                  height={640}
+                  alt="Murmuration — a neon wireframe sphere from the live visual installation"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <video
+                  src={murmurationLoop}
+                  poster={murmurationPoster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Looping recording of the Murmuration live visual"
+                />
+              )}
+            </span>
+            <span className={styles.murmurationBody}>
+              <span className="label-mono">
+                Live visual installation · BluHeron Interactive
+              </span>
+              <span
+                id="murmuration-heading"
+                className={`${styles.murmurationTitle} display-xl`}
               >
-                {terminalTaxonomy.title} ({terminalTaxonomy.year}) →
-              </Link>
-            </div>
-          )}
-          <ul className={styles.musicLinks}>
-            <li>
-              <a
-                href={profile.music.linktree}
-                target="_blank"
-                rel="noreferrer"
-                className={`${styles.musicLink} label-mono`}
-              >
-                Listen / follow — Linktree
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.music.soundcloud}
-                target="_blank"
-                rel="noreferrer"
-                className={`${styles.musicLink} label-mono`}
-              >
-                SoundCloud
-              </a>
-            </li>
-          </ul>
+                Murmuration
+              </span>
+              <span className={styles.murmurationText}>
+                A live visual installation, co-created by everyone in the room
+                — each phone places into a shared, evolving scene.
+              </span>
+              <span className={`${styles.murmurationLink} label-mono`}>
+                See the live promo ↗
+              </span>
+            </span>
+          </a>
         </div>
       </section>
     </>

@@ -5,47 +5,76 @@
   left: 0;
   z-index: 99;
   pointer-events: none;
-  border-radius: 50%;
   translate: -50% -50%;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background: var(--bio-cyan);
 }
 
+/* HUD corner brackets — 8 strips, 2 per corner */
 .ring {
+  --bracket: 9px;
+  --stroke: 1.5px;
   width: 34px;
   height: 34px;
-  border: 1px solid rgba(94, 240, 200, 0.45);
+  color: rgba(94, 240, 200, 0.55);
   display: grid;
   place-items: center;
-  transition: width 250ms var(--ease-out), height 250ms var(--ease-out),
-    background-color 250ms var(--ease-out), border-color 250ms var(--ease-out);
+  background-image: linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor);
+  background-position:
+    top left,
+    top left,
+    top right,
+    top right,
+    bottom left,
+    bottom left,
+    bottom right,
+    bottom right;
+  background-size:
+    var(--bracket) var(--stroke),
+    var(--stroke) var(--bracket),
+    var(--bracket) var(--stroke),
+    var(--stroke) var(--bracket),
+    var(--bracket) var(--stroke),
+    var(--stroke) var(--bracket),
+    var(--bracket) var(--stroke),
+    var(--stroke) var(--bracket);
+  background-repeat: no-repeat;
+  transition: width 220ms var(--ease-out), height 220ms var(--ease-out),
+    color 220ms var(--ease-out), background-color 220ms var(--ease-out);
 }
 
 .hover {
-  width: 48px;
-  height: 48px;
-  border-color: rgba(94, 240, 200, 0.85);
+  width: 46px;
+  height: 46px;
+  color: rgba(94, 240, 200, 0.95);
 }
 
 .view {
-  width: 64px;
-  height: 64px;
-  background: rgba(94, 240, 200, 0.92);
-  border-color: transparent;
+  width: 62px;
+  height: 62px;
+  color: var(--bio-cyan);
+  background-color: rgba(94, 240, 200, 0.94);
 }
 
 .viewLabel {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--abyss);
   opacity: 0;
-  transition: opacity 200ms var(--ease-out);
+  transition: opacity 180ms var(--ease-out);
 }
 
 .view .viewLabel {

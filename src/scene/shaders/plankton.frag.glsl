@@ -18,7 +18,7 @@ void main() {
 
   vec3 color = mix(uColorA, uColorB, vTwinkle);
   float sparkle = 0.6 + 0.4 * vTwinkle;
-  sparkle *= 1.0 + uAudioHigh * 0.8;
+  sparkle *= 1.0 + uAudioHigh * 0.25;
 
   // Deeper water mutes the plankton slightly
   float dim = mix(1.0, 0.65, uDepth);

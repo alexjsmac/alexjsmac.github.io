@@ -58,6 +58,7 @@ export function MoodController() {
     u.uAudioMid.value = frameBus.audio.mid
     u.uAudioHigh.value = frameBus.audio.high
     u.uAudioLevel.value = frameBus.audio.level
+    u.uAudioWarp.value = frameBus.audio.warp
 
     moodState.bloom = damp(moodState.bloom, mood.bloom, 1.8, d)
     moodState.fogDensity = damp(

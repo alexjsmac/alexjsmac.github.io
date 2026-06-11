@@ -15,6 +15,16 @@ function smooth(prev: number, next: number): number {
 }
 
 /**
+ * Lazy swell for large-scale motion (cloud warp): slow in BOTH directions
+ * so it bends rather than twitches.
+ */
+function swell(prev: number, next: number): number {
+  return next > prev
+    ? prev + (next - prev) * 0.03
+    : prev + (next - prev) * 0.012
+}
+
+/**
  * Called once per rendered frame (from the scene's tick). Reads the FFT,
  * folds it into smoothed low/mid/high band energies on the frameBus.
  */
@@ -27,6 +37,7 @@ export function sampleAudio() {
     audio.mid = smooth(audio.mid, 0)
     audio.high = smooth(audio.high, 0)
     audio.level = smooth(audio.level, 0)
+    audio.warp = swell(audio.warp, 0)
     return
   }
   analyser.getByteFrequencyData(bins)
@@ -34,4 +45,5 @@ export function sampleAudio() {
   audio.mid = smooth(audio.mid, band(8, 40))
   audio.high = smooth(audio.high, band(40, 100))
   audio.level = smooth(audio.level, band(1, 100))
+  audio.warp = swell(audio.warp, Math.min(1, audio.level * 1.6))
 }

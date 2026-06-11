@@ -9,6 +9,7 @@ import { CameraRig } from './CameraRig'
 import { MoodController } from './MoodController'
 import { Plankton } from './Plankton'
 import { Bioluminescence } from './Bioluminescence'
+import { SonarRings } from './SonarRings'
 import { Medusae } from './Medusae'
 import { Effects } from './Effects'
 
@@ -72,6 +73,7 @@ export function SceneRoot() {
             <Background />
             <Plankton />
             <Bioluminescence />
+            <SonarRings />
             <Medusae />
             <CameraRig />
             <MoodController />
