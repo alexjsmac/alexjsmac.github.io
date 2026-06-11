@@ -20,6 +20,26 @@
   margin-top: 1.6rem;
 }
 
+.now {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+
+.nowLabel {
+  color: var(--bio-cyan);
+}
+
+.nowLink {
+  color: var(--ink-60);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nowLink:hover {
+  color: var(--bio-cyan);
+}
+
 .descend {
   position: absolute;
   bottom: 2rem;

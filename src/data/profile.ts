@@ -9,6 +9,15 @@ export const profile = {
     'Creative Technologist',
   ],
   location: 'London, Ontario, Canada',
+  /**
+   * One line under the hero — keep it fresh: the latest or next show.
+   * Set to null to hide.
+   */
+  now: {
+    label: 'Recently',
+    text: 'Murmuration at Avant Mutek, Toronto',
+    href: '/work/murmuration',
+  } as { label: string; text: string; href: string } | null,
   bluheron: {
     name: 'BluHeron Interactive',
     role: 'Co-Founder & Technical Director',

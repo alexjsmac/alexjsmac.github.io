@@ -80,6 +80,14 @@ export default function Home() {
           <p className={`${styles.location} label-mono`} data-reveal>
             {profile.location} · “{profile.alias}”
           </p>
+          {profile.now && (
+            <p className={`${styles.now} label-mono`} data-reveal>
+              <span className={styles.nowLabel}>{profile.now.label}</span>
+              <Link href={profile.now.href} className={styles.nowLink}>
+                {profile.now.text} →
+              </Link>
+            </p>
+          )}
         </div>
         <p className={`${styles.descend} label-mono`} aria-hidden="true">
           Descend

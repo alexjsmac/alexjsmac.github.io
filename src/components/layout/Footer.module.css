@@ -63,3 +63,8 @@
 .bluheron:hover {
   color: var(--bio-cyan);
 }
+
+.colophon {
+  color: var(--ink-35);
+  max-width: 56ch;
+}

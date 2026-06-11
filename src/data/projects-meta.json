@@ -22,7 +22,10 @@
       }
     ],
     "featured": true,
-    "heroAlt": "A neon wireframe geodesic sphere from the Murmuration live visual installation"
+    "heroAlt": "A neon wireframe geodesic sphere from the Murmuration live visual installation",
+    "venues": [
+      "Avant Mutek — Mooi Space, Toronto, 2026"
+    ]
   },
   {
     "slug": "terminal-taxonomy",
@@ -45,7 +48,10 @@
       "id": "gVczY7dNSvo"
     },
     "featured": true,
-    "heroAlt": "Sunntack performing Terminal Taxonomy live — a glowing generative bio-sphere projected above a modular synth rig"
+    "heroAlt": "Sunntack performing Terminal Taxonomy live — a glowing generative bio-sphere projected above a modular synth rig",
+    "venues": [
+      "Honey Dip Bar, London ON, 2026"
+    ]
   },
   {
     "slug": "concrete-canopy",
@@ -68,7 +74,10 @@
       "Government of Ontario"
     ],
     "featured": true,
-    "heroAlt": "Concrete Canopy projection mapped across the historic Kingsmill's Department Store façade at night"
+    "heroAlt": "Concrete Canopy projection mapped across the historic Kingsmill's Department Store façade at night",
+    "venues": [
+      "Nuit Blanche London — Kingsmill’s façade, 2025"
+    ]
   },
   {
     "slug": "green-space",
@@ -354,6 +363,9 @@
       "id": "383609337"
     },
     "galleryCaption": "Photos from McMaster University's “Sensorium of Things” student exhibition, December 9–11, 2019",
-    "heroAlt": "Mixed-media sound installation Scrap Focus with suspended material over a sensor"
+    "heroAlt": "Mixed-media sound installation Scrap Focus with suspended material over a sensor",
+    "venues": [
+      "“Sensorium of Things”, McMaster University, Hamilton, 2019"
+    ]
   }
 ]

@@ -55,6 +55,16 @@ export default function WorkDetail({ slug }: { slug: string }) {
                   ))}
                 </ul>
               </section>
+              {project.venues && (
+                <section className={styles.asideBlock}>
+                  <h2 className="label-mono">Shown at</h2>
+                  <ul className={styles.asideList}>
+                    {project.venues.map((v) => (
+                      <li key={v}>{v}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
               {project.funders && (
                 <section className={styles.asideBlock}>
                   <h2 className="label-mono">Supported by</h2>

@@ -58,6 +58,8 @@ export interface Project {
   galleryCaption?: string
   links?: ProjectLink[]
   funders?: string[]
+  /** Where the work has been shown/performed, e.g. "Nuit Blanche London, 2025" */
+  venues?: string[]
   featured: boolean
   Body: ComponentType
 }
@@ -154,6 +156,7 @@ export const projects: Project[] = meta.map((m) => {
     galleryCaption: 'galleryCaption' in m ? m.galleryCaption : undefined,
     links: 'links' in m ? m.links : undefined,
     funders: 'funders' in m ? m.funders : undefined,
+    venues: 'venues' in m ? m.venues : undefined,
     featured: 'featured' in m ? (m.featured ?? false) : false,
     Body,
   }

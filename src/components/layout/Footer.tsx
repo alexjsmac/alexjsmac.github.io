@@ -41,6 +41,10 @@ export function Footer() {
             </a>
           </p>
         </div>
+        <p className={`${styles.colophon} label-mono`}>
+          This site is itself a small instrument — a generative WebGL ocean
+          with a live synthesized soundscape. No templates, no stock.
+        </p>
       </div>
     </footer>
   )

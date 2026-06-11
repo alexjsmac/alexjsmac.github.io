@@ -1,9 +1,23 @@
 import { Meta } from '@/components/ui/Meta'
 import { profile } from '@/data/profile'
+import { projects } from '@/data/projects'
 import seo from '@/data/seo.json'
 import manifest from '@/data/image-manifest.json'
 import headshotSrc from '@/assets/about/headshot.webp'
 import styles from './About.module.css'
+
+/** Dated venue history, derived straight from the work data (newest first) */
+const events = projects
+  .filter((p) => p.venues)
+  .flatMap((p) =>
+    p.venues!.map((venue) => ({
+      year: p.year,
+      title: p.title,
+      // The year column already shows it
+      venue: venue.replace(/,?\s*20\d\d$/, ''),
+    })),
+  )
+  .sort((a, b) => b.year - a.year)
 
 export default function About() {
   return (
@@ -39,6 +53,25 @@ export default function About() {
                   {paragraph}
                 </p>
               ))}
+
+              <section className={styles.events}>
+                <h2 className="label-mono">
+                  Selected performances &amp; exhibitions
+                </h2>
+                <ul className={styles.eventList}>
+                  {events.map((e) => (
+                    <li key={e.venue} className={styles.eventRow}>
+                      <span className={`${styles.eventYear} label-mono`}>
+                        {e.year}
+                      </span>
+                      <span className={styles.eventBody}>
+                        <em className={styles.eventTitle}>{e.title}</em>
+                        <span className={styles.eventVenue}>{e.venue}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
 
               <div className={styles.blocks}>
                 <section className={styles.block}>
