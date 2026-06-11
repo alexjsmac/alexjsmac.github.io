@@ -36,9 +36,8 @@ Useful dev query params: `?q=high|mid|low|static` forces a quality tier
 - **Contact form:** create a form at formspree.io (pointing at the contact
   address) and paste its ID into `contact.formspreeId` in
   `src/data/profile.ts`. Until then the form opens the visitor's mail app.
-- **Analytics:** replace `G-XXXXXXXXXX` in `index.html` with the GA4
-  measurement ID (analytics.google.com → Admin → Data Streams; the old
-  UA-75015574-1 property was auto-migrated to GA4). Nothing loads until set.
+- **Analytics:** configured — GA4 measurement ID `G-ND1Z239EJB` in
+  `index.html` (loads only on the production hostname).
 
 ## Architecture notes
 
