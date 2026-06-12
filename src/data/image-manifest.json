@@ -236,5 +236,19 @@
       "width": 1600,
       "height": 1597
     }
+  },
+  "stills": {
+    "tt-live-blue": {
+      "width": 1920,
+      "height": 1080
+    },
+    "tt-crowd": {
+      "width": 1920,
+      "height": 1080
+    },
+    "cc-facade": {
+      "width": 1920,
+      "height": 1080
+    }
   }
 }

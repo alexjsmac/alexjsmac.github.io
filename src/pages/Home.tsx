@@ -1,11 +1,45 @@
 import { Link } from 'wouter'
 import { Meta } from '@/components/ui/Meta'
 import { ProjectCard } from '@/components/ui/ProjectCard'
-import { featured, projects, bySlug } from '@/data/projects'
+import { featured, projects, type ProjectImage } from '@/data/projects'
 import { profile } from '@/data/profile'
 import seo from '@/data/seo.json'
-import sunntackLive from '@/assets/press/sunntack-live-2.webp'
+import manifest from '@/data/image-manifest.json'
+import ttLiveBlue from '@/assets/stills/tt-live-blue.webp'
+import ttCrowd from '@/assets/stills/tt-crowd.webp'
+import ccFacade from '@/assets/stills/cc-facade.webp'
 import styles from './Home.module.css'
+
+interface Dim {
+  width: number
+  height: number
+}
+const stillDims = manifest.stills as Record<string, Dim>
+
+function still(name: string, src: string, alt: string): ProjectImage {
+  const dim = stillDims[name]
+  if (!dim) throw new Error(`Missing still "${name}" — run npm run migrate`)
+  return { src, ...dim, alt }
+}
+
+/** Film stills — each image appears exactly once on this page */
+const HERO_STILL = still(
+  'tt-live-blue',
+  ttLiveBlue,
+  'Alex MacLean performing Terminal Taxonomy live — bathed in electric blue light at the modular rig, neon bars in haze',
+)
+const CARD_STILLS: Record<string, ProjectImage> = {
+  'terminal-taxonomy': still(
+    'tt-crowd',
+    ttCrowd,
+    'The crowd at Terminal Taxonomy, silhouetted against the projection and LED triangles',
+  ),
+  'concrete-canopy': still(
+    'cc-facade',
+    ccFacade,
+    'The Kingsmill’s façade wrapped floor-to-roof in botanical projection at night',
+  ),
+}
 
 interface PracticeRow {
   index: string
@@ -13,7 +47,6 @@ interface PracticeRow {
   description: string
   href: string
   external?: boolean
-  image: { src: string; alt: string }
 }
 
 const PRACTICE: PracticeRow[] = [
@@ -23,10 +56,6 @@ const PRACTICE: PracticeRow[] = [
     description:
       'Interactive installations, public-scale projection, and VR sound art — from gallery rooms to building façades.',
     href: '/work',
-    image: {
-      src: bySlug['concrete-canopy']?.thumb.src ?? '',
-      alt: 'Concrete Canopy projected across the Kingsmill’s façade',
-    },
   },
   {
     index: '02',
@@ -34,10 +63,6 @@ const PRACTICE: PracticeRow[] = [
     description:
       'Improvised sets where modular synthesis, vocal transcription systems, and synthesized light behave as one instrument.',
     href: '/sunntack',
-    image: {
-      src: sunntackLive,
-      alt: 'Sunntack performing live at London Music Hall',
-    },
   },
   {
     index: '03',
@@ -46,10 +71,6 @@ const PRACTICE: PracticeRow[] = [
       'Technical art direction and software for studios, museums, and events — real-time graphics, web, and immersive systems.',
     href: 'https://bluheroninteractive.com',
     external: true,
-    image: {
-      src: bySlug['murmuration']?.thumb.src ?? '',
-      alt: 'The Murmuration co-created live visual installation',
-    },
   },
 ]
 
@@ -57,9 +78,6 @@ function PracticeRowItem({ row }: { row: PracticeRow }) {
   const inner = (
     <>
       <span className={`${styles.practiceIndex} label-mono`}>{row.index}</span>
-      <span className={styles.practiceMedia} aria-hidden="true">
-        <img src={row.image.src} alt="" loading="lazy" decoding="async" />
-      </span>
       <span className={styles.practiceBody}>
         <span className={styles.practiceTitle}>{row.title}</span>
         <span className={styles.practiceDescription}>{row.description}</span>
@@ -94,17 +112,31 @@ export default function Home() {
     <>
       <Meta path="/" {...seo['/']} />
 
-      {/* Surface */}
+      {/* Surface — one knockout frame, fused with the ocean */}
       <section className={styles.hero}>
-        <div className="container">
+        <div className={styles.heroMedia} aria-hidden="true">
+          <img
+            src={HERO_STILL.src}
+            width={HERO_STILL.width}
+            height={HERO_STILL.height}
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+          <span className={styles.heroGrain} />
+        </div>
+
+        <div className={`container ${styles.heroContent}`}>
           <p className={`${styles.roles} label-mono`} data-reveal>
             {profile.roles.join(' / ')}
           </p>
           <h1 className={`${styles.name} display-hero`}>
             Alex <em className="display-italic">MacLean</em>
           </h1>
-          <p className={`${styles.location} label-mono`} data-reveal>
-            {profile.location} · “{profile.alias}”
+          <p className={`${styles.positioning} body-lg`} data-reveal>
+            Sound, light, and code —{' '}
+            <em className="display-italic">experiences that listen back.</em>
           </p>
           {profile.now && (
             <p className={`${styles.now} label-mono`} data-reveal>
@@ -115,6 +147,14 @@ export default function Home() {
             </p>
           )}
         </div>
+
+        <Link
+          href="/work/terminal-taxonomy"
+          className={`${styles.heroCaption} label-mono`}
+        >
+          Terminal Taxonomy — live at Honey Dip Bar, 2026 →
+        </Link>
+
         <p className={`${styles.descend} label-mono`} aria-hidden="true">
           Descend
           <span className={styles.descendLine} />
@@ -127,10 +167,6 @@ export default function Home() {
           <h2 id="practice-heading" className="label-mono">
             The practice
           </h2>
-          <p className={`${styles.practiceLede} display-lg measure`} data-st>
-            Sound, light, and code —{' '}
-            <em className="display-italic">experiences that listen back.</em>
-          </p>
           <ul className={styles.practiceList}>
             {PRACTICE.map((row) => (
               <PracticeRowItem key={row.index} row={row} />
@@ -152,7 +188,12 @@ export default function Home() {
           </header>
           <div className={styles.worksGrid}>
             {featured.map((project, i) => (
-              <ProjectCard key={project.slug} project={project} index={i} />
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                index={i}
+                image={CARD_STILLS[project.slug]}
+              />
             ))}
           </div>
         </div>

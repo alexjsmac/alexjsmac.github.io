@@ -1,15 +1,17 @@
 import { Link } from 'wouter'
-import type { Project } from '@/data/projects'
+import type { Project, ProjectImage } from '@/data/projects'
 import { Picture } from './Picture'
 import styles from './ProjectCard.module.css'
 
 interface ProjectCardProps {
   project: Project
   index: number
+  /** Override the card image (so no image repeats within a page) */
+  image?: ProjectImage
 }
 
 /** Editorial work card for the home page's Selected Works. */
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, image }: ProjectCardProps) {
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -20,7 +22,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <span className={styles.media}>
         <span className={styles.parallax} data-parallax>
           <Picture
-            image={project.thumb}
+            image={image ?? project.thumb}
             className={styles.image}
           />
         </span>

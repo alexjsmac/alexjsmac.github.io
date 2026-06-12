@@ -154,6 +154,28 @@ for (const { src, slug } of PRESS) {
 }
 console.log('✓ press photos (display webp + print-quality downloads)')
 
+// Film stills (extracted by scripts/extract-stills.mjs into images/stills)
+const STILLS = ['tt-live-blue', 'tt-crowd', 'cc-facade']
+const STILLS_SRC = path.join(ROOT, 'images/stills')
+const STILLS_OUT = path.join(ROOT, 'src/assets/stills')
+await mkdir(STILLS_OUT, { recursive: true })
+manifest.stills = {}
+for (const name of STILLS) {
+  const source = path.join(STILLS_SRC, `${name}.jpg`)
+  if (!(await exists(source))) {
+    console.warn(`! still missing (run extract-stills): ${name}`)
+    continue
+  }
+  // 1920 wide: the hero still is full-bleed
+  manifest.stills[name] = await toWebp(
+    source,
+    path.join(STILLS_OUT, `${name}.webp`),
+    1920,
+    80,
+  )
+}
+console.log('✓ film stills')
+
 // Headshot
 await mkdir(path.join(ROOT, 'src/assets/about'), { recursive: true })
 manifest.about.headshot = await toWebp(
