@@ -13,4 +13,8 @@ export const frameBus = {
   audio: { low: 0, mid: 0, high: 0, level: 0, warp: 0 },
   /** Current depth through the water column, 0 (surface) .. 1 (abyss) */
   depth: 0,
+  /** Latest sonar ping: world-space origin + uTime timestamp. The
+   *  wavefront propagates spherically; listeners (jellyfish) compute
+   *  their own arrival time from distance. */
+  ping: { x: 0, y: 0, z: 0, time: -1000 },
 }

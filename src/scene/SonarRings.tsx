@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
+import { frameBus } from '@/lib/frameBus'
 import { sharedUniforms } from './uniforms'
 import { pointerToWorld } from './pointerWorld'
 import vertexShader from './shaders/sonar.vert.glsl'
@@ -64,7 +65,13 @@ export function SonarRings() {
     if (!mesh || !material) return
     pointerToWorld(camera, PLANE_Z, world)
     mesh.position.copy(world)
-    material.uniforms.uStart!.value = sharedUniforms.uTime.value
+    const now = sharedUniforms.uTime.value
+    material.uniforms.uStart!.value = now
+    // Broadcast the ping — the jellyfish listen for the wavefront
+    frameBus.ping.x = world.x
+    frameBus.ping.y = world.y
+    frameBus.ping.z = world.z
+    frameBus.ping.time = now
   })
 
   return (

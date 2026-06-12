@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
+import { frameBus } from '@/lib/frameBus'
 import { useAppStore } from '@/store/app'
 import { qualityProfile } from '@/lib/quality'
 import { sharedUniforms } from './uniforms'
@@ -12,6 +13,11 @@ import tentacleFrag from './shaders/tentacle.frag.glsl'
 const STRANDS = 7
 const STRAND_POINTS = 14
 const STRAND_LENGTH = 2.6
+
+/** Sonar wavefront propagation, world units / second */
+const PING_SPEED = 11
+/** How long a jelly stays destabilized once the wavefront hits */
+const GLITCH_DURATION = 0.7
 
 interface JellySpec {
   position: [number, number, number]
@@ -103,6 +109,7 @@ function Jelly({ spec }: { spec: JellySpec }) {
           uPhase: { value: spec.phase },
           uColor: { value: new THREE.Color(spec.color) },
           uOpacity: { value: 1 },
+          uGlitch: { value: 0 },
         },
       }),
     [spec],
@@ -122,6 +129,7 @@ function Jelly({ spec }: { spec: JellySpec }) {
           uPhase: { value: spec.phase },
           uColor: { value: new THREE.Color(spec.color) },
           uOpacity: { value: 1 },
+          uGlitch: { value: 0 },
         },
       }),
     [spec],
@@ -150,6 +158,24 @@ function Jelly({ spec }: { spec: JellySpec }) {
       spec.position[1] + Math.sin(t * 0.06 * spec.drift + spec.phase * 2.0) * 1.1
     g.rotation.z = Math.sin(t * 0.05 + spec.phase) * 0.12
     g.rotation.x = Math.cos(t * 0.04 + spec.phase) * 0.08
+
+    // Sonar wavefront: when the spherical pulse from the last click
+    // reaches this jelly, its rendering briefly breaks down.
+    const ping = frameBus.ping
+    const dx = g.position.x - ping.x
+    const dy = g.position.y - ping.y
+    const dz = g.position.z - ping.z
+    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
+    const arrival = ping.time + dist / PING_SPEED
+    const age = t - arrival
+    let glitch = 0
+    if (age >= 0 && age < GLITCH_DURATION) {
+      const falloff = THREE.MathUtils.clamp(1.5 - dist * 0.045, 0.35, 1)
+      const decay = 1 - age / GLITCH_DURATION
+      glitch = falloff * decay * decay
+    }
+    bellMaterial.uniforms.uGlitch!.value = glitch
+    tentacleMaterial.uniforms.uGlitch!.value = glitch
   })
 
   return (
