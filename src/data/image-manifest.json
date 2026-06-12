@@ -2,12 +2,12 @@
   "work": {
     "murmuration": {
       "hero": {
-        "width": 640,
-        "height": 640
+        "width": 1280,
+        "height": 720
       },
       "thumb": {
-        "width": 640,
-        "height": 640
+        "width": 800,
+        "height": 450
       }
     },
     "a-v-nights": {

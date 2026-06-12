@@ -2,9 +2,6 @@ import type { ComponentType } from 'react'
 import meta from './projects-meta.json'
 import manifest from './image-manifest.json'
 
-import murmurationLoop from '@/assets/murmuration/loop.webm'
-import murmurationPoster from '@/assets/murmuration/poster.webp'
-
 import Murmuration from '@/content/murmuration'
 import AvNights from '@/content/a-v-nights'
 import TerminalTaxonomy from '@/content/terminal-taxonomy'
@@ -36,9 +33,7 @@ export interface ProjectVideo {
 }
 
 /** Self-hosted recordings for `provider: 'file'` videos, keyed by video id. */
-export const FILE_VIDEOS: Record<string, { src: string; poster: string }> = {
-  murmuration: { src: murmurationLoop, poster: murmurationPoster },
-}
+export const FILE_VIDEOS: Record<string, { src: string; poster: string }> = {}
 
 export interface ProjectLink {
   label: string
