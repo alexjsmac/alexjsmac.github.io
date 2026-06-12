@@ -14,7 +14,7 @@ export const profile = {
    * Set to null to hide.
    */
   now: {
-    label: 'New album',
+    label: 'Out July 31',
     text: 'Small Vibrations — the debut Sunntack LP',
     href: '/sunntack',
   } as { label: string; text: string; href: string } | null,
