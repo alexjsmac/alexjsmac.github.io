@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { IntroGate } from '@/components/layout/IntroGate'
 import { PageTransition } from '@/components/layout/PageTransition'
+import { ScrollReveals } from '@/components/layout/ScrollReveals'
 import { Cursor } from '@/components/layout/Cursor'
 import { DepthGauge } from '@/components/layout/DepthGauge'
 import { HoverPreview } from '@/components/ui/HoverPreview'
@@ -35,6 +36,7 @@ export default function App() {
       <DepthGauge />
       <HoverPreview />
       <PageTransition />
+      <ScrollReveals />
       <Cursor />
       <IntroGate />
     </>

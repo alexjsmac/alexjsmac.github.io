@@ -15,13 +15,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       href={`/work/${project.slug}`}
       className={styles.card}
       data-cursor="view"
+      data-st
     >
       <span className={styles.media}>
-        <Picture
-          image={project.thumb}
-          className={styles.image}
-          sizes="(max-width: 800px) 100vw, 44vw"
-        />
+        <span className={styles.parallax} data-parallax>
+          <Picture
+            image={project.thumb}
+            className={styles.image}
+          />
+        </span>
       </span>
       <span className={styles.meta}>
         <span className={`${styles.index} label-mono`}>

@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, useLocation } from 'wouter'
 import Home from '@/pages/Home'
 import WorkIndex from '@/pages/WorkIndex'
 import WorkDetail from '@/pages/WorkDetail'
+import Sunntack from '@/pages/Sunntack'
 import About from '@/pages/About'
 import Contact from '@/pages/Contact'
 import NotFound from '@/pages/NotFound'
@@ -15,6 +16,7 @@ function moodFor(path: string): string {
   if (path === '/') return 'home'
   if (path === '/work') return 'work'
   if (path.startsWith('/work/')) return 'detail'
+  if (path.startsWith('/sunntack')) return 'sunntack'
   if (path.startsWith('/about')) return 'about'
   if (path.startsWith('/contact')) return 'contact'
   return 'abyss'
@@ -50,6 +52,7 @@ export function Routes() {
       <Route path="/work/:slug">
         {(params) => <WorkDetail slug={params.slug} />}
       </Route>
+      <Route path="/sunntack" component={Sunntack} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
 

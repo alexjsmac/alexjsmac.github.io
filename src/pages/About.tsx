@@ -54,7 +54,7 @@ export default function About() {
                 </p>
               ))}
 
-              <section className={styles.events}>
+              <section className={styles.events} data-st>
                 <h2 className="label-mono">
                   Selected performances &amp; exhibitions
                 </h2>
@@ -73,7 +73,7 @@ export default function About() {
                 </ul>
               </section>
 
-              <div className={styles.blocks}>
+              <div className={styles.blocks} data-st>
                 <section className={styles.block}>
                   <h2 className="label-mono">Recognition</h2>
                   <ul className={styles.blockList}>

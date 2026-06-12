@@ -22,8 +22,7 @@ const PRACTICE: PracticeRow[] = [
   {
     index: '02',
     title: 'Live A/V performance as “Sunntack”',
-    href: 'https://linktr.ee/alexjsmac',
-    external: true,
+    href: '/sunntack',
   },
   {
     index: '03',
@@ -44,7 +43,7 @@ function PracticeRowItem({ row }: { row: PracticeRow }) {
     </>
   )
   return (
-    <li className={styles.practiceRow}>
+    <li className={styles.practiceRow} data-st>
       {row.external ? (
         <a
           href={row.href}
@@ -101,7 +100,7 @@ export default function Home() {
           <h2 id="practice-heading" className="label-mono">
             The practice
           </h2>
-          <p className={`${styles.practiceLede} display-lg measure`}>
+          <p className={`${styles.practiceLede} display-lg measure`} data-st>
             Sound, light, and code —{' '}
             <em className="display-italic">experiences that listen back.</em>
           </p>

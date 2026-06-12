@@ -5,6 +5,7 @@ import styles from './Header.module.css'
 
 const NAV = [
   { href: '/work', label: 'Work' },
+  { href: '/sunntack', label: 'Sunntack' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]

@@ -14,9 +14,9 @@ export const profile = {
    * Set to null to hide.
    */
   now: {
-    label: 'Recently',
-    text: 'Murmuration at Avant Mutek, Toronto',
-    href: '/work/murmuration',
+    label: 'New album',
+    text: 'Small Vibrations — the debut Sunntack LP',
+    href: '/sunntack',
   } as { label: string; text: string; href: string } | null,
   bluheron: {
     name: 'BluHeron Interactive',

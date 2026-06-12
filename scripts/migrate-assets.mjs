@@ -115,6 +115,54 @@ for (const [slug, spec] of Object.entries(PROJECTS)) {
   console.log(`✓ ${slug}`)
 }
 
+// Sunntack press photos: web-display webp + print-quality JPG downloads.
+// Sources live in images/ at the repo root (gitignored; outputs committed).
+const PRESS = [
+  { src: 'AVN-5.jpg', slug: 'sunntack-press-1' },
+  { src: 'AVN-8.jpg', slug: 'sunntack-press-2' },
+  { src: 'polaris-1.jpg', slug: 'sunntack-live-1' },
+  { src: 'polaris-2.jpg', slug: 'sunntack-live-2' },
+  { src: 'sunntack-square.png', slug: 'sunntack-portrait' },
+]
+const PRESS_SRC = path.join(ROOT, 'images')
+const PRESS_DISPLAY = path.join(ROOT, 'src/assets/press')
+const PRESS_DOWNLOAD = path.join(ROOT, 'public/press')
+await mkdir(PRESS_DISPLAY, { recursive: true })
+await mkdir(PRESS_DOWNLOAD, { recursive: true })
+manifest.press = {}
+for (const { src, slug } of PRESS) {
+  const source = path.join(PRESS_SRC, src)
+  if (!(await exists(source))) {
+    console.warn(`! press source missing, skipping: ${src}`)
+    continue
+  }
+  manifest.press[slug] = await toWebp(
+    source,
+    path.join(PRESS_DISPLAY, `${slug}.webp`),
+    HERO_WIDTH,
+    82,
+  )
+  await sharp(source)
+    .rotate()
+    .resize({ width: 3000, height: 3000, fit: 'inside', withoutEnlargement: true })
+    .jpeg({ quality: 88 })
+    .toFile(path.join(PRESS_DOWNLOAD, `${slug}.jpg`))
+}
+console.log('✓ press photos (display webp + print-quality downloads)')
+
+// Tech rider
+const RIDER_SRC =
+  '/Users/amaclean/Library/CloudStorage/GoogleDrive-alex@bluheroninteractive.com/My Drive/Submissions/Mutek 2026/Sunntack - Terminal Taxonomy - Tech Rider.pdf'
+if (await exists(RIDER_SRC)) {
+  await copyFile(
+    RIDER_SRC,
+    path.join(PRESS_DOWNLOAD, 'sunntack-terminal-taxonomy-tech-rider.pdf'),
+  )
+  console.log('✓ tech rider pdf')
+} else {
+  console.warn('! tech rider source not found, skipping')
+}
+
 // Headshot
 await mkdir(path.join(ROOT, 'src/assets/about'), { recursive: true })
 manifest.about.headshot = await toWebp(

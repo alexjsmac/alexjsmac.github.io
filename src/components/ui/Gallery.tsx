@@ -16,7 +16,6 @@ export function Gallery({ images, caption }: GalleryProps) {
             key={image.src}
             image={image}
             className={styles.item}
-            sizes="(max-width: 800px) 100vw, 50vw"
           />
         ))}
       </div>

@@ -31,6 +31,14 @@ export const MOODS: Record<string, SceneMood> = {
     caustics: 0.35,
     particleEnergy: 0.75,
   },
+  // The performance zone: midwater, energetic, biolum-leaning
+  sunntack: {
+    depthRange: [0.55, 0.78],
+    bloom: 1.05,
+    fogDensity: 0.06,
+    caustics: 0.15,
+    particleEnergy: 1.15,
+  },
   about: {
     depthRange: [0.05, 0.3],
     bloom: 0.7,

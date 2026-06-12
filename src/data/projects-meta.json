@@ -140,7 +140,10 @@
     "funders": [
       "Ocean Week Canada"
     ],
-    "heroAlt": "Projected underwater visuals from Blue Noise in a darkened gallery space"
+    "heroAlt": "Projected underwater visuals from Blue Noise in a darkened gallery space",
+    "venues": [
+      "100 Kellogg Lane, London ON, 2024"
+    ]
   },
   {
     "slug": "outfalls",
@@ -345,7 +348,10 @@
       "provider": "vimeo",
       "id": "385393860"
     },
-    "heroAlt": "A performer in a VR headset surrounded by projection walls in Immersive Dreams"
+    "heroAlt": "A performer in a VR headset surrounded by projection walls in Immersive Dreams",
+    "venues": [
+      "“Imaginary Landscapes”, McMaster University, Hamilton, 2019"
+    ]
   },
   {
     "slug": "scrap-focus",

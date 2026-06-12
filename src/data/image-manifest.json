@@ -198,5 +198,27 @@
       "width": 800,
       "height": 797
     }
+  },
+  "press": {
+    "sunntack-press-1": {
+      "width": 1600,
+      "height": 1198
+    },
+    "sunntack-press-2": {
+      "width": 1600,
+      "height": 1161
+    },
+    "sunntack-live-1": {
+      "width": 1600,
+      "height": 1067
+    },
+    "sunntack-live-2": {
+      "width": 1600,
+      "height": 1067
+    },
+    "sunntack-portrait": {
+      "width": 1600,
+      "height": 1597
+    }
   }
 }

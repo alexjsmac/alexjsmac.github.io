@@ -21,7 +21,7 @@ export default function WorkIndex() {
 
           <ol className={styles.list}>
             {projects.map((project, i) => (
-              <li key={project.slug} className={styles.row}>
+              <li key={project.slug} className={styles.row} data-st>
                 <Link
                   href={`/work/${project.slug}`}
                   className={styles.rowLink}
@@ -39,7 +39,7 @@ export default function WorkIndex() {
                     {project.year}
                   </span>
                   <span className={styles.rowThumb} aria-hidden="true">
-                    <Picture image={project.thumb} sizes="200px" />
+                    <Picture image={project.thumb} />
                   </span>
                 </Link>
               </li>

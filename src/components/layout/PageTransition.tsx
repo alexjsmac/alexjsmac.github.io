@@ -30,7 +30,8 @@ export function PageTransition() {
       )
       if (!anchor) return
       const href = anchor.getAttribute('href')
-      if (!href || href.startsWith('/cv.pdf')) return
+      // Skip static files (pdf, images, …) — they must leave the SPA
+      if (!href || /\.[a-z0-9]{2,5}$/i.test(href)) return
       const current = window.location.pathname
       if (href === current) return
       e.preventDefault()

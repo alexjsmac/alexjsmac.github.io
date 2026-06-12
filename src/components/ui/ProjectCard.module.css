@@ -5,11 +5,20 @@
 }
 
 .media {
+  position: relative;
   display: block;
   overflow: hidden;
   border-radius: 6px;
   aspect-ratio: 4 / 3;
   background: var(--depth-3);
+}
+
+/* Oversized shell the parallax drifts (GSAP owns its transform) */
+.parallax {
+  position: absolute;
+  inset: -7% 0;
+  display: block;
+  will-change: transform;
 }
 
 .image {

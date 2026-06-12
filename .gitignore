@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 scripts/.cache
+# Source press photos (originals); pipeline outputs are committed
+images/
 
 # Editor directories and files
 .vscode/*

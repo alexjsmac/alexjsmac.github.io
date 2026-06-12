@@ -24,11 +24,13 @@ export default function Contact() {
             developer.
           </p>
 
-          <div className={styles.formWrap}>
+          <div className={styles.formWrap} data-st>
             <ContactForm />
           </div>
 
-          <p className={`${styles.elsewhere} label-mono`}>Or find me on</p>
+          <p className={`${styles.elsewhere} label-mono`} data-st>
+            Or find me on
+          </p>
           <ul className={styles.links} aria-label="Contact links">
             {profile.socials.map((social) => (
               <li key={social.label}>

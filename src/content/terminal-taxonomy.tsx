@@ -5,10 +5,18 @@ export default function Body() {
         <em>Terminal Taxonomy</em> is a meditation on the cascading erosion of
         language and life in the age of algorithmic mediation. Performed live
         as Sunntack at Honey Dip Bar in London, Ontario, the piece is a
-        real-time synthesis of sound and light — an A/V instrument played for
-        one continuous take.
+        real-time synthesis of sound and light, improvised as one instrument.
       </p>
       <h2>Technical implementation</h2>
+      <p>
+        At the centre is a custom TouchDesigner system built around a
+        modified speech-to-text operator that reports not just its
+        transcription but the detected language and its own confidence. The
+        transcriptions of live vocal samples drive the whole piece — and as
+        the system loses confidence in its evaluations, entropy rises and it
+        becomes unstable, in both the audio and the visuals, while the
+        performer improvises with the results.
+      </p>
       <p>
         Using TDBitwig, the sonic transients of a modular synthesizer and
         custom vocal samples drive a 3D “bio-sphere” rendered in TouchDesigner.
