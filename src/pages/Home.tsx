@@ -1,34 +1,55 @@
 import { Link } from 'wouter'
 import { Meta } from '@/components/ui/Meta'
 import { ProjectCard } from '@/components/ui/ProjectCard'
-import { featured, projects } from '@/data/projects'
+import { featured, projects, bySlug } from '@/data/projects'
 import { profile } from '@/data/profile'
 import seo from '@/data/seo.json'
+import sunntackLive from '@/assets/press/sunntack-live-2.webp'
 import styles from './Home.module.css'
 
 interface PracticeRow {
   index: string
   title: string
+  description: string
   href: string
   external?: boolean
+  image: { src: string; alt: string }
 }
 
 const PRACTICE: PracticeRow[] = [
   {
     index: '01',
     title: 'Installations & projection mapping',
+    description:
+      'Interactive installations, public-scale projection, and VR sound art — from gallery rooms to building façades.',
     href: '/work',
+    image: {
+      src: bySlug['concrete-canopy']?.thumb.src ?? '',
+      alt: 'Concrete Canopy projected across the Kingsmill’s façade',
+    },
   },
   {
     index: '02',
     title: 'Live A/V performance as “Sunntack”',
+    description:
+      'Improvised sets where modular synthesis, vocal transcription systems, and synthesized light behave as one instrument.',
     href: '/sunntack',
+    image: {
+      src: sunntackLive,
+      alt: 'Sunntack performing live at London Music Hall',
+    },
   },
   {
     index: '03',
     title: 'Creative technology — BluHeron Interactive',
+    description:
+      'Technical art direction and software for studios, museums, and events — real-time graphics, web, and immersive systems.',
     href: 'https://bluheroninteractive.com',
     external: true,
+    image: {
+      src: bySlug['murmuration']?.thumb.src ?? '',
+      alt: 'The Murmuration co-created live visual installation',
+    },
   },
 ]
 
@@ -36,7 +57,13 @@ function PracticeRowItem({ row }: { row: PracticeRow }) {
   const inner = (
     <>
       <span className={`${styles.practiceIndex} label-mono`}>{row.index}</span>
-      <span className={styles.practiceTitle}>{row.title}</span>
+      <span className={styles.practiceMedia} aria-hidden="true">
+        <img src={row.image.src} alt="" loading="lazy" decoding="async" />
+      </span>
+      <span className={styles.practiceBody}>
+        <span className={styles.practiceTitle}>{row.title}</span>
+        <span className={styles.practiceDescription}>{row.description}</span>
+      </span>
       <span className={`${styles.practiceArrow} label-mono`} aria-hidden="true">
         {row.external ? '↗' : '→'}
       </span>

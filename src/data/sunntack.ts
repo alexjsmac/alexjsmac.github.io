@@ -1,6 +1,7 @@
 /**
- * Sunntack EPK content. Show history compiled from the 2026 press kit and
- * the March 2026 CV; bios adapted from the CV artist statement.
+ * Sunntack EPK content. Show history compiled from the 2026 press kit, the
+ * March 2026 CV, and Alex's corrections; bio adapted from the CV artist
+ * statement; album details from the CAIP 2025 final report.
  */
 import manifest from './image-manifest.json'
 
@@ -41,30 +42,34 @@ export const sunntack = {
     label: 'Coming July 31, 2026',
     title: 'Small Vibrations',
     detail: 'Debut full-length album · Listen on release via',
+    description:
+      'A sonic tribute to declining insect populations: six tracks tracing an arc from the emergence of the first insects to their extinction and the sterile world left behind — built from field recordings, modular synthesis, and generative composition. Released digitally and as a limited two-colour vinyl edition.',
+    support:
+      'Created with the support of the London Arts Council’s Community Arts Investment Program and the City of London.',
     href: 'https://linktr.ee/alexjsmac',
   },
 
-  bios: {
-    short:
-      'Sunntack is the live A/V project of Alex MacLean, a new media artist and programmer based in London, Ontario. His performances blend experimental electronic music with audio-reactive projections and synthesized light — improvised systems in which sound, image, and language process one another in real time. Drawing on human ecology, alternative futures, and science fiction, Sunntack has appeared at international festivals and conferences including ICLC, NIME, and the Network Music Festival, and was recognized with the 2022 Shirley Elford Emerging Artist Commission Prize. His debut full-length album, Small Vibrations, arrives July 31, 2026.',
-    long: 'Alex MacLean, also known as Sunntack, stands at the crossroads of art and technology. A new media artist and live AV performer, Alex ventures into the unexplored territories of experimental electronic music, shaping auditory landscapes that push the conventional boundaries.\n\nHis performances blend audio-reactive video projections, merging sound and visuals into an immersive experience. With a deep-seated curiosity for human ecology, alternative futures, and science fiction, Alex’s work revolves around exploring these themes through the lens of sound.\n\nAlex’s contributions have graced renowned stages at international conferences and festivals such as ICLC, NIME, and the Network Music Festival. His creative endeavours garnered recognition through the 2022 City of Hamilton Arts Awards Shirley Elford Emerging Artist Commission Prize, along with an invitation to serve as a featured artist for Ocean Week Canada 2024. His debut full-length album, Small Vibrations, arrives July 31, 2026.\n\nThrough Alex’s hands, technology becomes a tool for expression, and sound becomes a conduit for storytelling, crafting experiences that engage and resonate with audiences, offering glimpses into the uncharted territories of art and innovation.',
-  },
+  bio:
+    'Sunntack is the live A/V project of Alex MacLean, a new media artist and programmer based in London, Ontario. His performances blend experimental electronic music with audio-reactive projections and synthesized light — improvised systems in which sound, image, and language process one another in real time. Drawing on human ecology, alternative futures, and science fiction, Sunntack has appeared at international festivals and conferences including ICLC, NIME, and the Network Music Festival, and was recognized with the 2022 Shirley Elford Emerging Artist Commission Prize. His debut full-length album, Small Vibrations, arrives July 31, 2026.',
 
   /** The current live set */
   currentSet: {
     title: 'Terminal Taxonomy',
     description:
       'The current Sunntack set is Terminal Taxonomy — a meditation on the cascading erosion of language and life in the age of algorithmic mediation. A custom TouchDesigner system built around a modified speech-to-text operator transcribes live vocal samples, reporting the detected language and its own confidence; those transcriptions drive the entire piece. As the system loses confidence in its evaluations, entropy increases and it becomes unstable — in both the audio and the visuals — while Alex improvises with the results in real time, alongside ten Art-Net LED bars that map the system’s state into physical light.',
-    demoHref: 'https://www.youtube.com/watch?v=TIn3faKxXOg',
     workSlug: 'terminal-taxonomy',
   },
 
   shows: [
     {
-      date: 'Apr 2026',
-      title: 'A/V Nights 2: An Immersive Art Showcase',
-      venue: 'London, ON',
-      note: 'Organizer, host & performer',
+      date: 'Mar 2026',
+      title: 'Brew.exe',
+      venue: 'TWB Brewing, Kitchener, ON',
+    },
+    {
+      date: 'Feb 2026',
+      title: 'Polaris Pitch Competition',
+      venue: 'London Music Hall, London, ON',
     },
     {
       date: 'Feb 2026',
@@ -88,8 +93,17 @@ export const sunntack = {
       title: 'Hear There',
       venue: 'Museum London, London, ON',
     },
-    { date: 'Jul 2025', title: 'Honey Dip', venue: 'London, ON' },
-    { date: 'May 2025', title: 'TWB Brewing', venue: 'Kitchener, ON' },
+    {
+      date: 'Jul 2025',
+      title: 'Honey Dip',
+      venue: 'London, ON',
+      note: 'w/ Bitters, Closeout, and SD Henhawke',
+    },
+    {
+      date: 'May 2025',
+      title: 'Kitchener Electronic Music Open Mic Night',
+      venue: 'TWB Brewing, Kitchener, ON',
+    },
     {
       date: 'Oct 2024',
       title: 'Sonic Horizons',
@@ -148,21 +162,15 @@ export const sunntack = {
     photo(
       'sunntack-live-1',
       live1,
-      'Terminal Taxonomy live — the transcription system projected behind the performer',
+      'Terminal Taxonomy at the Polaris Pitch Competition, London Music Hall — the transcription system projected behind the performer',
     ),
     photo(
       'sunntack-live-2',
       live2,
-      'Sunntack on stage with laptop and modular synthesizer',
+      'Sunntack on stage at London Music Hall with laptop and modular synthesizer',
     ),
     photo('sunntack-portrait', portrait, 'Portrait of Sunntack in the studio'),
   ],
-
-  rider: {
-    href: '/press/sunntack-terminal-taxonomy-tech-rider.pdf',
-    summary:
-      'Ten addressable LED pixel bars on floor stands, a 2–4 universe Art-Net node, stereo DI, vocal mic, and a 6,000+ lumen projector. Full rider with stage plot:',
-  },
 
   links: [
     { label: 'Linktree', href: 'https://linktr.ee/alexjsmac' },

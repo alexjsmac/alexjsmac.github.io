@@ -6,6 +6,7 @@ import murmurationLoop from '@/assets/murmuration/loop.webm'
 import murmurationPoster from '@/assets/murmuration/poster.webp'
 
 import Murmuration from '@/content/murmuration'
+import AvNights from '@/content/a-v-nights'
 import TerminalTaxonomy from '@/content/terminal-taxonomy'
 import ConcreteCanopy from '@/content/concrete-canopy'
 import GreenSpace from '@/content/green-space'
@@ -51,7 +52,8 @@ export interface Project {
   excerpt: string
   medium: string
   materials: string[]
-  video: ProjectVideo
+  /** Absent for photo-documented work (e.g. event series) */
+  video?: ProjectVideo
   hero: ProjectImage
   thumb: ProjectImage
   gallery?: ProjectImage[]
@@ -66,6 +68,7 @@ export interface Project {
 
 const BODIES: Record<string, ComponentType> = {
   murmuration: Murmuration,
+  'a-v-nights': AvNights,
   'terminal-taxonomy': TerminalTaxonomy,
   'concrete-canopy': ConcreteCanopy,
   'green-space': GreenSpace,
@@ -149,7 +152,7 @@ export const projects: Project[] = meta.map((m) => {
     excerpt: m.excerpt,
     medium: m.medium,
     materials: m.materials,
-    video: m.video as ProjectVideo,
+    video: 'video' in m ? (m.video as ProjectVideo) : undefined,
     hero: image(m.slug, 'hero', m.heroAlt),
     thumb: image(m.slug, 'thumb', m.heroAlt),
     gallery: gallery(m.slug, m.title),

@@ -80,6 +80,28 @@
     ]
   },
   {
+    "slug": "a-v-nights",
+    "title": "A/V Nights",
+    "year": 2025,
+    "excerpt": "An immersive art showcase series in London, Ontario — live audiovisual performance, installations, film, and talks",
+    "medium": "Event series · Curation & production",
+    "materials": [
+      "Curation & production",
+      "Live A/V performance",
+      "Installations",
+      "Artist talks & film"
+    ],
+    "venues": [
+      "A/V Nights 1 — XUUX Artists Studio, London ON, 2025",
+      "A/V Nights 2 — Honey Dip + DoughEV, London ON, 2026"
+    ],
+    "funders": [
+      "London Arts Council — Community Arts Investment Program",
+      "City of London"
+    ],
+    "heroAlt": "A performer on stage in front of projected visuals at A/V Nights"
+  },
+  {
     "slug": "green-space",
     "title": "Green Space",
     "year": 2025,

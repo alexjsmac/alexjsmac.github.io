@@ -64,8 +64,14 @@ export default function Sunntack() {
             <span className={`${styles.albumTitle} display-lg`}>
               <em className="display-italic">{sunntack.album.title}</em>
             </span>
+            <span className={styles.albumDescription}>
+              {sunntack.album.description}
+            </span>
             <span className={`${styles.albumDetail} label-mono`}>
-              {sunntack.album.detail} · Listen ↗
+              {sunntack.album.detail} Linktree ↗
+            </span>
+            <span className={`${styles.albumSupport} label-mono`}>
+              {sunntack.album.support}
             </span>
           </a>
 
@@ -74,7 +80,7 @@ export default function Sunntack() {
             <h2 id="epk-watch" className="label-mono" data-st>
               Watch — the current set
             </h2>
-            {currentWork && (
+            {currentWork?.video && (
               <div className={styles.video} data-st>
                 <VideoEmbed
                   video={currentWork.video}
@@ -86,14 +92,6 @@ export default function Sunntack() {
             <div className={styles.watchBody} data-st>
               <p className={styles.prose}>{sunntack.currentSet.description}</p>
               <div className={styles.watchLinks}>
-                <a
-                  href={sunntack.currentSet.demoHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`${styles.inlineLink} label-mono`}
-                >
-                  Watch the short demo cut ↗
-                </a>
                 <Link
                   href={`/work/${sunntack.currentSet.workSlug}`}
                   className={`${styles.inlineLink} label-mono`}
@@ -162,49 +160,20 @@ export default function Sunntack() {
             </div>
           </section>
 
-          {/* Bios */}
-          <section className={styles.section} aria-labelledby="epk-bios">
-            <h2 id="epk-bios" className="label-mono" data-st>
-              Bios
+          {/* Bio */}
+          <section className={styles.section} aria-labelledby="epk-bio">
+            <h2 id="epk-bio" className="label-mono" data-st>
+              Bio
             </h2>
-            <div className={styles.bioGrid}>
-              <div className={styles.bio} data-st>
-                <div className={styles.bioHead}>
-                  <h3 className="label-mono">Short</h3>
-                  <CopyButton text={sunntack.bios.short} label="Copy" />
-                </div>
-                <p className={styles.prose}>{sunntack.bios.short}</p>
-              </div>
-              <div className={styles.bio} data-st>
-                <div className={styles.bioHead}>
-                  <h3 className="label-mono">Long</h3>
-                  <CopyButton text={sunntack.bios.long} label="Copy" />
-                </div>
-                {sunntack.bios.long.split('\n\n').map((para) => (
-                  <p key={para.slice(0, 24)} className={styles.prose}>
-                    {para}
-                  </p>
-                ))}
+            <div className={styles.bio} data-st>
+              <p className={`${styles.prose} measure`}>{sunntack.bio}</p>
+              <div className={styles.bioActions}>
+                <CopyButton text={sunntack.bio} label="Copy bio" />
+                <Link href="/about" className={`${styles.inlineLink} label-mono`}>
+                  Full artist bio →
+                </Link>
               </div>
             </div>
-          </section>
-
-          {/* Tech rider */}
-          <section className={styles.section} aria-labelledby="epk-tech">
-            <h2 id="epk-tech" className="label-mono" data-st>
-              Tech
-            </h2>
-            <p className={`${styles.prose} measure`} data-st>
-              {sunntack.rider.summary}
-            </p>
-            <a
-              href={sunntack.rider.href}
-              download
-              className={`${styles.pill} label-mono`}
-              data-st
-            >
-              Download tech rider + stage plot (PDF) ↓
-            </a>
           </section>
 
           {/* Booking */}

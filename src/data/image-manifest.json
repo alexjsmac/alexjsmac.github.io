@@ -10,6 +10,22 @@
         "height": 640
       }
     },
+    "a-v-nights": {
+      "hero": {
+        "width": 1600,
+        "height": 1161
+      },
+      "thumb": {
+        "width": 800,
+        "height": 580
+      },
+      "gallery": [
+        {
+          "width": 1600,
+          "height": 1198
+        }
+      ]
+    },
     "terminal-taxonomy": {
       "hero": {
         "width": 1280,

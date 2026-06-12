@@ -1,6 +1,7 @@
 import { Link } from 'wouter'
 import { Meta } from '@/components/ui/Meta'
 import { VideoEmbed } from '@/components/ui/VideoEmbed'
+import { Picture } from '@/components/ui/Picture'
 import { Gallery } from '@/components/ui/Gallery'
 import { projects, bySlug } from '@/data/projects'
 import NotFound from './NotFound'
@@ -36,11 +37,15 @@ export default function WorkDetail({ slug }: { slug: string }) {
           </header>
 
           <div className={styles.video}>
-            <VideoEmbed
-              video={project.video}
-              poster={project.hero}
-              title={project.title}
-            />
+            {project.video ? (
+              <VideoEmbed
+                video={project.video}
+                poster={project.hero}
+                title={project.title}
+              />
+            ) : (
+              <Picture image={project.hero} loading="eager" />
+            )}
           </div>
 
           <div className={styles.layout}>

@@ -43,6 +43,7 @@ export const profile = {
   funders: [
     'Canada Council for the Arts',
     'Ontario Arts Council',
+    'London Arts Council & City of London',
     'Ocean Week Canada',
   ],
   music: {

@@ -47,8 +47,19 @@
   color: var(--bio-cyan);
 }
 
+.albumDescription {
+  color: var(--ink-60);
+  max-width: 62ch;
+  line-height: 1.65;
+}
+
 .albumDetail {
   color: var(--ink-60);
+}
+
+.albumSupport {
+  color: var(--ink-35);
+  max-width: 62ch;
 }
 
 /* Sections */
@@ -180,29 +191,17 @@
   opacity: 1;
 }
 
-/* Bios */
-.bioGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
-  gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: start;
-}
-
+/* Bio */
 .bio {
-  border-top: 1px solid var(--line);
-  padding-top: 1.2rem;
+  max-width: 68ch;
 }
 
-.bioHead {
+.bioActions {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.bioHead h3 {
-  color: var(--ink-60);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 1.4rem;
 }
 
 .copy {

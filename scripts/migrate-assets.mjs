@@ -29,6 +29,10 @@ const THUMB_WIDTH = 800
  */
 const PROJECTS = {
   murmuration: { teaser: 'local:src/assets/murmuration/poster.webp' },
+  'a-v-nights': {
+    teaser: 'local:images/AVN-8.jpg',
+    gallery: ['local:images/AVN-5.jpg'],
+  },
   'terminal-taxonomy': { teaser: 'youtube:gVczY7dNSvo' },
   'concrete-canopy': { teaser: 'youtube:4ILKOoMnx8w' },
   'green-space': { teaser: 'green-space.png' },
@@ -108,7 +112,7 @@ for (const [slug, spec] of Object.entries(PROJECTS)) {
     for (const [i, rel] of spec.gallery.entries()) {
       const dest = path.join(dir, `gallery-${i + 1}.webp`)
       manifest.work[slug].gallery.push(
-        await toWebp(path.join(IMAGES, rel), dest, HERO_WIDTH, 82),
+        await toWebp(await sourceFor(rel), dest, HERO_WIDTH, 82),
       )
     }
   }
@@ -149,19 +153,6 @@ for (const { src, slug } of PRESS) {
     .toFile(path.join(PRESS_DOWNLOAD, `${slug}.jpg`))
 }
 console.log('✓ press photos (display webp + print-quality downloads)')
-
-// Tech rider
-const RIDER_SRC =
-  '/Users/amaclean/Library/CloudStorage/GoogleDrive-alex@bluheroninteractive.com/My Drive/Submissions/Mutek 2026/Sunntack - Terminal Taxonomy - Tech Rider.pdf'
-if (await exists(RIDER_SRC)) {
-  await copyFile(
-    RIDER_SRC,
-    path.join(PRESS_DOWNLOAD, 'sunntack-terminal-taxonomy-tech-rider.pdf'),
-  )
-  console.log('✓ tech rider pdf')
-} else {
-  console.warn('! tech rider source not found, skipping')
-}
 
 // Headshot
 await mkdir(path.join(ROOT, 'src/assets/about'), { recursive: true })
