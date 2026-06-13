@@ -55,9 +55,7 @@ export function IntroGate() {
           This site is a small{' '}
           <em className="display-italic">audiovisual piece</em>
         </h2>
-        <p className={styles.note}>
-          A generative ocean — best experienced with sound.
-        </p>
+        <p className={styles.note}>Best experienced with sound.</p>
         <div className={styles.actions}>
           <button
             ref={soundButton}

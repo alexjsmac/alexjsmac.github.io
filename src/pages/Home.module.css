@@ -149,14 +149,8 @@
 }
 
 @media (max-width: 720px) {
-  .hero {
-    padding-bottom: 9rem;
-  }
   .heroCaption {
-    right: auto;
-    left: var(--gutter);
-    bottom: 5.5rem;
-    text-align: left;
+    display: none;
   }
 }
 
