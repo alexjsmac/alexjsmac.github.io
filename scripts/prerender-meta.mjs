@@ -4,8 +4,9 @@
  *   string-replacing title/description/OG/canonical → deep links are real
  *   files on GitHub Pages (200s) and crawlers see correct per-page meta;
  * - emits per-project OG card images (dist/og/<slug>.jpg);
- * - emits dist/sitemap.xml.
+ * - emits dist/sitemap.xml (with per-route <lastmod> from git history).
  */
+import { execFileSync } from 'node:child_process'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -14,6 +15,35 @@ import sharp from 'sharp'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = path.join(ROOT, 'dist')
 const SITE = 'https://www.alexmaclean.ca'
+const BUILD_DATE = new Date().toISOString().slice(0, 10)
+
+/** Source files each route's content is derived from, for sitemap <lastmod>. */
+const STATIC_SOURCES = {
+  '/': ['src/pages/Home.tsx', 'src/data/seo.json'],
+  '/work': ['src/pages/WorkIndex.tsx', 'src/data/projects-meta.json'],
+  '/sunntack': ['src/pages/Sunntack.tsx', 'src/data/seo.json'],
+  '/about': ['src/pages/About.tsx', 'src/data/seo.json'],
+  '/contact': ['src/pages/Contact.tsx', 'src/data/seo.json'],
+}
+
+/**
+ * Last commit date (YYYY-MM-DD, a W3C-valid <lastmod>) touching any of the
+ * given files. Falls back to the build date when git history is unavailable
+ * (e.g. a shallow clone) or the files are uncommitted.
+ */
+function lastmodFor(files) {
+  if (!files?.length) return BUILD_DATE
+  try {
+    const out = execFileSync(
+      'git',
+      ['log', '-1', '--format=%cs', '--', ...files],
+      { cwd: ROOT, encoding: 'utf8' },
+    ).trim()
+    return out || BUILD_DATE
+  } catch {
+    return BUILD_DATE
+  }
+}
 
 const seo = JSON.parse(
   await readFile(path.join(ROOT, 'src/data/seo.json'), 'utf8'),
@@ -22,13 +52,19 @@ const projects = JSON.parse(
   await readFile(path.join(ROOT, 'src/data/projects-meta.json'), 'utf8'),
 )
 
-/** route → { title, description, image? } */
-const routes = new Map(Object.entries(seo).map(([r, m]) => [r, { ...m }]))
+/** route → { title, description, image?, sources } */
+const routes = new Map(
+  Object.entries(seo).map(([r, m]) => [
+    r,
+    { ...m, sources: STATIC_SOURCES[r] ?? [] },
+  ]),
+)
 for (const p of projects) {
   routes.set(`/work/${p.slug}`, {
     title: `${p.title} — Alex MacLean`,
     description: p.excerpt,
     image: `/og/${p.slug}.jpg`,
+    sources: [`src/content/${p.slug}.tsx`, 'src/data/projects-meta.json'],
   })
 }
 
@@ -87,11 +123,11 @@ for (const p of projects) {
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...routes.keys()]
-  .map(
-    (r) =>
-      `  <url><loc>${SITE}${r === '/' ? '/' : `${r}/`}</loc></url>`,
-  )
+${[...routes.entries()]
+  .map(([r, meta]) => {
+    const loc = `${SITE}${r === '/' ? '/' : `${r}/`}`
+    return `  <url><loc>${loc}</loc><lastmod>${lastmodFor(meta.sources)}</lastmod></url>`
+  })
   .join('\n')}
 </urlset>
 `
