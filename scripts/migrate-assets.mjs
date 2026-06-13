@@ -186,12 +186,17 @@ manifest.about.headshot = await toWebp(
 )
 console.log('✓ headshot')
 
-// OG image: 1200x630 crop of outfalls
-await sharp(path.join(IMAGES, 'outfalls.png'))
-  .resize(1200, 630, { fit: 'cover', position: 'centre' })
-  .jpeg({ quality: 80 })
-  .toFile(path.join(ROOT, 'public/og.jpg'))
-console.log('✓ og.jpg')
+// OG image: 1200x630 crop of the Terminal Taxonomy hero still
+const OG_SRC = path.join(STILLS_SRC, 'tt-live-blue.jpg')
+if (await exists(OG_SRC)) {
+  await sharp(OG_SRC)
+    .resize(1200, 630, { fit: 'cover', position: 'centre' })
+    .jpeg({ quality: 80 })
+    .toFile(path.join(ROOT, 'public/og.jpg'))
+  console.log('✓ og.jpg')
+} else {
+  console.warn('! og source still missing (run extract-stills), keeping og.jpg')
+}
 
 // Fixed-URL files → public/
 await copyFile(path.join(OLD, 'assets/cv.pdf'), path.join(ROOT, 'public/cv.pdf'))
