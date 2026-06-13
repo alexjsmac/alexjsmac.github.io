@@ -98,6 +98,12 @@ canvas {
   border-radius: 2px;
 }
 
+/* Programmatic focus targets (post-navigation headings) are not reachable
+   by Tab — no ring, even when WebKit deems script focus "visible". */
+[tabindex='-1']:focus-visible {
+  outline: none;
+}
+
 /* Content sits above the fixed scene canvas (z-index 0) */
 .site {
   position: relative;
