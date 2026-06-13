@@ -31,12 +31,9 @@
   list-style: none;
   padding: 0;
   margin-top: 1rem;
+  /* A single rule under "Or find me on" — no dividers between the links */
   border-top: 1px solid var(--line);
   max-width: 720px;
-}
-
-.links li {
-  border-bottom: 1px solid var(--line);
 }
 
 .link {
@@ -44,7 +41,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 2rem;
-  padding-block: 1.4rem;
+  padding-block: 0.9rem;
   transition: padding-left 350ms var(--ease-out);
 }
 
