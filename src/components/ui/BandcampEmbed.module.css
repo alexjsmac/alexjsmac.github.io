@@ -1,0 +1,68 @@
+.facade,
+.player {
+  width: 100%;
+  max-width: 480px;
+  height: 120px;
+  border-radius: 8px;
+  display: block;
+}
+
+.player {
+  border: 1px solid var(--line);
+}
+
+.facade {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0 1.4rem;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--depth-3);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.facade:hover {
+  border-color: rgba(94, 240, 200, 0.45);
+}
+
+.play {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  color: var(--abyss);
+  background: var(--bio-cyan);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.facade:hover .play {
+  transform: scale(1.06);
+}
+
+.facadeText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.facadeTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 440;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.facade:hover .facadeTitle {
+  color: var(--bio-cyan);
+}
+
+.facadeHint {
+  color: var(--ink-60);
+}

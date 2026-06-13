@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'wouter'
 import { Meta } from '@/components/ui/Meta'
 import { VideoEmbed } from '@/components/ui/VideoEmbed'
+import { BandcampEmbed } from '@/components/ui/BandcampEmbed'
 import { bySlug } from '@/data/projects'
 import { sunntack } from '@/data/sunntack'
 import seo from '@/data/seo.json'
@@ -74,6 +75,28 @@ export default function Sunntack() {
               {sunntack.album.support}
             </span>
           </a>
+
+          {/* Listen — the single that's out now */}
+          <section className={styles.section} aria-labelledby="epk-listen">
+            <h2 id="epk-listen" className="label-mono" data-st>
+              Listen — out now
+            </h2>
+            <div className={styles.listen} data-st>
+              <BandcampEmbed
+                trackId={sunntack.listen.trackId}
+                title={sunntack.listen.trackTitle}
+                meta={sunntack.listen.meta}
+              />
+              <a
+                href={sunntack.listen.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`${styles.inlineLink} label-mono`}
+              >
+                Full release on Bandcamp ↗
+              </a>
+            </div>
+          </section>
 
           {/* Watch */}
           <section className={styles.section} aria-labelledby="epk-watch">

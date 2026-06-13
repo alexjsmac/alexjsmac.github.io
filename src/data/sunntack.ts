@@ -37,6 +37,12 @@ export const sunntack = {
   oneLiner:
     'Live audiovisual performance — experimental electronics, generative visuals, and synthesized light, improvised as one instrument.',
   location: 'London, Ontario, Canada',
+  listen: {
+    trackTitle: 'Windworm',
+    trackId: '3551109682',
+    meta: 'Single · 2024',
+    href: 'https://sunntack.bandcamp.com/track/windworm',
+  },
 
   album: {
     label: 'Coming July 31, 2026',
