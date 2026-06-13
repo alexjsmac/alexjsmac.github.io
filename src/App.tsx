@@ -28,7 +28,7 @@ export default function App() {
       <SceneRoot />
       <div className="site">
         <Header />
-        <main id="main">
+        <main id="main" tabIndex={-1}>
           <Routes />
         </main>
         <Footer />
