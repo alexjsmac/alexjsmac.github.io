@@ -48,7 +48,7 @@ export const profile = {
   ],
   music: {
     linktree: 'https://linktr.ee/alexjsmac',
-    soundcloud: 'https://soundcloud.com/xanderjohnscott',
+    youtube: 'https://www.youtube.com/@alexjsmac',
   },
   socials: [
     { label: 'Instagram', href: 'https://instagram.com/alexjsmac' },
@@ -57,7 +57,7 @@ export const profile = {
       href: 'https://linkedin.com/in/alex-maclean-ba018543',
     },
     { label: 'GitHub', href: 'https://github.com/alexjsmac' },
-    { label: 'SoundCloud', href: 'https://soundcloud.com/xanderjohnscott' },
+    { label: 'YouTube', href: 'https://www.youtube.com/@alexjsmac' },
   ],
   contactNote:
     'Got a space, a stage, or an idea that needs sound, light, and code? Tell me about it — the form below goes straight to my inbox.',

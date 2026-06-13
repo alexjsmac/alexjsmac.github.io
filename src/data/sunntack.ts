@@ -174,7 +174,7 @@ export const sunntack = {
 
   links: [
     { label: 'Linktree', href: 'https://linktr.ee/alexjsmac' },
-    { label: 'SoundCloud', href: 'https://soundcloud.com/xanderjohnscott' },
+    { label: 'YouTube', href: 'https://www.youtube.com/@alexjsmac' },
     { label: 'Instagram', href: 'https://instagram.com/alexjsmac' },
   ],
 }
