@@ -60,7 +60,7 @@ export const profile = {
     { label: 'SoundCloud', href: 'https://soundcloud.com/xanderjohnscott' },
   ],
   contactNote:
-    'Please feel free to reach out on Instagram or LinkedIn. I’m always interested in collaborating on new projects or discussing ideas.',
+    'Got a space, a stage, or an idea that needs sound, light, and code? Tell me about it — the form below goes straight to my inbox.',
   contact: {
     /** Formspree form ID — submissions deliver to the address below. */
     formspreeId: 'meewlvwv',

@@ -19,9 +19,9 @@ export default function Contact() {
             {profile.contactNote}
           </p>
           <p className={`${styles.availability} measure`}>
-            Available for installations, live A/V performance, and creative
-            technology development — as a technical artist or software
-            developer.
+            Available for installation commissions, live A/V bookings, and
+            creative-technology development — from technical art direction to
+            production software.
           </p>
 
           <div className={styles.formWrap} data-st>
