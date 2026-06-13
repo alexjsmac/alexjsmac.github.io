@@ -85,6 +85,7 @@
 
 .nowLabel {
   color: var(--bio-cyan);
+  white-space: nowrap;
 }
 
 .nowLink {

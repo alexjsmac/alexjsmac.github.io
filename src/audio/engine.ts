@@ -81,10 +81,18 @@ class OceanAudioEngine {
       if (!this.ctx) return
       if (document.hidden) {
         if (this.ctx.state === 'running') void this.ctx.suspend()
-      } else if (this.enabled && this.ctx.state === 'suspended') {
-        void this.ctx.resume()
+      } else {
+        this.resumeIfEnabled()
       }
     })
+
+    // Mobile browsers block programmatic resume after a tab switch or
+    // bfcache restore — the context stays suspended while the toggle still
+    // reads "on", so the bars dance with no sound. Recover on the next user
+    // interaction. Cheap no-op once the context is already running.
+    const onGesture = () => this.resumeIfEnabled()
+    window.addEventListener('pointerdown', onGesture, { passive: true })
+    window.addEventListener('keydown', onGesture)
   }
 
   /** Call only from a click/keydown handler. */
@@ -113,6 +121,17 @@ class OceanAudioEngine {
         void this.ctx.suspend()
       }
     }, 1600)
+  }
+
+  /**
+   * Resume the context if the user wants sound but the browser suspended
+   * it (tab switch, bfcache, iOS "interrupted"). Safe to call on every
+   * gesture — a no-op when already running or when the user muted.
+   */
+  private resumeIfEnabled() {
+    if (this.enabled && this.ctx && this.ctx.state !== 'running') {
+      void this.ctx.resume()
+    }
   }
 
   /** Driven by the scene's MoodController. */
