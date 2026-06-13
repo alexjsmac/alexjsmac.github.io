@@ -44,7 +44,12 @@ export function SonarRings() {
   )
 
   useEffect(() => {
-    const onDown = () => {
+    const onDown = (e: PointerEvent) => {
+      if (!e.isPrimary) return
+      // Touch devices get no pointermove before a tap — sync the pointer
+      // from the event itself so the ping spawns under the finger.
+      frameBus.pointer.x = (e.clientX / window.innerWidth) * 2 - 1
+      frameBus.pointer.y = -((e.clientY / window.innerHeight) * 2 - 1)
       queued.current = true
     }
     window.addEventListener('pointerdown', onDown)
