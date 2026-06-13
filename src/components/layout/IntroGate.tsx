@@ -12,6 +12,7 @@ export function IntroGate() {
   const introDismissed = useAppStore((s) => s.introDismissed)
   const dismissIntro = useAppStore((s) => s.dismissIntro)
   const setAudioOn = useAppStore((s) => s.setAudioOn)
+  const gate = useRef<HTMLDivElement>(null)
   const soundButton = useRef<HTMLButtonElement>(null)
 
   const enter = (withSound: boolean) => {
@@ -29,7 +30,27 @@ export function IntroGate() {
     soundButton.current?.focus()
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') enter(false)
+      if (e.key === 'Escape') {
+        enter(false)
+        return
+      }
+      // Trap Tab within the modal so focus can't reach the (aria-hidden)
+      // page behind it.
+      if (e.key !== 'Tab' || !gate.current) return
+      const focusables = gate.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])',
+      )
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      if (!first || !last) return
+      const active = document.activeElement
+      if (e.shiftKey && (active === first || !gate.current.contains(active))) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && (active === last || !gate.current.contains(active))) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => {
@@ -44,6 +65,7 @@ export function IntroGate() {
 
   return (
     <div
+      ref={gate}
       className={styles.gate}
       role="dialog"
       aria-modal="true"
