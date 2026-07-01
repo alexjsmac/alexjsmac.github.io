@@ -68,7 +68,7 @@ export const sunntack = {
     title: 'Small Vibrations',
     detail: 'Debut full-length album · Digital & limited translucent-blue vinyl',
     description:
-      'A sonic tribute to declining insect populations: six tracks tracing an arc from the emergence of the first insects to their extinction and the sterile world left behind — built from field and sampled insect recordings, modular synthesis, and generative composition. Released digitally and as a limited two-colour vinyl edition.',
+      'A sonic tribute to declining insect populations: six tracks tracing an arc from the emergence of the first insects to their extinction and the sterile world left behind — built from field and sampled insect recordings, modular synthesis, and generative composition. Released digitally and as a limited translucent-blue vinyl edition.',
     support:
       'Created with the support of the London Arts Council’s Community Arts Investment Program and the City of London.',
     /** Grant-required funder logos, shown beside the support credit */
