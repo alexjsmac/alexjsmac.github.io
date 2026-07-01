@@ -29,6 +29,43 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   )
 }
 
+interface Show {
+  date: string
+  title: string
+  venue: string
+  note?: string
+  href?: string
+}
+
+function ShowRow({ show }: { show: Show }) {
+  return (
+    <li className={styles.show} data-st>
+      <span className={`${styles.showDate} label-mono`}>{show.date}</span>
+      <span className={styles.showBody}>
+        {show.href ? (
+          <a
+            href={show.href}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.showLink}
+          >
+            <span className={styles.showTitle}>{show.title}</span>
+            <span className={`${styles.showArrow} label-mono`} aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        ) : (
+          <span className={styles.showTitle}>{show.title}</span>
+        )}
+        <span className={`${styles.showVenue} label-mono`}>
+          {show.venue}
+          {show.note ? ` · ${show.note}` : ''}
+        </span>
+      </span>
+    </li>
+  )
+}
+
 export default function Sunntack() {
   const currentWork = bySlug[sunntack.currentSet.workSlug]
 
@@ -53,14 +90,8 @@ export default function Sunntack() {
             </p>
           </header>
 
-          {/* Album callout */}
-          <a
-            href={sunntack.album.href}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.album}
-            data-st
-          >
+          {/* Album callout — pre-release campaign */}
+          <div className={styles.album} data-st>
             <span className="label-mono">{sunntack.album.label}</span>
             <span className={`${styles.albumTitle} display-lg`}>
               <em className="display-italic">{sunntack.album.title}</em>
@@ -69,31 +100,77 @@ export default function Sunntack() {
               {sunntack.album.description}
             </span>
             <span className={`${styles.albumDetail} label-mono`}>
-              {sunntack.album.detail} Linktree ↗
+              {sunntack.album.detail}
             </span>
-            <span className={`${styles.albumSupport} label-mono`}>
-              {sunntack.album.support}
+            <span className={styles.albumActions}>
+              {sunntack.album.actions.map((action) =>
+                action.style === 'link' ? (
+                  <a
+                    key={action.label}
+                    href={action.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${styles.inlineLink} label-mono`}
+                  >
+                    {action.label} ↗
+                  </a>
+                ) : (
+                  <a
+                    key={action.label}
+                    href={action.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${styles.pill} ${
+                      action.style === 'primary' ? styles.pillSolid : ''
+                    } label-mono`}
+                  >
+                    {action.label} ↗
+                  </a>
+                ),
+              )}
             </span>
-          </a>
+            <span className={styles.albumFunders}>
+              <span className={`${styles.albumSupport} label-mono`}>
+                {sunntack.album.support}
+              </span>
+              <span className={styles.funderLogos}>
+                {sunntack.album.logos.map((l) => (
+                  <img
+                    key={l.alt}
+                    src={l.src}
+                    width={l.width}
+                    height={l.height}
+                    alt={l.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ))}
+              </span>
+            </span>
+          </div>
 
-          {/* Listen — the single that's out now */}
+          {/* Listen — newest release leads during the campaign */}
           <section className={styles.section} aria-labelledby="epk-listen">
             <h2 id="epk-listen" className="label-mono" data-st>
-              Listen — out now
+              Listen
             </h2>
             <div className={styles.listen} data-st>
-              <BandcampEmbed
-                trackId={sunntack.listen.trackId}
-                title={sunntack.listen.trackTitle}
-                meta={sunntack.listen.meta}
-              />
+              {sunntack.listen.map((item) => (
+                <BandcampEmbed
+                  key={item.id}
+                  id={item.id}
+                  kind={item.kind}
+                  title={item.title}
+                  meta={item.meta}
+                />
+              ))}
               <a
-                href={sunntack.listen.href}
+                href={sunntack.bandcampUrl}
                 target="_blank"
                 rel="noreferrer"
                 className={`${styles.inlineLink} label-mono`}
               >
-                Full release on Bandcamp ↗
+                Sunntack on Bandcamp ↗
               </a>
             </div>
           </section>
@@ -125,29 +202,28 @@ export default function Sunntack() {
             </div>
           </section>
 
-          {/* Live history */}
+          {/* Live — upcoming launch events, then history */}
           <section className={styles.section} aria-labelledby="epk-live">
             <h2 id="epk-live" className="label-mono" data-st>
               Live
             </h2>
+            <p className={`${styles.groupLabel} label-mono`} data-st>
+              Upcoming
+            </p>
+            <ul className={styles.shows}>
+              {sunntack.upcoming.map((show) => (
+                <ShowRow key={`${show.date}-${show.title}`} show={show} />
+              ))}
+            </ul>
+            <p
+              className={`${styles.groupLabel} ${styles.groupLabelPast} label-mono`}
+              data-st
+            >
+              Past
+            </p>
             <ul className={styles.shows}>
               {sunntack.shows.map((show) => (
-                <li
-                  key={`${show.date}-${show.title}`}
-                  className={styles.show}
-                  data-st
-                >
-                  <span className={`${styles.showDate} label-mono`}>
-                    {show.date}
-                  </span>
-                  <span className={styles.showBody}>
-                    <span className={styles.showTitle}>{show.title}</span>
-                    <span className={`${styles.showVenue} label-mono`}>
-                      {show.venue}
-                      {show.note ? ` · ${show.note}` : ''}
-                    </span>
-                  </span>
-                </li>
+                <ShowRow key={`${show.date}-${show.title}`} show={show} />
               ))}
             </ul>
           </section>

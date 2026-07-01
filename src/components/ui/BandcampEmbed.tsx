@@ -2,16 +2,18 @@ import { useState } from 'react'
 import styles from './BandcampEmbed.module.css'
 
 interface BandcampEmbedProps {
-  /** Numeric Bandcamp track id (from the track's share/embed code) */
-  trackId: string
+  /** Numeric Bandcamp item id (from the release's share/embed code) */
+  id: string
+  /** Release type — albums and tracks use different embed URLs */
+  kind: 'track' | 'album'
   title: string
   /** Optional line under the title on the facade, e.g. "Single · 2024" */
   meta?: string
 }
 
-function embedSrc(trackId: string): string {
+function embedSrc(kind: 'track' | 'album', id: string): string {
   // Classic themeable player; transparent so the site's dark bg shows through
-  return `https://bandcamp.com/EmbeddedPlayer/track=${trackId}/size=large/bgcol=0a121c/linkcol=5ef0c8/tracklist=false/artwork=small/transparent=true/`
+  return `https://bandcamp.com/EmbeddedPlayer/${kind}=${id}/size=large/bgcol=0a121c/linkcol=5ef0c8/tracklist=false/artwork=small/transparent=true/`
 }
 
 let preconnected = false
@@ -30,14 +32,14 @@ function preconnect() {
  * Click-to-load Bandcamp player: zero third-party bytes until the visitor
  * presses play, mirroring VideoEmbed's facade.
  */
-export function BandcampEmbed({ trackId, title, meta }: BandcampEmbedProps) {
+export function BandcampEmbed({ id, kind, title, meta }: BandcampEmbedProps) {
   const [playing, setPlaying] = useState(false)
 
   if (playing) {
     return (
       <iframe
         className={styles.player}
-        src={embedSrc(trackId)}
+        src={embedSrc(kind, id)}
         title={`${title} — Bandcamp player`}
         seamless
       />

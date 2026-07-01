@@ -250,5 +250,15 @@
       "width": 1920,
       "height": 1080
     }
+  },
+  "logos": {
+    "london-arts-council": {
+      "width": 505,
+      "height": 96
+    },
+    "city-of-london": {
+      "width": 70,
+      "height": 96
+    }
   }
 }

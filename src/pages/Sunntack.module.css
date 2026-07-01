@@ -28,23 +28,43 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: clamp(1.4rem, 3vw, 2.2rem);
-  transition: border-color var(--dur-fast) var(--ease-out);
 }
 
 .album > .label-mono:first-child {
   color: var(--bio-cyan);
 }
 
-.album:hover {
-  border-color: rgba(94, 240, 200, 0.45);
+.albumActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.4rem;
+  margin-top: 0.8rem;
 }
 
-.albumTitle {
-  transition: color var(--dur-fast) var(--ease-out);
+.albumActions .pill {
+  margin-top: 0;
 }
 
-.album:hover .albumTitle {
-  color: var(--bio-cyan);
+.albumFunders {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.funderLogos {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  opacity: 0.8;
+}
+
+.funderLogos img {
+  display: block;
+  height: 2.1rem;
+  width: auto;
 }
 
 .albumDescription {
@@ -125,6 +145,33 @@
 }
 
 /* Shows */
+.groupLabel {
+  color: var(--ink-35);
+  margin-bottom: 0.9rem;
+}
+
+.groupLabelPast {
+  margin-top: 2.4rem;
+}
+
+.showLink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.showLink .showTitle {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.showLink:hover .showTitle {
+  color: var(--bio-cyan);
+}
+
+.showArrow {
+  color: var(--ink-35);
+}
+
 .shows {
   list-style: none;
   margin: 0;

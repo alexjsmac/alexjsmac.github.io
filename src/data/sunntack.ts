@@ -10,12 +10,21 @@ import press2 from '@/assets/press/sunntack-press-2.webp'
 import live1 from '@/assets/press/sunntack-live-1.webp'
 import live2 from '@/assets/press/sunntack-live-2.webp'
 import portrait from '@/assets/press/sunntack-portrait.webp'
+import lacLogo from '@/assets/logos/london-arts-council.png'
+import cityLogo from '@/assets/logos/city-of-london.png'
 
 interface Dim {
   width: number
   height: number
 }
 const pressDims = manifest.press as Record<string, Dim>
+const logoDims = manifest.logos as Record<string, Dim>
+
+function logo(slug: string, src: string, alt: string) {
+  const dim = logoDims[slug]
+  if (!dim) throw new Error(`Missing logo "${slug}" — run npm run migrate`)
+  return { src, ...dim, alt }
+}
 
 export interface PressPhoto {
   src: string
@@ -37,26 +46,58 @@ export const sunntack = {
   oneLiner:
     'Live audiovisual performance — experimental electronics, generative visuals, and synthesized light, improvised as one instrument.',
   location: 'London, Ontario, Canada',
-  listen: {
-    trackTitle: 'Windworm',
-    trackId: '3551109682',
-    meta: 'Single · 2024',
-    href: 'https://sunntack.bandcamp.com/track/windworm',
-  },
+  /** Bandcamp embeds, newest first — the campaign lead sits on top */
+  listen: [
+    {
+      kind: 'album' as const,
+      title: 'Small Vibrations',
+      id: '3737159743',
+      meta: 'Album · Coming Aug 7, 2026',
+    },
+    {
+      kind: 'track' as const,
+      title: 'Windworm',
+      id: '3551109682',
+      meta: 'Single · 2024',
+    },
+  ],
+  bandcampUrl: 'https://sunntack.bandcamp.com',
 
   album: {
-    label: 'Coming July 31, 2026',
+    label: 'Coming August 7, 2026',
     title: 'Small Vibrations',
-    detail: 'Debut full-length album · Listen on release via',
+    detail: 'Debut full-length album · Digital & limited translucent-blue vinyl',
     description:
-      'A sonic tribute to declining insect populations: six tracks tracing an arc from the emergence of the first insects to their extinction and the sterile world left behind — built from field recordings, modular synthesis, and generative composition. Released digitally and as a limited two-colour vinyl edition.',
+      'A sonic tribute to declining insect populations: six tracks tracing an arc from the emergence of the first insects to their extinction and the sterile world left behind — built from field and sampled insect recordings, modular synthesis, and generative composition. Released digitally and as a limited two-colour vinyl edition.',
     support:
       'Created with the support of the London Arts Council’s Community Arts Investment Program and the City of London.',
-    href: 'https://linktr.ee/alexjsmac',
+    /** Grant-required funder logos, shown beside the support credit */
+    logos: [
+      logo('london-arts-council', lacLogo, 'London Arts Council'),
+      logo('city-of-london', cityLogo, 'City of London'),
+    ],
+    /** Campaign CTAs, most important first */
+    actions: [
+      {
+        label: 'Pre-save',
+        href: 'https://distrokid.com/hyperfollow/sunntack/small-vibrations',
+        style: 'primary' as const,
+      },
+      {
+        label: 'Pre-order on Bandcamp',
+        href: 'https://sunntack.bandcamp.com/album/small-vibrations',
+        style: 'secondary' as const,
+      },
+      {
+        label: 'Linktree',
+        href: 'https://linktr.ee/alexjsmac',
+        style: 'link' as const,
+      },
+    ],
   },
 
   bio:
-    'Sunntack is the live A/V project of Alex MacLean, a new media artist and programmer based in London, Ontario. His performances blend experimental electronic music with audio-reactive projections and synthesized light — improvised systems in which sound, image, and language process one another in real time. Drawing on human ecology, alternative futures, and science fiction, Sunntack has appeared at international festivals and conferences including ICLC, NIME, and the Network Music Festival, and was recognized with the 2022 Shirley Elford Emerging Artist Commission Prize. His debut full-length album, Small Vibrations, arrives July 31, 2026.',
+    'Sunntack is the live A/V project of Alex MacLean, a new media artist and programmer based in London, Ontario. His performances blend experimental electronic music with audio-reactive projections and synthesized light — improvised systems in which sound, image, and language process one another in real time. Drawing on human ecology, alternative futures, and science fiction, Sunntack has appeared at international festivals and conferences including ICLC, NIME, and the Network Music Festival, and was recognized with the 2022 Shirley Elford Emerging Artist Commission Prize. His debut full-length album, Small Vibrations, arrives August 7, 2026.',
 
   /** The current live set */
   currentSet: {
@@ -65,6 +106,24 @@ export const sunntack = {
       'The current Sunntack set is Terminal Taxonomy — a meditation on the cascading erosion of language and life in the age of algorithmic mediation. A custom TouchDesigner system built around a modified speech-to-text operator transcribes live vocal samples, reporting the detected language and its own confidence; those transcriptions drive the entire piece. As the system loses confidence in its evaluations, entropy increases and it becomes unstable — in both the audio and the visuals — while Alex improvises with the results in real time, alongside ten Art-Net LED bars that map the system’s state into physical light.',
     workSlug: 'terminal-taxonomy',
   },
+
+  /** Launch events — rendered under an "Upcoming" label above past shows */
+  upcoming: [
+    {
+      date: 'Jul 2026',
+      title: 'Small Vibrations Listening Party',
+      venue: 'Studio Coffee, 211 Dundas St, London, ON',
+      note: 'July 30 · 6–8pm · Free · all ages',
+      href: 'https://www.facebook.com/share/1EiS5gT6WJ/',
+    },
+    {
+      date: 'Aug 2026',
+      title: 'Small Vibrations Online Listening Party',
+      venue: 'Bandcamp · Online',
+      note: 'August 7 · 6:00 PM EDT',
+      href: 'https://sunntack.bandcamp.com/album/small-vibrations',
+    },
+  ],
 
   shows: [
     {

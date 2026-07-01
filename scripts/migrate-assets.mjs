@@ -176,6 +176,92 @@ for (const name of STILLS) {
 }
 console.log('✓ film stills')
 
+// Small Vibrations campaign assets: funder logos (CAIP credit) and the
+// album-art share card. Remote sources cache in scripts/.cache; outputs
+// are committed, so the site keeps them even if the source URLs rot.
+async function cachedFetch(name, url) {
+  const file = path.join(CACHE, name)
+  if (!(await exists(file))) {
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`)
+    await mkdir(CACHE, { recursive: true })
+    await writeFile(file, Buffer.from(await res.arrayBuffer()))
+    console.log(`  fetched ${url}`)
+  }
+  return file
+}
+
+const LOGOS_OUT = path.join(ROOT, 'src/assets/logos')
+await mkdir(LOGOS_OUT, { recursive: true })
+manifest.logos = {}
+
+// London Arts Council — official white/reverse horizontal lockup
+{
+  const src = await cachedFetch(
+    'lac-white.png',
+    'https://static.wixstatic.com/media/2900e8_45a10b9fdb454118a8909b1d3b1926a2~mv2.png',
+  )
+  const info = await sharp(src)
+    .trim()
+    .resize({ height: 96, withoutEnlargement: true })
+    .png()
+    .toFile(path.join(LOGOS_OUT, 'london-arts-council.png'))
+  manifest.logos['london-arts-council'] = {
+    width: info.width,
+    height: info.height,
+  }
+}
+
+// City of London — white reverse derived from the official black-on-white
+// mark (luminance → alpha), matching the city's own reverse treatment
+{
+  const src = await cachedFetch(
+    'city-of-london.jpg',
+    'https://static.wixstatic.com/media/2900e8_8539176563b44fa2b1f50d0e5672fc33~mv2.jpg',
+  )
+  const meta = await sharp(src).metadata()
+  const alpha = await sharp(src).toColourspace('b-w').negate().raw().toBuffer()
+  const white = await sharp({
+    create: {
+      width: meta.width,
+      height: meta.height,
+      channels: 3,
+      background: { r: 255, g: 255, b: 255 },
+    },
+  })
+    .joinChannel(alpha, {
+      raw: { width: meta.width, height: meta.height, channels: 1 },
+    })
+    .png()
+    .toBuffer()
+  const info = await sharp(white)
+    .trim()
+    .resize({ height: 96, withoutEnlargement: true })
+    .png()
+    .toFile(path.join(LOGOS_OUT, 'city-of-london.png'))
+  manifest.logos['city-of-london'] = { width: info.width, height: info.height }
+}
+console.log('✓ funder logos')
+
+// /sunntack share card: album art centered over a blurred, darkened fill
+{
+  const art = await cachedFetch(
+    'small-vibrations-art.jpg',
+    'https://f4.bcbits.com/img/a1404112477_10.jpg',
+  )
+  const bg = await sharp(art)
+    .resize(1200, 630, { fit: 'cover' })
+    .blur(60)
+    .modulate({ brightness: 0.55 })
+    .toBuffer()
+  const fg = await sharp(art).resize({ height: 630, fit: 'inside' }).toBuffer()
+  await sharp(bg)
+    .composite([{ input: fg, gravity: 'centre' }])
+    .jpeg({ quality: 82 })
+    .toFile(path.join(ROOT, 'public/og-sunntack.jpg'))
+}
+console.log('✓ og-sunntack.jpg')
+
 // Headshot
 await mkdir(path.join(ROOT, 'src/assets/about'), { recursive: true })
 manifest.about.headshot = await toWebp(
