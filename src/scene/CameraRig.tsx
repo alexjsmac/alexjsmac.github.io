@@ -11,10 +11,11 @@ export function CameraRig() {
   useFrame(({ camera }, delta) => {
     const d = Math.min(delta, 0.1)
     const targetY = -frameBus.depth * COLUMN_HEIGHT
+    // λ=8 settles with Lenis' lerp so the ocean stops when the content does
     camera.position.y = THREE.MathUtils.damp(
       camera.position.y,
       targetY,
-      4.2,
+      8,
       d,
     )
     camera.rotation.x = THREE.MathUtils.damp(

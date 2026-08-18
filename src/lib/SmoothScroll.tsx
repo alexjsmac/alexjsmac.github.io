@@ -41,9 +41,12 @@ export function SmoothScroll() {
       return () => window.removeEventListener('scroll', writeNative)
     }
 
+    // lerp mode: proportional tracking of the target (~90% in ~0.27s).
+    // Never set `duration`/`easing` here — when duration is present Lenis
+    // ignores lerp and restarts a fixed-length glide on every wheel event,
+    // which is what made scrolling feel sluggish.
     const lenis = new Lenis({
-      duration: 0.85,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
+      lerp: 0.14,
     })
     scrollControl.lenis = lenis
 

@@ -41,7 +41,9 @@ export function MoodController() {
     frameBus.depth = from + (to - from) * frameBus.scroll.progress
 
     const u = sharedUniforms
-    u.uDepth.value = damp(u.uDepth.value, frameBus.depth, 2.4, d)
+    // 4.0 keeps route-change mood shifts cinematic while tracking scroll
+    // closely enough that the water doesn't trail the content.
+    u.uDepth.value = damp(u.uDepth.value, frameBus.depth, 4.0, d)
     u.uCaustics.value = damp(u.uCaustics.value, mood.caustics, 1.8, d)
     u.uParticleEnergy.value = damp(
       u.uParticleEnergy.value,
