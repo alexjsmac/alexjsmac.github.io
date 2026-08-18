@@ -1,15 +1,5 @@
 {
-  "_comment": "Legacy Jekyll URLs that are DEAD on production → their home on this site. Consumed by scripts/prerender-meta.mjs, which emits a 200 redirect stub at each path. Keys are exact pathnames, no trailing slash; a key ending in .html is emitted as that literal file. Every key was confirmed to 404 on www.alexmaclean.ca before being added — a Wayback hit alone is NOT sufficient, see _projectSites.",
-
-  "_projectSites": [
-    "/datanimism",
-    "/music-emotion-recognizer",
-    "/oceanic-datanimism-vr",
-    "/small-vibrations",
-    "/switch-jockey",
-    "/tidal-hybrid-interactive-visualizer"
-  ],
-  "_projectSitesNote": "Live GitHub Pages project sites from separate repos, mounted under this domain at /<repo>/. They are NOT dead legacy URLs. A stub here would deploy a file over a working demo, so the build throws if any redirect key collides with this list.",
+  "_comment": "Legacy Jekyll URLs that are DEAD on production → their home on this site. Consumed by scripts/prerender-meta.mjs, which emits a 200 redirect stub at each path. Keys are exact pathnames, no trailing slash; a key ending in .html is emitted as that literal file. Every key was confirmed to 404 on www.alexmaclean.ca before being added — a Wayback hit alone is NOT sufficient, see project-sites.json.",
 
   "/portfolio": "/work",
   "/portfolio/blue-noise": "/work/blue-noise",

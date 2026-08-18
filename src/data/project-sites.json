@@ -1,0 +1,13 @@
+{
+  "_comment": "Live GitHub Pages project sites. Each is published from its own repo and mounted under this domain at /<repo>/ — they are NOT part of this build's output. Authoritative list, used twice by scripts/prerender-meta.mjs: (1) legacy-redirect keys are checked against it, so a redirect stub can never be written over a working demo; (2) each path is emitted into sitemap.xml, since nothing in this build links to them at crawl time (the /work/ 'Live piece' links only exist after the SPA hydrates).",
+  "_lastmodNote": "No <lastmod> is emitted: these deploy from separate repos on their own schedule, so this build cannot know when they last changed. lastmod is optional in the sitemap protocol, and a stale value is worse than none.",
+
+  "sites": [
+    { "path": "/switch-jockey/", "repo": "switch-jockey", "linkedFrom": "/work/switch-jockey/" },
+    { "path": "/datanimism/", "repo": "datanimism", "linkedFrom": "/work/oceanic-datanimism/" },
+    { "path": "/oceanic-datanimism-vr/", "repo": "oceanic-datanimism-vr", "linkedFrom": "/work/oceanic-datanimism-vr/" },
+    { "path": "/tidal-hybrid-interactive-visualizer/", "repo": "tidal-hybrid-interactive-visualizer", "linkedFrom": "/work/bev-deconstructed/" },
+    { "path": "/music-emotion-recognizer/", "repo": "music-emotion-recognizer", "linkedFrom": null },
+    { "path": "/small-vibrations/", "repo": "small-vibrations", "linkedFrom": null }
+  ]
+}
