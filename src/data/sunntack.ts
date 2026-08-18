@@ -41,18 +41,26 @@ function photo(slug: string, src: string, alt: string): PressPhoto {
   return { src, ...dim, alt, download: `/press/${slug}.jpg` }
 }
 
+export interface Show {
+  date: string
+  title: string
+  venue: string
+  note?: string
+  href?: string
+}
+
 export const sunntack = {
   name: 'Sunntack',
   oneLiner:
     'Live audiovisual performance — experimental electronics, generative visuals, and synthesized light, improvised as one instrument.',
   location: 'London, Ontario, Canada',
-  /** Bandcamp embeds, newest first — the campaign lead sits on top */
+  /** Bandcamp embeds, newest first — the latest release sits on top */
   listen: [
     {
       kind: 'album' as const,
       title: 'Small Vibrations',
       id: '3737159743',
-      meta: 'Album · Coming Aug 7, 2026',
+      meta: 'Album · 2026',
     },
     {
       kind: 'track' as const,
@@ -64,7 +72,7 @@ export const sunntack = {
   bandcampUrl: 'https://sunntack.bandcamp.com',
 
   album: {
-    label: 'Coming August 7, 2026',
+    label: 'Out now',
     title: 'Small Vibrations',
     detail: 'Debut full-length album · Digital & limited translucent-blue vinyl',
     description:
@@ -76,15 +84,20 @@ export const sunntack = {
       logo('london-arts-council', lacLogo, 'London Arts Council'),
       logo('city-of-london', cityLogo, 'City of London'),
     ],
-    /** Campaign CTAs, most important first */
+    /**
+     * CTAs, most important first. A root-relative href is rendered as a
+     * same-tab link: /small-vibrations/ is on this domain but is a separate
+     * GitHub Pages project site, so it needs a real navigation, not a
+     * client-side route (see src/data/project-sites.json).
+     */
     actions: [
       {
-        label: 'Pre-save',
-        href: 'https://distrokid.com/hyperfollow/sunntack/small-vibrations',
+        label: 'Experience the visual album',
+        href: '/small-vibrations/',
         style: 'primary' as const,
       },
       {
-        label: 'Pre-order on Bandcamp',
+        label: 'Listen on Bandcamp',
         href: 'https://sunntack.bandcamp.com/album/small-vibrations',
         style: 'secondary' as const,
       },
@@ -97,7 +110,7 @@ export const sunntack = {
   },
 
   bio:
-    'Sunntack is the live A/V project of Alex MacLean, a new media artist and programmer based in London, Ontario. His performances blend experimental electronic music with audio-reactive projections and synthesized light — improvised systems in which sound, image, and language process one another in real time. Drawing on human ecology, alternative futures, and science fiction, Sunntack has appeared at international festivals and conferences including ICLC, NIME, and the Network Music Festival, and was recognized with the 2022 Shirley Elford Emerging Artist Commission Prize. His debut full-length album, Small Vibrations, arrives August 7, 2026.',
+    'Sunntack is the live A/V project of Alex MacLean, a new media artist and programmer based in London, Ontario. His performances blend experimental electronic music with audio-reactive projections and synthesized light — improvised systems in which sound, image, and language process one another in real time. Drawing on human ecology, alternative futures, and science fiction, Sunntack has appeared at international festivals and conferences including ICLC, NIME, and the Network Music Festival, and was recognized with the 2022 Shirley Elford Emerging Artist Commission Prize. His debut full-length album, Small Vibrations, was released in August 2026.',
 
   /** The current live set */
   currentSet: {
@@ -107,25 +120,23 @@ export const sunntack = {
     workSlug: 'terminal-taxonomy',
   },
 
-  /** Launch events — rendered under an "Upcoming" label above past shows */
-  upcoming: [
-    {
-      date: 'Jul 2026',
-      title: 'Small Vibrations Listening Party',
-      venue: 'Studio Coffee, 211 Dundas St, London, ON',
-      note: 'July 30 · 6–8pm · Free · all ages',
-      href: 'https://www.facebook.com/share/1EiS5gT6WJ/',
-    },
+  /**
+   * Upcoming shows — rendered under an "Upcoming" label above past shows.
+   * The section is hidden entirely while this is empty.
+   */
+  upcoming: [] as Show[],
+
+  shows: [
     {
       date: 'Aug 2026',
       title: 'Small Vibrations Online Listening Party',
       venue: 'Bandcamp · Online',
-      note: 'August 7 · 6:00 PM EDT',
-      href: 'https://sunntack.bandcamp.com/album/small-vibrations',
     },
-  ],
-
-  shows: [
+    {
+      date: 'Jul 2026',
+      title: 'Small Vibrations Listening Party',
+      venue: 'Studio Coffee, London, ON',
+    },
     {
       date: 'Mar 2026',
       title: 'Brew.exe',
