@@ -88,26 +88,60 @@ const esc = (s) =>
 
 const template = await readFile(path.join(DIST, 'index.html'), 'utf8')
 
+/**
+ * String-replace one tag, or fail the build.
+ *
+ * A regex that stops matching after index.html is reformatted is invisible
+ * otherwise: .replace() is a silent no-op and every route quietly inherits
+ * the template's value. That is exactly how the description tag came to be
+ * identical on all 22 routes — the pattern required `<meta name=` on one
+ * line, and Prettier had wrapped it. Attribute gaps are matched with \s+ so
+ * reformatting is tolerated, and a miss now throws.
+ */
+function replaceTag(html, re, replacement, label) {
+  // Test the pattern rather than diffing the result: the home route's meta is
+  // identical to the template's, so a successful replace is a no-op there.
+  if (!re.test(html)) {
+    throw new Error(
+      `prerender-meta: no match for ${label} — index.html markup changed?`,
+    )
+  }
+  return html.replace(re, replacement)
+}
+
 function htmlFor(route, meta) {
   const url = SITE + (route === '/' ? '/' : `${route}/`)
   const image = SITE + (meta.image ?? '/og.jpg')
-  return template
-    .replace(/<title>[^<]*<\/title>/, `<title>${esc(meta.title)}</title>`)
-    .replace(
-      /(<meta name="description"\s+content=")[^"]*(")/,
+  const edits = [
+    [/<title>[^<]*<\/title>/, `<title>${esc(meta.title)}</title>`, 'title'],
+    [
+      /(<meta\s+name="description"\s+content=")[^"]*(")/,
       `$1${esc(meta.description)}$2`,
-    )
-    .replace(
-      /(<meta property="og:title" content=")[^"]*(")/,
+      'meta description',
+    ],
+    [
+      /(<meta\s+property="og:title"\s+content=")[^"]*(")/,
       `$1${esc(meta.title)}$2`,
-    )
-    .replace(
+      'og:title',
+    ],
+    [
       /(<meta\s+property="og:description"\s+content=")[^"]*(")/,
       `$1${esc(meta.description)}$2`,
-    )
-    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${image}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
+      'og:description',
+    ],
+    [/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${url}$2`, 'og:url'],
+    [
+      /(<meta\s+property="og:image"\s+content=")[^"]*(")/,
+      `$1${image}$2`,
+      'og:image',
+    ],
+    [/(<link\s+rel="canonical"\s+href=")[^"]*(")/, `$1${url}$2`, 'canonical'],
+  ]
+  return edits.reduce(
+    (html, [re, replacement, label]) =>
+      replaceTag(html, re, replacement, label),
+    template,
+  )
 }
 
 let written = 0
