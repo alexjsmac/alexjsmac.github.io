@@ -3,7 +3,31 @@
 }
 
 .header {
+  position: relative;
   margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+/* Oversized catalogue number ghosted behind the title */
+.ghostIndex {
+  position: absolute;
+  top: -0.32em;
+  right: -0.03em;
+  z-index: -1;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 22vw, 19rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(234, 244, 244, 0.12);
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .ghostIndex {
+    display: none;
+  }
 }
 
 .title {
@@ -16,8 +40,53 @@
   color: var(--ink-60);
 }
 
-.video {
+/* Full-bleed hero media — the work escapes the text column */
+.heroBleed {
   margin-bottom: clamp(3rem, 8vh, 5rem);
+}
+
+.heroVideo {
+  max-width: 1800px;
+  margin-inline: auto;
+}
+
+.heroStill {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 21 / 10;
+  max-width: 1800px;
+  margin-inline: auto;
+  background: var(--depth-3);
+}
+
+@media (max-width: 720px) {
+  .heroStill {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Oversized shell the scroll parallax drifts (GSAP owns its transform) */
+.heroParallax {
+  position: absolute;
+  inset: -7% 0;
+  display: block;
+  will-change: transform;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Film grain matching the scene's post noise */
+.heroGrain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .layout {
@@ -146,36 +215,98 @@
   margin-top: clamp(3rem, 8vh, 5rem);
 }
 
-/* Prev / next */
-.pager {
+/* More work — quiet prev link, full-width next-project teaser */
+.more {
   margin-top: clamp(4rem, 10vh, 7rem);
-  padding-top: 2rem;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
 }
 
-.pagerLink {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 46%;
-}
-
-.pagerNext {
-  text-align: right;
-}
-
-.pagerTitle {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 440;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+.prevLink {
+  display: inline-block;
+  margin-bottom: 1.6rem;
+  color: var(--ink-60);
   transition: color var(--dur-fast) var(--ease-out);
 }
 
-.pagerLink:hover .pagerTitle {
+.prevLink:hover {
+  color: var(--bio-cyan);
+}
+
+.nextTeaser {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding-block: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+.nextInner {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 420px);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+@media (max-width: 720px) {
+  .nextInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.nextLabel {
+  color: var(--bio-cyan);
+}
+
+.nextTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-weight: 440;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nextMeta {
+  color: var(--ink-60);
+}
+
+.nextMedia {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 4 / 3;
+  background: var(--depth-3);
+}
+
+.nextParallax {
+  position: absolute;
+  inset: -7% 0;
+  display: block;
+  will-change: transform;
+}
+
+.nextImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transform: scale(1.001);
+  transition:
+    transform 900ms var(--ease-out),
+    opacity 500ms var(--ease-out);
+}
+
+.nextTeaser:hover .nextImage,
+.nextTeaser:focus-visible .nextImage {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.nextTeaser:hover .nextTitle,
+.nextTeaser:focus-visible .nextTitle {
   color: var(--bio-cyan);
 }

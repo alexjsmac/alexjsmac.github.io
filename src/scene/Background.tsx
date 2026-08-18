@@ -22,6 +22,7 @@ export function Background() {
           uDepth: sharedUniforms.uDepth,
           uCaustics: sharedUniforms.uCaustics,
           uAudioWarp: sharedUniforms.uAudioWarp,
+          uAudioMid: sharedUniforms.uAudioMid,
           uRamp: sharedUniforms.uRamp,
           uAspect: { value: 1 },
         },

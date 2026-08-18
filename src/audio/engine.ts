@@ -124,6 +124,15 @@ class OceanAudioEngine {
   }
 
   /**
+   * A deliberate sonar ping for user clicks — the same voice as the
+   * ambient pings, pitched by the current depth. Silent while muted.
+   */
+  ping() {
+    if (!this.enabled || !this.ctx || this.ctx.state !== 'running') return
+    this.pings?.trigger()
+  }
+
+  /**
    * Resume the context if the user wants sound but the browser suspended
    * it (tab switch, bfcache, iOS "interrupted"). Safe to call on every
    * gesture — a no-op when already running or when the user muted.

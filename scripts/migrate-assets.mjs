@@ -244,11 +244,22 @@ manifest.logos = {}
 console.log('✓ funder logos')
 
 // /sunntack share card: album art centered over a blurred, darkened fill
+// — plus a display webp of the cover for the album callout on the page
 {
   const art = await cachedFetch(
     'small-vibrations-art.jpg',
     'https://f4.bcbits.com/img/a1404112477_10.jpg',
   )
+  const COVERS_OUT = path.join(ROOT, 'src/assets/covers')
+  await mkdir(COVERS_OUT, { recursive: true })
+  manifest.covers = {
+    'small-vibrations': await toWebp(
+      art,
+      path.join(COVERS_OUT, 'small-vibrations.webp'),
+      1000,
+      84,
+    ),
+  }
   const bg = await sharp(art)
     .resize(1200, 630, { fit: 'cover' })
     .blur(60)

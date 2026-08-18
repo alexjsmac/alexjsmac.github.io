@@ -1,3 +1,5 @@
+import { PullQuote } from '@/components/ui/PullQuote'
+
 export default function Body() {
   return (
     <>
@@ -15,6 +17,10 @@ export default function Body() {
         the tension between built and natural environments, prompting
         reflection on collective responsibility in shaping urban ecologies.
       </p>
+      <PullQuote>
+        Both visual poem and interactive playground — an invitation to
+        reimagine how we inhabit our cities.
+      </PullQuote>
       <p>
         <em>Concrete Canopy</em> was both visual poem and interactive
         playground — an invitation to listen, engage, and reimagine how we

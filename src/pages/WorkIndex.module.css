@@ -32,11 +32,12 @@
   align-items: baseline;
   gap: 1.5rem;
   padding-block: clamp(1.1rem, 2.6vh, 1.7rem);
-  transition: padding-left 350ms var(--ease-out);
+  /* transform, not padding: composited, no per-frame reflow */
+  transition: transform 350ms var(--ease-out);
 }
 
 .rowIndex {
-  color: var(--ink-35);
+  color: var(--ink-50);
   transition: color var(--dur-fast) var(--ease-out);
 }
 
@@ -54,13 +55,13 @@
 }
 
 .rowYear {
-  color: var(--ink-35);
+  color: var(--ink-50);
   min-width: 3.2em;
   text-align: right;
 }
 
 .rowLink:hover {
-  padding-left: 0.8rem;
+  transform: translateX(0.8rem);
 }
 
 .rowLink:hover .rowTitle,

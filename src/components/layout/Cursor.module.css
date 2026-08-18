@@ -67,6 +67,18 @@
   background-color: rgba(94, 240, 200, 0.94);
 }
 
+/* Pressed: the brackets contract like the sonar emitter firing */
+.down {
+  width: 24px;
+  height: 24px;
+  color: var(--bio-cyan);
+}
+
+.down.view {
+  width: 48px;
+  height: 48px;
+}
+
 .viewLabel {
   font-family: var(--font-mono);
   font-size: 0.58rem;

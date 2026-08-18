@@ -31,7 +31,8 @@
   font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.08em;
-  color: var(--ink-35);
+  color: var(--ink-50);
+  text-shadow: 0 1px 12px rgba(2, 6, 16, 0.65);
   writing-mode: vertical-rl;
 }
 

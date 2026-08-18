@@ -3,8 +3,13 @@ import { useLocation } from 'wouter'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { useReducedMotion } from '@/lib/useReducedMotion'
+import projectSites from '@/data/project-sites.json'
 
 gsap.registerPlugin(SplitText)
+
+/** Live GitHub Pages demos mounted under this domain — real navigations,
+ *  not SPA routes. Intercepting them would client-route to a 404. */
+const PROJECT_SITE_PATHS = new Set(projectSites.sites.map((s) => s.path))
 
 /**
  * Route choreography:
@@ -32,6 +37,9 @@ export function PageTransition() {
       const href = anchor.getAttribute('href')
       // Skip static files (pdf, images, …) — they must leave the SPA
       if (!href || /\.[a-z0-9]{2,5}$/i.test(href)) return
+      // Skip sibling project sites (/small-vibrations/, /switch-jockey/, …)
+      if (PROJECT_SITE_PATHS.has(href.endsWith('/') ? href : `${href}/`))
+        return
       const current = window.location.pathname
       if (href === current) return
       e.preventDefault()

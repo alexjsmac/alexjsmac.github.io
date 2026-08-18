@@ -2,6 +2,7 @@ uniform float uTime;
 uniform float uPulseRate;
 uniform float uPhase;
 uniform float uGlitch;
+uniform float uAudioLow;
 
 varying vec3 vNormal;
 varying vec3 vViewDir;
@@ -15,11 +16,12 @@ void main() {
   vec3 pos = position;
   vY = position.y;
 
-  // Peristaltic bell contraction: radius squeezes in a wave running down
+  // Peristaltic bell contraction: radius squeezes in a wave running down.
+  // Bass energy deepens the contraction — the bells pump with the low end.
   float wave = sin(uTime * uPulseRate + uPhase - position.y * 2.6);
-  float squeeze = 1.0 + wave * 0.16 * (1.0 - position.y * 0.5);
+  float squeeze = 1.0 + wave * (0.16 + uAudioLow * 0.10) * (1.0 - position.y * 0.5);
   pos.xz *= squeeze;
-  pos.y *= 1.0 - wave * 0.08;
+  pos.y *= 1.0 - wave * (0.08 + uAudioLow * 0.05);
 
   // Sonar glitch: the simulation's seams show. Sample-and-hold time makes
   // every artifact stutter instead of animating smoothly.

@@ -1,0 +1,18 @@
+.quote {
+  margin: 2.4em 0;
+  padding-left: clamp(1.2rem, 3vw, 2rem);
+  border-left: 1px solid var(--bio-cyan);
+}
+
+.text {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-style: italic;
+  font-weight: 420;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-variation-settings:
+    'SOFT' 70,
+    'WONK' 1;
+  color: var(--ink);
+}

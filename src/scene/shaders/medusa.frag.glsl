@@ -4,6 +4,7 @@ uniform float uTime;
 uniform vec3 uColor;
 uniform float uOpacity;
 uniform float uGlitch;
+uniform float uAudioLow;
 
 varying vec3 vNormal;
 varying vec3 vViewDir;
@@ -17,7 +18,8 @@ void main() {
   float fresnel = pow(1.0 - abs(dot(normalize(vNormal), normalize(vViewDir))), 2.2);
   // Brighter toward the bell rim (low y), faint dome
   float rim = smoothstep(0.9, 0.1, vY);
-  vec3 color = uColor * (0.25 + fresnel * 1.5 + rim * 0.25);
+  // Bass energy makes the membrane glow hotter (bloom picks this up)
+  vec3 color = uColor * (0.25 + fresnel * (1.5 + uAudioLow * 0.9) + rim * 0.25);
   float alpha = (0.05 + fresnel * 0.55) * uOpacity;
 
   // Sonar glitch: RGB desync, scanline dropouts, exposure stutter

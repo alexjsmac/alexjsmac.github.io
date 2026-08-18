@@ -49,6 +49,7 @@ export function Bioluminescence() {
         blending: THREE.AdditiveBlending,
         uniforms: {
           uTime: sharedUniforms.uTime,
+          uAudioHigh: sharedUniforms.uAudioHigh,
           uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
           uColorA: { value: new THREE.Color('#5ef0c8').multiplyScalar(1.35) },
           uColorB: { value: new THREE.Color('#d8fff2').multiplyScalar(1.25) },

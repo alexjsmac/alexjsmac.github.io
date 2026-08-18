@@ -12,6 +12,7 @@ import live2 from '@/assets/press/sunntack-live-2.webp'
 import portrait from '@/assets/press/sunntack-portrait.webp'
 import lacLogo from '@/assets/logos/london-arts-council.png'
 import cityLogo from '@/assets/logos/city-of-london.png'
+import svCover from '@/assets/covers/small-vibrations.webp'
 
 interface Dim {
   width: number
@@ -74,6 +75,11 @@ export const sunntack = {
   album: {
     label: 'Out now',
     title: 'Small Vibrations',
+    cover: {
+      src: svCover,
+      ...(manifest.covers as Record<string, Dim>)['small-vibrations']!,
+      alt: 'Small Vibrations album cover — an insect suspended in translucent blue',
+    },
     detail: 'Debut full-length album · Digital & limited translucent-blue vinyl',
     description:
       'A sonic tribute to declining insect populations: six tracks tracing an arc from the emergence of the first insects to their extinction and the sterile world left behind — built from field and sampled insect recordings, modular synthesis, and generative composition. Released digitally and as a limited translucent-blue vinyl edition.',
