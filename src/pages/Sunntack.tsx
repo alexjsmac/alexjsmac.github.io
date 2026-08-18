@@ -4,7 +4,7 @@ import { Meta } from '@/components/ui/Meta'
 import { VideoEmbed } from '@/components/ui/VideoEmbed'
 import { BandcampEmbed } from '@/components/ui/BandcampEmbed'
 import { bySlug } from '@/data/projects'
-import { sunntack } from '@/data/sunntack'
+import { sunntack, type Show } from '@/data/sunntack'
 import seo from '@/data/seo.json'
 import styles from './Sunntack.module.css'
 
@@ -27,14 +27,6 @@ function CopyButton({ text, label }: { text: string; label: string }) {
       {state === 'ok' ? 'Copied ✓' : state === 'fail' ? 'Copy failed' : label}
     </button>
   )
-}
-
-interface Show {
-  date: string
-  title: string
-  venue: string
-  note?: string
-  href?: string
 }
 
 function ShowRow({ show }: { show: Show }) {
@@ -90,7 +82,7 @@ export default function Sunntack() {
             </p>
           </header>
 
-          {/* Album callout — pre-release campaign */}
+          {/* Album callout */}
           <div className={styles.album} data-st>
             <span className="label-mono">{sunntack.album.label}</span>
             <span className={`${styles.albumTitle} display-lg`}>
@@ -103,31 +95,35 @@ export default function Sunntack() {
               {sunntack.album.detail}
             </span>
             <span className={styles.albumActions}>
-              {sunntack.album.actions.map((action) =>
-                action.style === 'link' ? (
+              {sunntack.album.actions.map((action) => {
+                // Root-relative hrefs stay on this domain, so they open in the
+                // same tab and take the → affordance instead of ↗.
+                const offsite = !action.href.startsWith('/')
+                const target = offsite
+                  ? ({ target: '_blank', rel: 'noreferrer' } as const)
+                  : {}
+                return action.style === 'link' ? (
                   <a
                     key={action.label}
                     href={action.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    {...target}
                     className={`${styles.inlineLink} label-mono`}
                   >
-                    {action.label} ↗
+                    {action.label} {offsite ? '↗' : '→'}
                   </a>
                 ) : (
                   <a
                     key={action.label}
                     href={action.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    {...target}
                     className={`${styles.pill} ${
                       action.style === 'primary' ? styles.pillSolid : ''
                     } label-mono`}
                   >
-                    {action.label} ↗
+                    {action.label} {offsite ? '↗' : '→'}
                   </a>
-                ),
-              )}
+                )
+              })}
             </span>
             <span className={styles.albumFunders}>
               <span className={`${styles.albumSupport} label-mono`}>
@@ -149,7 +145,7 @@ export default function Sunntack() {
             </span>
           </div>
 
-          {/* Listen — newest release leads during the campaign */}
+          {/* Listen — newest release leads */}
           <section className={styles.section} aria-labelledby="epk-listen">
             <h2 id="epk-listen" className="label-mono" data-st>
               Listen
@@ -202,19 +198,23 @@ export default function Sunntack() {
             </div>
           </section>
 
-          {/* Live — upcoming launch events, then history */}
+          {/* Live — upcoming shows (when any), then history */}
           <section className={styles.section} aria-labelledby="epk-live">
             <h2 id="epk-live" className="label-mono" data-st>
               Live
             </h2>
-            <p className={`${styles.groupLabel} label-mono`} data-st>
-              Upcoming
-            </p>
-            <ul className={styles.shows}>
-              {sunntack.upcoming.map((show) => (
-                <ShowRow key={`${show.date}-${show.title}`} show={show} />
-              ))}
-            </ul>
+            {sunntack.upcoming.length > 0 && (
+              <>
+                <p className={`${styles.groupLabel} label-mono`} data-st>
+                  Upcoming
+                </p>
+                <ul className={styles.shows}>
+                  {sunntack.upcoming.map((show) => (
+                    <ShowRow key={`${show.date}-${show.title}`} show={show} />
+                  ))}
+                </ul>
+              </>
+            )}
             <p
               className={`${styles.groupLabel} ${styles.groupLabelPast} label-mono`}
               data-st

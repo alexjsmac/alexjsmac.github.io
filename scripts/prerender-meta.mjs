@@ -4,7 +4,12 @@
  *   string-replacing title/description/OG/canonical → deep links are real
  *   files on GitHub Pages (200s) and crawlers see correct per-page meta;
  * - emits per-project OG card images (dist/og/<slug>.jpg);
- * - emits dist/sitemap.xml (with per-route <lastmod> from git history).
+ * - emits a 200 redirect stub at every legacy Jekyll URL (see
+ *   src/data/legacy-redirects.json) — GitHub Pages has no server-side
+ *   redirect, and letting these fall through to 404.html serves them as a
+ *   hard 404, so crawlers drop the URL instead of following it;
+ * - emits dist/sitemap.xml (per-route <lastmod> from git history, plus the
+ *   live project sites from src/data/project-sites.json).
  */
 import { execFileSync } from 'node:child_process'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
@@ -51,6 +56,12 @@ const seo = JSON.parse(
 const projects = JSON.parse(
   await readFile(path.join(ROOT, 'src/data/projects-meta.json'), 'utf8'),
 )
+const legacyRedirects = JSON.parse(
+  await readFile(path.join(ROOT, 'src/data/legacy-redirects.json'), 'utf8'),
+)
+const projectSites = JSON.parse(
+  await readFile(path.join(ROOT, 'src/data/project-sites.json'), 'utf8'),
+)
 
 /** route → { title, description, image?, sources } */
 const routes = new Map(
@@ -77,26 +88,60 @@ const esc = (s) =>
 
 const template = await readFile(path.join(DIST, 'index.html'), 'utf8')
 
+/**
+ * String-replace one tag, or fail the build.
+ *
+ * A regex that stops matching after index.html is reformatted is invisible
+ * otherwise: .replace() is a silent no-op and every route quietly inherits
+ * the template's value. That is exactly how the description tag came to be
+ * identical on all 22 routes — the pattern required `<meta name=` on one
+ * line, and Prettier had wrapped it. Attribute gaps are matched with \s+ so
+ * reformatting is tolerated, and a miss now throws.
+ */
+function replaceTag(html, re, replacement, label) {
+  // Test the pattern rather than diffing the result: the home route's meta is
+  // identical to the template's, so a successful replace is a no-op there.
+  if (!re.test(html)) {
+    throw new Error(
+      `prerender-meta: no match for ${label} — index.html markup changed?`,
+    )
+  }
+  return html.replace(re, replacement)
+}
+
 function htmlFor(route, meta) {
   const url = SITE + (route === '/' ? '/' : `${route}/`)
   const image = SITE + (meta.image ?? '/og.jpg')
-  return template
-    .replace(/<title>[^<]*<\/title>/, `<title>${esc(meta.title)}</title>`)
-    .replace(
-      /(<meta name="description"\s+content=")[^"]*(")/,
+  const edits = [
+    [/<title>[^<]*<\/title>/, `<title>${esc(meta.title)}</title>`, 'title'],
+    [
+      /(<meta\s+name="description"\s+content=")[^"]*(")/,
       `$1${esc(meta.description)}$2`,
-    )
-    .replace(
-      /(<meta property="og:title" content=")[^"]*(")/,
+      'meta description',
+    ],
+    [
+      /(<meta\s+property="og:title"\s+content=")[^"]*(")/,
       `$1${esc(meta.title)}$2`,
-    )
-    .replace(
+      'og:title',
+    ],
+    [
       /(<meta\s+property="og:description"\s+content=")[^"]*(")/,
       `$1${esc(meta.description)}$2`,
-    )
-    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${image}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
+      'og:description',
+    ],
+    [/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${url}$2`, 'og:url'],
+    [
+      /(<meta\s+property="og:image"\s+content=")[^"]*(")/,
+      `$1${image}$2`,
+      'og:image',
+    ],
+    [/(<link\s+rel="canonical"\s+href=")[^"]*(")/, `$1${url}$2`, 'canonical'],
+  ]
+  return edits.reduce(
+    (html, [re, replacement, label]) =>
+      replaceTag(html, re, replacement, label),
+    template,
+  )
 }
 
 let written = 0
@@ -121,18 +166,101 @@ for (const p of projects) {
     .toFile(path.join(DIST, 'og', `${p.slug}.jpg`))
 }
 
+/**
+ * Redirect stubs for legacy URLs.
+ *
+ * Instant meta refresh + canonical is the strongest signal available on a
+ * static host: Google documents meta refresh as a supported redirect and
+ * consolidates ranking signals across it. The stub must NOT be noindexed —
+ * that would tell the crawler to drop the URL rather than follow it — and
+ * must not appear in the sitemap.
+ */
+function redirectStub(target) {
+  const abs = SITE + target
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting — Alex MacLean</title>
+    <link rel="canonical" href="${abs}" />
+    <meta http-equiv="refresh" content="0; url=${target}" />
+    <style>
+      html {
+        background: #020610;
+        color: #e8ecf4;
+        font: 16px/1.5 system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 2rem;
+      }
+    </style>
+    <script>
+      location.replace(${JSON.stringify(target)})
+    </script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="${target}">${abs}</a>.</p>
+  </body>
+</html>
+`
+}
+
+/** Trailing slash to match the prerendered routes; file targets left alone. */
+const normalizeTarget = (t) =>
+  t === '/' || path.extname(t) ? t : `${t}/`
+
+// Separate repos publish as GitHub Pages project sites at /<repo>/ under this
+// domain. Writing a stub there would deploy a file over a working demo, so
+// refuse the build rather than silently shadowing one.
+const reserved = new Set(
+  projectSites.sites.map((s) => s.path.replace(/\/$/, '')),
+)
+
+let redirects = 0
+for (const [from, to] of Object.entries(legacyRedirects)) {
+  if (from.startsWith('_')) continue // JSON has no comments; skip _-prefixed keys
+  if (reserved.has(from)) {
+    throw new Error(
+      `legacy-redirects.json: ${from} is a live project site, not a dead URL. ` +
+        `A stub there would shadow the deployed demo.`,
+    )
+  }
+  const html = redirectStub(normalizeTarget(to))
+  if (from.endsWith('.html')) {
+    const file = path.join(DIST, from.slice(1))
+    await mkdir(path.dirname(file), { recursive: true })
+    await writeFile(file, html)
+  } else {
+    const dir = path.join(DIST, from.slice(1))
+    await mkdir(dir, { recursive: true })
+    await writeFile(path.join(dir, 'index.html'), html)
+  }
+  redirects++
+}
+
+const routeUrls = [...routes.entries()].map(([r, meta]) => {
+  const loc = `${SITE}${r === '/' ? '/' : `${r}/`}`
+  return `  <url><loc>${loc}</loc><lastmod>${lastmodFor(meta.sources)}</lastmod></url>`
+})
+
+// Project sites deploy from their own repos, so this build has no basis for a
+// <lastmod> — omitted rather than stamped with a value that would be wrong.
+// They need listing here precisely because the only links to them are the
+// /work/ "Live piece" buttons, which do not exist until the SPA hydrates.
+const projectSiteUrls = projectSites.sites.map(
+  (s) => `  <url><loc>${SITE}${s.path}</loc></url>`,
+)
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...routes.entries()]
-  .map(([r, meta]) => {
-    const loc = `${SITE}${r === '/' ? '/' : `${r}/`}`
-    return `  <url><loc>${loc}</loc><lastmod>${lastmodFor(meta.sources)}</lastmod></url>`
-  })
-  .join('\n')}
+${[...routeUrls, ...projectSiteUrls].join('\n')}
 </urlset>
 `
 await writeFile(path.join(DIST, 'sitemap.xml'), sitemap)
 
 console.log(
-  `prerender-meta: ${written} routes, ${projects.length} OG cards, sitemap.xml`,
+  `prerender-meta: ${written} routes, ${projects.length} OG cards, ` +
+    `${redirects} redirect stubs, ` +
+    `sitemap.xml (${routeUrls.length} routes + ${projectSiteUrls.length} project sites)`,
 )

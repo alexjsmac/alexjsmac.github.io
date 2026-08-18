@@ -1,0 +1,28 @@
+{
+  "_comment": "Legacy Jekyll URLs that are DEAD on production → their home on this site. Consumed by scripts/prerender-meta.mjs, which emits a 200 redirect stub at each path. Keys are exact pathnames, no trailing slash; a key ending in .html is emitted as that literal file. Every key was confirmed to 404 on www.alexmaclean.ca before being added — a Wayback hit alone is NOT sufficient, see project-sites.json.",
+
+  "/portfolio": "/work",
+  "/portfolio/blue-noise": "/work/blue-noise",
+  "/portfolio/green-space": "/work/green-space",
+  "/portfolio/harp-chair": "/work/harp-chair",
+  "/portfolio/immersive-dreams": "/work/immersive-dreams",
+  "/portfolio/modular-grove": "/work/modular-grove",
+  "/portfolio/oceanic-datanimism": "/work/oceanic-datanimism",
+  "/portfolio/oceanic-datanimism-vr": "/work/oceanic-datanimism-vr",
+  "/portfolio/outfalls": "/work/outfalls",
+  "/portfolio/planktonic-space": "/work/planktonic-space",
+  "/portfolio/robotic-noise": "/work/robotic-noise",
+  "/portfolio/scrap-focus": "/work/scrap-focus",
+  "/portfolio/switch-jockey": "/work/switch-jockey",
+  "/portfolio/tidal-hybrid-interactive-visualizer": "/work/bev-deconstructed",
+
+
+  "/blog": "/",
+  "/2016/01/15/introduction-and-timbrejs": "/",
+  "/2016/01/15/introduction-and-timbrejs.html": "/",
+  "/2017/12/01/soundscape-generator": "/",
+  "/2017/12/01/soundscape-generator.html": "/",
+
+  "/theme-setup": "/",
+  "/cv": "/cv.pdf"
+}
