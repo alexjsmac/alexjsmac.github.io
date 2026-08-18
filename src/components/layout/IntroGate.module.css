@@ -40,10 +40,29 @@
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
   margin-top: 0.8rem;
+}
+
+/* Muted entry is available but not advertised as an equal choice */
+.mutedLink {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-60);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 0.15rem;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.mutedLink:hover {
+  color: var(--bio-cyan);
 }
 
 .button {

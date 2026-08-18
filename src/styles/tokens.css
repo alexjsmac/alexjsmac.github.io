@@ -39,3 +39,18 @@
   --dur-fast: 200ms;
   --dur: 400ms;
 }
+
+/* Route color identity — --bio-cyan doubles as "the accent"; each zone of
+   the water column keys it to its own bioluminescence. Kept in step with
+   the scene tints in scene/moods.ts. */
+body[data-mood='sunntack'] {
+  --bio-cyan: var(--bio-violet);
+}
+
+body[data-mood='about'] {
+  --bio-cyan: #6fe8a5;
+}
+
+body[data-mood='contact'] {
+  --bio-cyan: #74bdff;
+}

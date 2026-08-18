@@ -7,6 +7,10 @@ export interface SceneMood {
   fogDensity: number
   caustics: number
   particleEnergy: number
+  /** Optional color identity: the water ramp lerps toward this tint */
+  tint?: THREE.Color
+  /** 0..1 — how far toward the tint the ramp travels */
+  tintStrength?: number
 }
 
 export const MOODS: Record<string, SceneMood> = {
@@ -31,27 +35,36 @@ export const MOODS: Record<string, SceneMood> = {
     caustics: 0.35,
     particleEnergy: 0.75,
   },
-  // The performance zone: midwater, energetic, biolum-leaning
+  // The performance zone: midwater, energetic, biolum-leaning —
+  // stage-lit violet, like the live photos
   sunntack: {
     depthRange: [0.55, 0.78],
     bloom: 1.05,
     fogDensity: 0.06,
     caustics: 0.15,
     particleEnergy: 1.15,
+    tint: new THREE.Color('#3d2a6e'),
+    tintStrength: 0.3,
   },
+  // Sunlit shallows, a touch of green water
   about: {
     depthRange: [0.05, 0.3],
     bloom: 0.7,
     fogDensity: 0.038,
     caustics: 1.0,
     particleEnergy: 0.8,
+    tint: new THREE.Color('#0d4a3a'),
+    tintStrength: 0.22,
   },
+  // The cold, blue-black floor of the column
   contact: {
     depthRange: [0.85, 1],
     bloom: 1.15,
     fogDensity: 0.07,
     caustics: 0.0,
     particleEnergy: 0.6,
+    tint: new THREE.Color('#04102e'),
+    tintStrength: 0.35,
   },
   abyss: {
     depthRange: [0.9, 1],
@@ -84,12 +97,17 @@ export const RAMP_HEX = [
  */
 export const RAMP_COLORS = RAMP_HEX.map((hex) => new THREE.Color(hex))
 
-/** JS mirror of the shader's 5-stop ramp, for fog + clear color. */
-export function rampColor(t: number, out: THREE.Color): THREE.Color {
+/** JS mirror of the shader's 5-stop ramp, for fog + clear color.
+ *  Pass the live (mood-tinted) uniform stops to keep fog in step. */
+export function rampColor(
+  t: number,
+  out: THREE.Color,
+  stops: readonly THREE.Color[] = RAMP_COLORS,
+): THREE.Color {
   const x = THREE.MathUtils.clamp(t, 0, 1) * 4
   const i = Math.min(Math.floor(x), 3)
   const f = x - i
-  return out.copy(RAMP_COLORS[i]!).lerp(RAMP_COLORS[i + 1]!, f)
+  return out.copy(stops[i]!).lerp(stops[i + 1]!, f)
 }
 
 /** How far down the camera travels, in world units. */

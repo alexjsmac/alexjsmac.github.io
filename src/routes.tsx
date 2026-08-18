@@ -61,7 +61,10 @@ export function Routes() {
 
   useEffect(() => {
     scrollToTop(true)
-    setMoodKey(moodFor(location))
+    const mood = moodFor(location)
+    setMoodKey(mood)
+    // CSS side of the route identity — tokens.css keys accents off this
+    document.body.dataset.mood = mood
     // SPA page views (child Meta effects have already set document.title)
     window.gtag?.('event', 'page_view', {
       page_path: location,
