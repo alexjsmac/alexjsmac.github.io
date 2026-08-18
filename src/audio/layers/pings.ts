@@ -7,6 +7,8 @@ export interface Pings {
   dry: GainNode
   send: GainNode
   setDepth(depth: number): void
+  /** A deliberate, user-triggered ping — pitched by the current depth. */
+  trigger(): void
   start(): void
   stop(): void
 }
@@ -25,16 +27,11 @@ export function buildPings(ctx: BaseAudioContext): Pings {
   let timer: ReturnType<typeof setTimeout> | null = null
   let running = false
 
-  function ping() {
+  function play(freq: number, peak: number, decay: number) {
     const now = ctx.currentTime
-    const octave = Math.random() < 0.4 + depth * 0.4 ? 0.5 : 1
-    const ratio = RATIOS[Math.floor(Math.random() * RATIOS.length)]!
-    const freq = D3 * octave * ratio * (Math.random() < 0.25 ? 2 : 1)
 
     const env = ctx.createGain()
     env.gain.setValueAtTime(0.0001, now)
-    const peak = 0.12 + Math.random() * 0.08
-    const decay = 3.5 + Math.random() * 3.5
 
     env.gain.exponentialRampToValueAtTime(peak, now + 0.012)
     env.gain.exponentialRampToValueAtTime(0.0001, now + decay)
@@ -63,6 +60,13 @@ export function buildPings(ctx: BaseAudioContext): Pings {
     partial.stop(now + decay + 0.1)
   }
 
+  function ping() {
+    const octave = Math.random() < 0.4 + depth * 0.4 ? 0.5 : 1
+    const ratio = RATIOS[Math.floor(Math.random() * RATIOS.length)]!
+    const freq = D3 * octave * ratio * (Math.random() < 0.25 ? 2 : 1)
+    play(freq, 0.12 + Math.random() * 0.08, 3.5 + Math.random() * 3.5)
+  }
+
   function schedule() {
     if (!running) return
     const interval = 2000 + Math.random() * 2500 + depth * 1800
@@ -77,6 +81,13 @@ export function buildPings(ctx: BaseAudioContext): Pings {
     send,
     setDepth(d) {
       depth = d
+    },
+    trigger() {
+      // Click sonar: same pentatonic voice, pitched by where you are in
+      // the column — bright near the surface, a low call in the abyss.
+      const octave = depth < 0.33 ? 2 : depth < 0.7 ? 1 : 0.5
+      const ratio = RATIOS[Math.floor(Math.random() * RATIOS.length)]!
+      play(D3 * octave * ratio, 0.14, 1.6 + Math.random() * 0.8)
     },
     start() {
       if (running) return

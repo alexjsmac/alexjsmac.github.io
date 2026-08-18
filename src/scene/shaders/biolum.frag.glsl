@@ -2,6 +2,7 @@ precision highp float;
 
 uniform vec3 uColorA;
 uniform vec3 uColorB;
+uniform float uAudioHigh;
 
 varying float vLife;
 varying float vSeed;
@@ -20,7 +21,7 @@ void main() {
   vec3 color = mix(uColorA, uColorB, hash11(vSeed + 2.3));
   float fade = 1.0 - vLife;
 
-  // Modest HDR push: a glint, not fairy dust
-  vec3 hdr = color * (0.9 + core * 1.6) * fade;
+  // Modest HDR push: a glint, not fairy dust — hi-hats make it sparkle
+  vec3 hdr = color * (0.9 + core * 1.6) * fade * (1.0 + uAudioHigh * 0.8);
   gl_FragColor = vec4(hdr, glow * fade * 0.85);
 }

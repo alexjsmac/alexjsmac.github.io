@@ -6,6 +6,7 @@ uniform float uTime;
 uniform float uDepth;
 uniform float uCaustics;
 uniform float uAudioWarp;
+uniform float uAudioMid;
 uniform float uAspect;
 uniform vec3 uRamp[5];
 
@@ -60,7 +61,8 @@ void main() {
 
   float c = caustics(vUv, uTime) * uCaustics * light;
   c *= smoothstep(0.35, 0.95, vUv.y);
-  c *= 0.55;
+  // Mids make the light web breathe brighter (smoothed upstream, no strobe)
+  c *= 0.55 * (1.0 + uAudioMid * 0.5);
   color += c * vec3(0.36, 0.62, 0.66);
 
   float s = shafts(vUv, uTime) * light;

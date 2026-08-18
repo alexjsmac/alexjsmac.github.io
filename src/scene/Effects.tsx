@@ -11,6 +11,7 @@ import type { Bloom as BloomImpl } from '@react-three/postprocessing'
 import { useAppStore } from '@/store/app'
 import { qualityProfile } from '@/lib/quality'
 import { moodState } from './MoodController'
+import { sharedUniforms } from './uniforms'
 
 export function Effects() {
   const quality = useAppStore((s) => s.quality)
@@ -20,8 +21,10 @@ export function Effects() {
   useFrame(() => {
     const bloom = bloomRef.current as { intensity?: number } | null
     if (bloom && typeof bloom.intensity === 'number') {
-      bloom.intensity =
+      // Overall music level breathes through the bloom
+      const base =
         quality === 'low' ? moodState.bloom * 0.5 : moodState.bloom
+      bloom.intensity = base + sharedUniforms.uAudioLevel.value * 0.3
     }
   })
 

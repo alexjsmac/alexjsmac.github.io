@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { frameBus } from '@/lib/frameBus'
+import { audioEngine } from '@/audio/engine'
 import { sharedUniforms } from './uniforms'
 import { pointerToWorld } from './pointerWorld'
 import vertexShader from './shaders/sonar.vert.glsl'
@@ -51,6 +52,8 @@ export function SonarRings() {
       frameBus.pointer.x = (e.clientX / window.innerWidth) * 2 - 1
       frameBus.pointer.y = -((e.clientY / window.innerHeight) * 2 - 1)
       queued.current = true
+      // The click is audible too: same sonar voice, pitched by depth
+      audioEngine.ping()
     }
     window.addEventListener('pointerdown', onDown)
     return () => {

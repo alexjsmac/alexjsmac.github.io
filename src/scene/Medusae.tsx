@@ -105,6 +105,7 @@ function Jelly({ spec }: { spec: JellySpec }) {
         blending: THREE.AdditiveBlending,
         uniforms: {
           uTime: sharedUniforms.uTime,
+          uAudioLow: sharedUniforms.uAudioLow,
           uPulseRate: { value: spec.pulseRate },
           uPhase: { value: spec.phase },
           uColor: { value: new THREE.Color(spec.color) },
@@ -125,6 +126,7 @@ function Jelly({ spec }: { spec: JellySpec }) {
         blending: THREE.AdditiveBlending,
         uniforms: {
           uTime: sharedUniforms.uTime,
+          uAudioLow: sharedUniforms.uAudioLow,
           uPulseRate: { value: spec.pulseRate },
           uPhase: { value: spec.phase },
           uColor: { value: new THREE.Color(spec.color) },
