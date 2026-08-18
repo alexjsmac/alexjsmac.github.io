@@ -44,11 +44,22 @@ export function Cursor() {
       ring.current?.classList.toggle(styles.view!, !!view)
     }
 
+    // Pressed state: the brackets contract, echoing the sonar ping the
+    // same click emits into the scene
+    const onDown = () => ring.current?.classList.add(styles.down!)
+    const onUp = () => ring.current?.classList.remove(styles.down!)
+
     window.addEventListener('pointermove', onMove, { passive: true })
     window.addEventListener('pointerover', onOver, { passive: true })
+    window.addEventListener('pointerdown', onDown, { passive: true })
+    window.addEventListener('pointerup', onUp, { passive: true })
+    window.addEventListener('pointercancel', onUp, { passive: true })
     return () => {
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerover', onOver)
+      window.removeEventListener('pointerdown', onDown)
+      window.removeEventListener('pointerup', onUp)
+      window.removeEventListener('pointercancel', onUp)
       document.documentElement.classList.remove('custom-cursor')
     }
   }, [enabled, reduced])

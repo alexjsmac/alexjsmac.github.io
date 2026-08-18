@@ -8,6 +8,9 @@
 
   --ink: #eaf4f4;
   --ink-60: rgba(234, 244, 244, 0.62);
+  /* Meaningful-but-secondary text over the live scene (indices, years) */
+  --ink-50: rgba(234, 244, 244, 0.5);
+  /* True decoration only — fails contrast over moving water */
   --ink-35: rgba(234, 244, 244, 0.35);
   --line: rgba(234, 244, 244, 0.14);
 

@@ -260,5 +260,11 @@
       "width": 70,
       "height": 96
     }
+  },
+  "covers": {
+    "small-vibrations": {
+      "width": 976,
+      "height": 1000
+    }
   }
 }

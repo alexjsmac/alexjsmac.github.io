@@ -20,17 +20,55 @@
   color: var(--ink-35);
 }
 
-/* Album callout */
+/* Album callout — cover art beside the copy */
 .album {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  display: grid;
+  grid-template-columns: minmax(180px, 300px) 1fr;
+  gap: clamp(1.6rem, 4vw, 3rem);
+  align-items: start;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: clamp(1.4rem, 3vw, 2.2rem);
 }
 
-.album > .label-mono:first-child {
+@media (max-width: 760px) {
+  .album {
+    grid-template-columns: 1fr;
+  }
+  .albumCover {
+    max-width: 300px;
+  }
+}
+
+.albumCover {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  perspective: 700px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+}
+
+.albumCover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.001);
+  transition: transform 700ms var(--ease-out);
+}
+
+.albumCover:hover img,
+.albumCover:focus-visible img {
+  transform: scale(1.045) rotate3d(0.4, -1, 0, 4deg);
+}
+
+.albumBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.albumBody > .label-mono:first-child {
   color: var(--bio-cyan);
 }
 

@@ -3,8 +3,10 @@ import { Link } from 'wouter'
 import { Meta } from '@/components/ui/Meta'
 import { VideoEmbed } from '@/components/ui/VideoEmbed'
 import { BandcampEmbed } from '@/components/ui/BandcampEmbed'
+import { Magnetic } from '@/components/ui/MagneticLink'
 import { bySlug } from '@/data/projects'
 import { sunntack, type Show } from '@/data/sunntack'
+import { useMagnetic } from '@/lib/useMagnetic'
 import seo from '@/data/seo.json'
 import styles from './Sunntack.module.css'
 
@@ -60,6 +62,7 @@ function ShowRow({ show }: { show: Show }) {
 
 export default function Sunntack() {
   const currentWork = bySlug[sunntack.currentSet.workSlug]
+  const coverRef = useMagnetic<HTMLAnchorElement>(0.18, 10)
 
   return (
     <>
@@ -82,67 +85,85 @@ export default function Sunntack() {
             </p>
           </header>
 
-          {/* Album callout */}
+          {/* Album callout — the record leads with its artwork */}
           <div className={styles.album} data-st>
-            <span className="label-mono">{sunntack.album.label}</span>
-            <span className={`${styles.albumTitle} display-lg`}>
-              <em className="display-italic">{sunntack.album.title}</em>
-            </span>
-            <span className={styles.albumDescription}>
-              {sunntack.album.description}
-            </span>
-            <span className={`${styles.albumDetail} label-mono`}>
-              {sunntack.album.detail}
-            </span>
-            <span className={styles.albumActions}>
-              {sunntack.album.actions.map((action) => {
-                // Root-relative hrefs stay on this domain, so they open in the
-                // same tab and take the → affordance instead of ↗.
-                const offsite = !action.href.startsWith('/')
-                const target = offsite
-                  ? ({ target: '_blank', rel: 'noreferrer' } as const)
-                  : {}
-                return action.style === 'link' ? (
-                  <a
-                    key={action.label}
-                    href={action.href}
-                    {...target}
-                    className={`${styles.inlineLink} label-mono`}
-                  >
-                    {action.label} {offsite ? '↗' : '→'}
-                  </a>
-                ) : (
-                  <a
-                    key={action.label}
-                    href={action.href}
-                    {...target}
-                    className={`${styles.pill} ${
-                      action.style === 'primary' ? styles.pillSolid : ''
-                    } label-mono`}
-                  >
-                    {action.label} {offsite ? '↗' : '→'}
-                  </a>
-                )
-              })}
-            </span>
-            <span className={styles.albumFunders}>
-              <span className={`${styles.albumSupport} label-mono`}>
-                {sunntack.album.support}
+            <a
+              ref={coverRef}
+              href="/small-vibrations/"
+              className={styles.albumCover}
+              aria-label="Small Vibrations — experience the visual album"
+            >
+              <img
+                src={sunntack.album.cover.src}
+                width={sunntack.album.cover.width}
+                height={sunntack.album.cover.height}
+                alt={sunntack.album.cover.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <div className={styles.albumBody}>
+              <span className="label-mono">{sunntack.album.label}</span>
+              <span className={`${styles.albumTitle} display-lg`}>
+                <em className="display-italic">{sunntack.album.title}</em>
               </span>
-              <span className={styles.funderLogos}>
-                {sunntack.album.logos.map((l) => (
-                  <img
-                    key={l.alt}
-                    src={l.src}
-                    width={l.width}
-                    height={l.height}
-                    alt={l.alt}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ))}
+              <span className={styles.albumDescription}>
+                {sunntack.album.description}
               </span>
-            </span>
+              <span className={`${styles.albumDetail} label-mono`}>
+                {sunntack.album.detail}
+              </span>
+              <span className={styles.albumActions}>
+                {sunntack.album.actions.map((action) => {
+                  // Root-relative hrefs stay on this domain, so they open in the
+                  // same tab and take the → affordance instead of ↗.
+                  const offsite = !action.href.startsWith('/')
+                  const target = offsite
+                    ? ({ target: '_blank', rel: 'noreferrer' } as const)
+                    : {}
+                  return action.style === 'link' ? (
+                    <a
+                      key={action.label}
+                      href={action.href}
+                      {...target}
+                      className={`${styles.inlineLink} label-mono`}
+                    >
+                      {action.label} {offsite ? '↗' : '→'}
+                    </a>
+                  ) : (
+                    <Magnetic key={action.label}>
+                      <a
+                        href={action.href}
+                        {...target}
+                        className={`${styles.pill} ${
+                          action.style === 'primary' ? styles.pillSolid : ''
+                        } label-mono`}
+                      >
+                        {action.label} {offsite ? '↗' : '→'}
+                      </a>
+                    </Magnetic>
+                  )
+                })}
+              </span>
+              <span className={styles.albumFunders}>
+                <span className={`${styles.albumSupport} label-mono`}>
+                  {sunntack.album.support}
+                </span>
+                <span className={styles.funderLogos}>
+                  {sunntack.album.logos.map((l) => (
+                    <img
+                      key={l.alt}
+                      src={l.src}
+                      width={l.width}
+                      height={l.height}
+                      alt={l.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ))}
+                </span>
+              </span>
+            </div>
           </div>
 
           {/* Listen — newest release leads */}
@@ -281,9 +302,14 @@ export default function Sunntack() {
               Booking & links
             </h2>
             <div className={styles.bookingRow} data-st>
-              <Link href="/contact" className={`${styles.pill} ${styles.pillSolid} label-mono`}>
-                Booking inquiries →
-              </Link>
+              <Magnetic>
+                <Link
+                  href="/contact"
+                  className={`${styles.pill} ${styles.pillSolid} label-mono`}
+                >
+                  Booking inquiries →
+                </Link>
+              </Magnetic>
               {sunntack.links.map((l) => (
                 <a
                   key={l.label}

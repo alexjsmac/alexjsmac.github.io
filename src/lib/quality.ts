@@ -23,11 +23,13 @@ const PROFILES: Record<Exclude<QualityTier, 'static'>, QualityProfile> = {
     medusae: 2,
     chromaticAberration: false,
   },
+  // Phones still meet one jellyfish — the low tier keeps the encounter,
+  // just not the crowd
   low: {
     tier: 'low',
     dprMax: 1,
-    planktonCount: 1200,
-    medusae: 0,
+    planktonCount: 2000,
+    medusae: 1,
     chromaticAberration: false,
   },
 }
