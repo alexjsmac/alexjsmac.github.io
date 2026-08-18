@@ -12,8 +12,11 @@ export default function WorkDetail({ slug }: { slug: string }) {
   if (!project) return <NotFound />
 
   const index = projects.indexOf(project)
+  const number = String(index + 1).padStart(2, '0')
   const prev = projects[index - 1]
-  const next = projects[index + 1]
+  // Always offer a next piece — the index wraps so the tour never dead-ends
+  const nextIndex = (index + 1) % projects.length
+  const next = projects[nextIndex]!
   const Body = project.Body
 
   return (
@@ -27,6 +30,9 @@ export default function WorkDetail({ slug }: { slug: string }) {
       <article className={styles.page}>
         <div className="container">
           <header className={styles.header}>
+            <span className={styles.ghostIndex} aria-hidden="true">
+              {number}
+            </span>
             <p className="label-mono">
               {project.medium} · {project.year}
             </p>
@@ -35,19 +41,33 @@ export default function WorkDetail({ slug }: { slug: string }) {
               {project.excerpt}
             </p>
           </header>
+        </div>
 
-          <div className={styles.video}>
-            {project.video ? (
+        {/* Hero media escapes the text column — the work at full width */}
+        <div className={styles.heroBleed}>
+          {project.video ? (
+            <div className={styles.heroVideo}>
               <VideoEmbed
                 video={project.video}
                 poster={project.hero}
                 title={project.title}
               />
-            ) : (
-              <Picture image={project.hero} loading="eager" />
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className={styles.heroStill}>
+              <span className={styles.heroParallax} data-parallax>
+                <Picture
+                  image={project.hero}
+                  loading="eager"
+                  className={styles.heroImage}
+                />
+              </span>
+              <span className={styles.heroGrain} aria-hidden="true" />
+            </div>
+          )}
+        </div>
 
+        <div className="container">
           <div className={styles.layout}>
             <aside className={styles.aside}>
               <section className={styles.asideBlock}>
@@ -114,34 +134,44 @@ export default function WorkDetail({ slug }: { slug: string }) {
               />
             </div>
           )}
+        </div>
 
-          <nav className={styles.pager} aria-label="More work">
-            {prev ? (
+        <nav className={styles.more} aria-label="More work">
+          {prev && (
+            <div className="container">
               <Link
                 href={`/work/${prev.slug}`}
-                className={styles.pagerLink}
+                className={`${styles.prevLink} label-mono`}
                 rel="prev"
               >
-                <span className="label-mono">← Previous</span>
-                <span className={styles.pagerTitle}>{prev.title}</span>
+                ← Previous · {prev.title}
               </Link>
-            ) : (
-              <span />
-            )}
-            {next ? (
-              <Link
-                href={`/work/${next.slug}`}
-                className={`${styles.pagerLink} ${styles.pagerNext}`}
-                rel="next"
-              >
-                <span className="label-mono">Next →</span>
-                <span className={styles.pagerTitle}>{next.title}</span>
-              </Link>
-            ) : (
-              <span />
-            )}
-          </nav>
-        </div>
+            </div>
+          )}
+          <Link
+            href={`/work/${next.slug}`}
+            className={styles.nextTeaser}
+            data-cursor="view"
+          >
+            <span className={`container ${styles.nextInner}`}>
+              <span className={styles.nextContent}>
+                <span className={`${styles.nextLabel} label-mono`}>
+                  Next — {String(nextIndex + 1).padStart(2, '0')} /{' '}
+                  {String(projects.length).padStart(2, '0')}
+                </span>
+                <span className={styles.nextTitle}>{next.title}</span>
+                <span className={`${styles.nextMeta} label-mono`}>
+                  {next.medium} · {next.year}
+                </span>
+              </span>
+              <span className={styles.nextMedia} aria-hidden="true">
+                <span className={styles.nextParallax} data-parallax>
+                  <Picture image={next.thumb} className={styles.nextImage} />
+                </span>
+              </span>
+            </span>
+          </Link>
+        </nav>
       </article>
     </>
   )

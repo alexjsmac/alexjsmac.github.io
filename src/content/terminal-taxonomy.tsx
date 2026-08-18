@@ -1,3 +1,5 @@
+import { PullQuote } from '@/components/ui/PullQuote'
+
 export default function Body() {
   return (
     <>
@@ -17,6 +19,10 @@ export default function Body() {
         becomes unstable, in both the audio and the visuals, while the
         performer improvises with the results.
       </p>
+      <PullQuote>
+        As the machine loses its grip on language, entropy rises — its
+        thinking becomes physical light.
+      </PullQuote>
       <p>
         Using TDBitwig, the sonic transients of a modular synthesizer and
         custom vocal samples drive a 3D “bio-sphere” rendered in TouchDesigner.

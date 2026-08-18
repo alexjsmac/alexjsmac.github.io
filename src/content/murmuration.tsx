@@ -1,3 +1,5 @@
+import { PullQuote } from '@/components/ui/PullQuote'
+
 export default function Body() {
   return (
     <>
@@ -13,6 +15,9 @@ export default function Body() {
         devices in seconds — no app to install — and the projected scene
         reshapes itself in real time around their contributions.
       </p>
+      <PullQuote>
+        A hundred phones, one organism — the room folds into a murmuration.
+      </PullQuote>
       <p>
         A project by Alex MacLean of{' '}
         <a
