@@ -4,6 +4,10 @@
  *   string-replacing title/description/OG/canonical → deep links are real
  *   files on GitHub Pages (200s) and crawlers see correct per-page meta;
  * - emits per-project OG card images (dist/og/<slug>.jpg);
+ * - emits a 200 redirect stub at every legacy Jekyll URL (see
+ *   src/data/legacy-redirects.json) — GitHub Pages has no server-side
+ *   redirect, and letting these fall through to 404.html serves them as a
+ *   hard 404, so crawlers drop the URL instead of following it;
  * - emits dist/sitemap.xml (with per-route <lastmod> from git history).
  */
 import { execFileSync } from 'node:child_process'
@@ -50,6 +54,9 @@ const seo = JSON.parse(
 )
 const projects = JSON.parse(
   await readFile(path.join(ROOT, 'src/data/projects-meta.json'), 'utf8'),
+)
+const legacyRedirects = JSON.parse(
+  await readFile(path.join(ROOT, 'src/data/legacy-redirects.json'), 'utf8'),
 )
 
 /** route → { title, description, image?, sources } */
@@ -121,6 +128,77 @@ for (const p of projects) {
     .toFile(path.join(DIST, 'og', `${p.slug}.jpg`))
 }
 
+/**
+ * Redirect stubs for legacy URLs.
+ *
+ * Instant meta refresh + canonical is the strongest signal available on a
+ * static host: Google documents meta refresh as a supported redirect and
+ * consolidates ranking signals across it. The stub must NOT be noindexed —
+ * that would tell the crawler to drop the URL rather than follow it — and
+ * must not appear in the sitemap.
+ */
+function redirectStub(target) {
+  const abs = SITE + target
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting — Alex MacLean</title>
+    <link rel="canonical" href="${abs}" />
+    <meta http-equiv="refresh" content="0; url=${target}" />
+    <style>
+      html {
+        background: #020610;
+        color: #e8ecf4;
+        font: 16px/1.5 system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 2rem;
+      }
+    </style>
+    <script>
+      location.replace(${JSON.stringify(target)})
+    </script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="${target}">${abs}</a>.</p>
+  </body>
+</html>
+`
+}
+
+/** Trailing slash to match the prerendered routes; file targets left alone. */
+const normalizeTarget = (t) =>
+  t === '/' || path.extname(t) ? t : `${t}/`
+
+// Separate repos publish as GitHub Pages project sites at /<repo>/ under this
+// domain. Writing a stub there would deploy a file over a working demo, so
+// refuse the build rather than silently shadowing one.
+const reserved = new Set(legacyRedirects._projectSites ?? [])
+
+let redirects = 0
+for (const [from, to] of Object.entries(legacyRedirects)) {
+  if (from.startsWith('_')) continue // JSON has no comments; skip _-prefixed keys
+  if (reserved.has(from)) {
+    throw new Error(
+      `legacy-redirects.json: ${from} is a live project site, not a dead URL. ` +
+        `A stub there would shadow the deployed demo.`,
+    )
+  }
+  const html = redirectStub(normalizeTarget(to))
+  if (from.endsWith('.html')) {
+    const file = path.join(DIST, from.slice(1))
+    await mkdir(path.dirname(file), { recursive: true })
+    await writeFile(file, html)
+  } else {
+    const dir = path.join(DIST, from.slice(1))
+    await mkdir(dir, { recursive: true })
+    await writeFile(path.join(dir, 'index.html'), html)
+  }
+  redirects++
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${[...routes.entries()]
@@ -134,5 +212,6 @@ ${[...routes.entries()]
 await writeFile(path.join(DIST, 'sitemap.xml'), sitemap)
 
 console.log(
-  `prerender-meta: ${written} routes, ${projects.length} OG cards, sitemap.xml`,
+  `prerender-meta: ${written} routes, ${projects.length} OG cards, ` +
+    `${redirects} redirect stubs, sitemap.xml`,
 )
