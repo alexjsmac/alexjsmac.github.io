@@ -45,8 +45,8 @@ export function SoundToggle() {
     if (audioOn) {
       audioEngine.stop()
       setAudioOn(false)
-    } else {
-      audioEngine.start()
+    } else if (audioEngine.start()) {
+      // Only claim "Sound" if an engine actually came up
       setAudioOn(true)
     }
   }

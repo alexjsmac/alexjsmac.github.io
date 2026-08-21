@@ -50,3 +50,23 @@
     display: none;
   }
 }
+
+/* On a phone the label is gone and the meter is a 16x25px glyph — far too
+   small to thumb. Grow the hit area with an overlay rather than padding so
+   the two-row mobile header keeps its measure. A returning visitor, whose
+   intro choice is remembered, has no other way to turn the sound on. */
+@media (pointer: coarse) {
+  .toggle {
+    position: relative;
+  }
+
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+  }
+}

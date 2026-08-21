@@ -27,8 +27,7 @@ export function IntroGate() {
 
   const enter = (withSound: boolean) => {
     if (exiting.current) return
-    if (withSound) {
-      audioEngine.start()
+    if (withSound && audioEngine.start()) {
       setAudioOn(true)
     }
     if (reduced || !gate.current || !inner.current) {
