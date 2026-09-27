@@ -1,7 +1,12 @@
+# Pre-merge check, shared across alexjsmac's site repos. `npm run verify` is
+# the single entry point: it's exactly what a contributor runs locally, so a
+# local pass means a CI pass. The job name `CI` is the required status check
+# in the main ruleset (.github/rulesets/main.json); don't rename it.
 name: CI
 
 on:
   pull_request:
+  push:
     branches: [main]
 
 permissions:
@@ -12,14 +17,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  ci:
+    name: CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version-file: .nvmrc
           cache: npm
+
       - run: npm ci
-      - run: npm run lint
-      - run: npm run build
+
+      - run: npm run verify
