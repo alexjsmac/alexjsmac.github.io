@@ -12,7 +12,7 @@
     "verify": "npm run lint && npm run build"
   },
   "dependencies": {
-    "@fontsource-variable/fraunces": "5.2.9",
+    "@fontsource-variable/fraunces": "5.3.0",
     "@fontsource-variable/space-grotesk": "5.3.0",
     "@fontsource/space-mono": "5.3.0",
     "@gsap/react": "2.1.2",
