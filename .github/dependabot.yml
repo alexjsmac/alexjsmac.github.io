@@ -30,6 +30,21 @@ updates:
           - three
           - '@types/three'
           - '@react-three/*'
+      # react and react-dom must be the exact same version or the page throws
+      # React error #527 and renders nothing, which CI can't see (it never
+      # renders the page). Ahead of dev-tooling so the @types ride along:
+      # Dependabot puts each dependency in the first group it matches.
+      react:
+        patterns:
+          - react
+          - react-dom
+          - '@types/react'
+          - '@types/react-dom'
+      # Font packages are versioned in lockstep upstream and are content, not code.
+      fontsource:
+        patterns:
+          - '@fontsource/*'
+          - '@fontsource-variable/*'
       # Build, lint and test tooling: batch the safe bumps. Majors stay
       # individual so each one gets read.
       dev-tooling:
