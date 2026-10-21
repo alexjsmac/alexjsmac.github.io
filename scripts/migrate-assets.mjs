@@ -28,6 +28,10 @@ const THUMB_WIDTH = 800
  * (relative to this repo's root).
  */
 const PROJECTS = {
+  'the-commons': {
+    teaser: 'youtube:dxsPJuB8cak',
+    gallery: [1, 2, 3, 4, 5, 6, 7].map((n) => `local:images/the-commons/${n}.jpg`),
+  },
   murmuration: { teaser: 'youtube:H8nsqBQeO9E' },
   'a-v-nights': {
     teaser: 'local:images/AVN-8.jpg',

@@ -1,5 +1,45 @@
 {
   "work": {
+    "the-commons": {
+      "hero": {
+        "width": 1280,
+        "height": 720
+      },
+      "thumb": {
+        "width": 800,
+        "height": 450
+      },
+      "gallery": [
+        {
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "width": 1600,
+          "height": 1066
+        }
+      ]
+    },
     "murmuration": {
       "hero": {
         "width": 1280,
