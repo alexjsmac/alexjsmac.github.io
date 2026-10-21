@@ -1,5 +1,28 @@
 [
   {
+    "slug": "the-commons",
+    "title": "The Commons",
+    "year": 2026,
+    "excerpt": "An interactive quadraphonic sound and light installation that stages the tragedy of the commons as a shared atmosphere — made for Lumen Festival, Waterloo",
+    "medium": "Interactive A/V installation",
+    "materials": [
+      "TouchDesigner",
+      "Bitwig Studio",
+      "Kinect V2 body tracking",
+      "Four-channel sound",
+      "LED light columns"
+    ],
+    "video": {
+      "provider": "youtube",
+      "id": "dxsPJuB8cak"
+    },
+    "featured": true,
+    "heroAlt": "Visitors raising their hands among glowing LED light columns in The Commons, in an underground parking garage",
+    "venues": [
+      "Lumen Festival — underground parking garage, Waterloo ON, 2026"
+    ]
+  },
+  {
     "slug": "murmuration",
     "title": "Murmuration",
     "year": 2026,

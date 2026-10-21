@@ -28,6 +28,7 @@ const THUMB_WIDTH = 800
  * (relative to this repo's root).
  */
 const PROJECTS = {
+  'the-commons': { teaser: 'youtube:dxsPJuB8cak' },
   murmuration: { teaser: 'youtube:H8nsqBQeO9E' },
   'a-v-nights': {
     teaser: 'local:images/AVN-8.jpg',

@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import meta from './projects-meta.json'
 import manifest from './image-manifest.json'
 
+import TheCommons from '@/content/the-commons'
 import Murmuration from '@/content/murmuration'
 import AvNights from '@/content/a-v-nights'
 import TerminalTaxonomy from '@/content/terminal-taxonomy'
@@ -62,6 +63,7 @@ export interface Project {
 }
 
 const BODIES: Record<string, ComponentType> = {
+  'the-commons': TheCommons,
   murmuration: Murmuration,
   'a-v-nights': AvNights,
   'terminal-taxonomy': TerminalTaxonomy,
